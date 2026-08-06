@@ -1,5 +1,6 @@
 # Computational Statistics Program — Bibliography (Working Draft)
  
+ *Internal version 1.4.*
 > **Note:** Module-level refinement complete. Sources are organized thematically by the program's module structure. Role annotations (Primary / Secondary / Reference) reflect confirmed assignments from the bibliography pass.
  
 ---

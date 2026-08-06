@@ -1,8 +1,10 @@
-# Computational Statistics Program
-## Program Orientation Note
-*Read before Module 0*
+# Program Orientation Note
 
-*Internal version 1.4 (07/23/2026, Phase 5A/Wave C). Filename unchanged per Phase 5 naming policy (`Phase5_SessionMap_and_Preconditions_1_1.md` §3.3) — version tracked here, not in the filename. This revision (spec §8 flag 4): (1) "A Note on Engagement" now acknowledges the problem sets as a third self-assessment instrument (drafted prose, not inventory-supplied verbatim — flagged for owner review in `Phase5A_WaveC_ExecutionReport.md`); (2) the module map gained a PS Core (hrs) column per DG-P1 Option A, presented as a breakout of the existing Est. Hours figures, not an addition — the 120-hour ceiling status is re-stated with arithmetic immediately below the table.*
+*Internal version 1.4.*
+
+---
+
+*Read before Module 0.*
 
 ---
 

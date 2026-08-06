@@ -1,22 +1,7 @@
 # Computational Statistics Program — Problem Sets
 
-*Version 1.0 (assembled 07/23/2026, Phase 5B). Governing specification: `ProblemSetRequirements1_1.md` (design spec, §7 anatomy, §4 sourcing/provenance tiers). Build scaffold: `ProblemSets_draft_skeleton.md`. This document is **student-facing**. Drafting-process material (session flags, execution summaries, cross-module drafting notes) has been stripped from the problem text below and carried into the instructor-facing companion set — see "Companion documents" below. Ten modules (M0–M9), assembled from their terminal, Phase-3-corrected and Phase-4-certified drafts; Module 10 (Applied Cases) has no problem set by design (spec §6) and is not included here.*
+*v1.0*
 
-**Changelog**
-- 1.0 (07/23/2026) — Initial canonical assembly (Phase 5B). Merged the ten terminal module drafts in skeleton order (M0→M9); carried over each module's alignment matrix and hours table; stripped drafting-process blocks per the P5-0 item-6 ruling (option a) into `ProblemSets_InstructorNotes.md`; corrected M9's two dangling heading annotations (see `Phase5B_AssemblyReport.md`). No problem text, ID, tag, or verification target was altered from its Phase-4-certified terminal draft state.
-
-**Sourcing / provenance scheme:** every problem's `Verification:` field carries a provenance tier per `ProblemSetRequirements1_1.md` §4 — tier 1 (harvested from a solution-published source), tier 2 (citable mathematical/generative fact), tier 3 (drafter-executed and logged reference run, pointer to `ValidationLog.md`), or `self-audit` (structured self-check, no numeric target). Tier-3 claims resolve to `ValidationLog.md`; reference implementations live in `reference_impls/`.
-
-**Companion documents (instructor-facing, not part of this document):**
-- `ValidationLog.md` — tier-3 verification runs, one entry per executed problem.
-- `ProblemSets_InstructorNotes.md` — the drafting-process material stripped from this document (per-module Flags, Execution Summaries, Cross-module notes, session bookkeeping), plus the strip manifest.
-- `reference_impls/` — reference implementations, one per tier-3 problem, plus shared helpers.
-- ExecutionSummary companion set — per-module drafting-session compliance records (standalone or embedded; see `ProblemSets_InstructorNotes.md`).
-- `Bibliography1_4.md`, `ModuleReadingGuides1_4.md` (internal v1.5), `program_orientation_note_1_3.md` (internal v1.4) — unchanged filenames per the Phase 5 naming policy (`Phase5_SessionMap_and_Preconditions_1_1.md` §3.3); internal versions current as of Phase 5A.
-
-**IDs are per-module (`PSm.n`), append-only, and never renumbered.** There is no global problem sequence anywhere in this document, including in headings or cross-references.
-
----
 
 ## Module 0 — Computational Thinking & Statistical Algorithms
 

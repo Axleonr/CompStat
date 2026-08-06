@@ -1,8 +1,6 @@
-# Computational Statistics Program — Bibliography (Working Draft)
+# Computational Statistics Program — Bibliography
  
-> **Note:** Module-level refinement complete. Sources are organized thematically by the program's module structure. Role annotations (Primary / Secondary / Reference) reflect confirmed assignments from the bibliography pass.
- 
----
+*Internal version 1.4.*
  
 ## I. Disciplinary Orientation
  
@@ -156,33 +154,16 @@
 
 *Access/license/URL metadata for sources already cited (or independently needing citation) elsewhere in this bibliography — not full citations. See Sections III–X above for the corresponding role assignments.*
 
-**Vehtari — Aalto BDA course (CS-E5710) assignment templates.** Notebooks at `avehtari.github.io/BDA_course_Aalto/assignments/template{1,2,3,4,5}.html`, plus the companion quiz page `avehtari.github.io/BDA_course_Aalto/assignments/assignment5.html`. CC-BY-NC 4.0. One-time confirmation of fit (per `Tier1_SourceSurvey_1_0.md` §2.3's caveat, cited here as fact-basis, not re-edited): the license terms are compatible with this program's use — adaptation and target values only, no republication of complete author solutions or of the `markmyassignment`/`aaltobda` tooling itself.
+**Vehtari — Aalto BDA course (CS-E5710) assignment templates.** \
+Notebooks at `avehtari.github.io/BDA_course_Aalto/assignments/template{1,2,3,4,5}.html`, plus the companion quiz page `avehtari.github.io/BDA_course_Aalto/assignments/assignment5.html`. CC-BY-NC 4.0. One-time confirmation of fit (per `Tier1_SourceSurvey_1_0.md` §2.3's caveat, cited here as fact-basis, not re-edited): the license terms are compatible with this program's use — adaptation and target values only, no republication of complete author solutions or of the `markmyassignment`/`aaltobda` tooling itself.
 
-**McElreath — *Statistical Rethinking* course-repo license note.** Course materials (`rmcelreath/stat_rethinking_2023` and related repos) are offered publicly for reuse. Verified source URLs: reedfrogs prompt `github.com/rmcelreath/stat_rethinking_2023/blob/main/homework/week06.pdf`; reedfrogs author solutions `.../week06_solutions.pdf`; Monks prompt `.../homework/week08.pdf`; Monks author solutions `.../week08_solutions.pdf`; Monks dataset (raw CSV) `github.com/rmcelreath/stat_rethinking_2022/blob/main/homework/week08_Monks.csv` (also `data(Monks)` in the `rethinking` package). Per project policy: adaptation and target values only, no republication of complete author solutions.
+**McElreath — *Statistical Rethinking* course-repo license note.** \
+Course materials (`rmcelreath/stat_rethinking_2023` and related repos) are offered publicly for reuse. Verified source URLs: reedfrogs prompt `github.com/rmcelreath/stat_rethinking_2023/blob/main/homework/week06.pdf`; reedfrogs author solutions `.../week06_solutions.pdf`; Monks prompt `.../homework/week08.pdf`; Monks author solutions `.../week08_solutions.pdf`; Monks dataset (raw CSV) `github.com/rmcelreath/stat_rethinking_2022/blob/main/homework/week08_Monks.csv` (also `data(Monks)` in the `rethinking` package). Per project policy: adaptation and target values only, no republication of complete author solutions.
 
-**Gelman et al. — BDA3 official partial solutions PDF.** `sites.stat.columbia.edu/gelman/book/solutions3.pdf` (24 June 2019 build), recorded as a primary, directly-inspected source — Ch 5's solution *content* (not merely the statements) was verified against this document — rather than a secondary or TOC-level index.
+**Gelman et al. — BDA3 official partial solutions PDF.** \
+`sites.stat.columbia.edu/gelman/book/solutions3.pdf` (24 June 2019 build), recorded as a primary, directly-inspected source — Ch 5's solution *content* (not merely the statements) was verified against this document — rather than a secondary or TOC-level index.
 
 *Cross-reference: Robert & Casella, Introducing Monte Carlo Methods with R (2010) — problem-provenance role; see Section III.*
- 
----
- 
-## Triage Notes
- 
-The following sources appeared in one or both input reading lists and were **excluded from this bibliography** for the reasons noted.
- 
-| Source | Reason for exclusion |
-|---|---|
-| Blum, Hopcroft & Kannan — *Foundations of Data Science* | Module 3 (Geometry) was cut from merged program scope |
-| Wainwright — *High-Dimensional Statistics* | Same reason |
-| McLachlan & Krishnan — *The EM Algorithm and Extensions* | Lange + DLR + Wu sufficient at this scope; reintroduce if EM coverage deepens |
-| Good — *Permutation Tests* | Outside merged program scope |
-| Davison & Hinkley | Retained in bibliography (Section IV); was flagged as cut from *program guide references* only |
-| Hall (1990); Cornea-Madeira & Davidson (2015) | Bootstrap failure-mode papers; covered adequately by Davison & Hinkley at this level |
-| Judd, Maliar & Maliar (2011) | Quadrature focus; outside scope |
-| Weihs, Mersmann & Ligges — *Foundations of Statistical Algorithms* | Not clearly assigned to any module in merged structure |
-| Brown & Jones (2024) | Too specialized for program-level bibliography; convergence rate theory is outside the scope of all current module goals. Formally excluded. |
-| Atchadé & Perron (2008) | Spectral gap theory for high-dimensional chains; outside program scope. Formally excluded. |
-| Asmussen & Glynn; Nelson | Retained in Section II as secondary references for Module 2. |
  
 
 

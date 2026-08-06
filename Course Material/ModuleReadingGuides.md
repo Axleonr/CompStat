@@ -1,8 +1,6 @@
 # Computational Statistics Program — Module Reading Guides
 
-*Internal version 1.5 (07/23/2026, Phase 5A/Wave C). Filename unchanged per Phase 5 naming policy (`Phase5_SessionMap_and_Preconditions_1_1.md` §3.3) — version tracked here, not in the filename. This revision: (1) Module 3 gained a D&H Ch 3 Sec 3.8 reading-guide entry and one Self-Assessment checklist line, closing the clustered-data loose thread (`ClusteredDataLooseThread-Corrections.md` §1); (2) the opening paragraph below now acknowledges the problem sets as a third self-assessment instrument, per `ProblemSetRequirements1_1.md` §8 flag 4 (drafted prose, not inventory-supplied verbatim — flagged for owner review in `Phase5A_WaveC_ExecutionReport.md`).*
- 
-Each guide contains a reading sequence with assigned sources, section-level focus notes, and forward pointers; followed by a self-assessment section with a quick checklist and conceptual questions. The checklist items are the module goals reworded as “can I do this?” prompts. The conceptual questions require explanation, connection, and reasoning — not calculation. Since Wave 3, the problem sets are a third self-assessment instrument alongside the checklist and conceptual questions: where those two test whether the material was understood, the problem sets test whether that understanding survives implementation.
+*Internal version 1.5.*
  
  
 ## Module 0 — Computational Thinking & Statistical Algorithms
