@@ -1,6 +1,8 @@
 # Computational Statistics Program — Module Reading Guides
+
+*Internal version 1.5 (07/23/2026, Phase 5A/Wave C). Filename unchanged per Phase 5 naming policy (`Phase5_SessionMap_and_Preconditions_1_1.md` §3.3) — version tracked here, not in the filename. This revision: (1) Module 3 gained a D&H Ch 3 Sec 3.8 reading-guide entry and one Self-Assessment checklist line, closing the clustered-data loose thread (`ClusteredDataLooseThread-Corrections.md` §1); (2) the opening paragraph below now acknowledges the problem sets as a third self-assessment instrument, per `ProblemSetRequirements1_1.md` §8 flag 4 (drafted prose, not inventory-supplied verbatim — flagged for owner review in `Phase5A_WaveC_ExecutionReport.md`).*
  
-Each guide contains a reading sequence with assigned sources, section-level focus notes, and forward pointers; followed by a self-assessment section with a quick checklist and conceptual questions. The checklist items are the module goals reworded as “can I do this?” prompts. The conceptual questions require explanation, connection, and reasoning — not calculation.
+Each guide contains a reading sequence with assigned sources, section-level focus notes, and forward pointers; followed by a self-assessment section with a quick checklist and conceptual questions. The checklist items are the module goals reworded as “can I do this?” prompts. The conceptual questions require explanation, connection, and reasoning — not calculation. Since Wave 3, the problem sets are a third self-assessment instrument alongside the checklist and conceptual questions: where those two test whether the material was understood, the problem sets test whether that understanding survives implementation.
  
  
 ## Module 0 — Computational Thinking & Statistical Algorithms
@@ -214,6 +216,11 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 		> **Sec 2.6.3 (conditional properties)** is outside the module's scope; skip it. For the remediation methods that address the dependence failure mode identified in Sec 2.6.4, see Efron & Tibshirani Ch 8 (Stage 1b above).
 	- **Builds toward**: The failure modes identified here reappear in Module 10, where the bootstrap is deployed as a subsidiary inference tool and its assumptions need to be evaluated in context.
 
+4. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application* [Secondary]
+**Sec 3.8 (Hierarchical Data)**
+	- **Focus**: Diagnostic/conceptual only — there is no implementation requirement attached to this reading. Sec 3.8 identifies why within-cluster correlation violates the i.i.d. resampling assumption behind the ordinary nonparametric bootstrap: observations drawn from the same cluster are not exchangeable with observations from a different cluster, so resampling individual observations as if they were i.i.d. misrepresents the data-generating process. **Keep this mechanism distinct from the serial-dependence failure mechanism** covered via Sec 2.6.4 above and Efron & Tibshirani Ch 8 (Stage 1b) — serial dependence is a temporal-correlation failure; clustering is a grouping/exchangeability failure. The two failure modes share a family resemblance (both violate the i.i.d. assumption naive resampling requires) but are not the same mechanism and should not be conflated. This section's remediation content (cluster-aware resampling schemes) is **not assigned** and is out of scope for this module, consistent with the standing Goal 5 boundary — Goal 5's implementation requirement remains scoped to the moving blocks bootstrap only.
+	- **Builds toward**: Nothing further in this module; the clustering failure mode is exercised at the conceptual/diagnostic level only (see the Self-Assessment checklist below).
+
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
@@ -221,6 +228,7 @@ After finishing the reading, can you:
 - Implement parametric and nonparametric bootstrap and construct bootstrap-t, percentile, and BCa confidence intervals?
 - Explain the theoretical conditions under which bootstrap confidence intervals are valid, and distinguish consistency from finite-sample accuracy?
 - Identify the conditions under which naive bootstrap fails: heavy tails, extreme statistics, small samples, and dependent or clustered data?
+- Articulate why clustered data violates the i.i.d. assumption underlying naive resampling, and distinguish this clustering failure mechanism from the serial-dependence failure mechanism addressed by the moving blocks bootstrap?
 - Apply the moving blocks bootstrap for serially dependent data, explain what block resampling preserves that naive resampling destroys, and identify the role of block length in the bias-variance tradeoff of the procedure?
 - Implement bootstrap-t, percentile, and BCa confidence intervals and explain what each assumes and what accuracy guarantees each provides?
 - Explain the accuracy hierarchy — first-order vs. second-order accuracy — and identify which interval methods achieve each?

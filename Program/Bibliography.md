@@ -48,9 +48,15 @@
  
 **Robert, C. P., & Casella, G.** (2004). *Monte Carlo Statistical Methods* (2nd ed.). Springer.
 *Role: Primary, Module 2 (error theory foundation, Ch 3 read first); Primary, Module 7 (Chs 7, 9–10); Ch 6 is secondary depth for Module 8. Ch 3 provides the CLT-based estimator framework, variance as the controlling quantity, and confidence interval construction for Monte Carlo estimates — the conceptual architecture that Owen's variance reduction chapters presuppose. Also covers Rao-Blackwellization as a variance reduction strategy (later in Ch 3, read after Owen Chs 8–9). Ch 6 (Markov chains — stationarity, irreducibility, ergodicity, convergence) is secondary depth for Module 8: provides the ergodic theorem framing that connects chain convergence to the validity of MCMC time averages, complementing LPW Ch 12 Sec 12.7. Note: SIR does not appear as a standalone chapter in R&C; the primary SIR source for Module 7 is Givens & Hoeting Ch 6 Sec 6.3.1.*
+
+**Robert, C. P., & Casella, G.** (2010). *Introducing Monte Carlo Methods with R*. Springer.
+*Role: Problem-provenance only, not assigned reading (Modules 2, 7, 8). A distinct, separate volume from the 2004 *Monte Carlo Statistical Methods* entry immediately above — the R-implementation companion text, not an edition or revision of it. Several harvest-index files supporting Modules 2, 7, and 8 draw on this volume's exercises and worked examples as problem-provenance sources for original tier-3 drafting; it carries no student-facing reading assignment and is not to be conflated with the 2004 entry.*
  
 **Glasserman, P.** (2003). *Monte Carlo Methods in Financial Engineering*. Springer.
 *Role: Optional companion, Module 2 (Stage 1 — error theory). Sec 1.1.1–1.1.3 and Appendix A cover the same error foundations as R&C Ch 3 Secs 3.1–3.2 with a more applied, example-driven presentation. Recommended as an entry point for students who find R&C's register demanding; read before R&C, then return to R&C for the formal development. Note: examples carry a financial engineering framing — the error theory is domain-agnostic.*
+
+**Vehtari, A., Gelman, A., Simpson, D., Carpenter, B., & Bürkner, P.-C.** (2021). Rank-normalization, folding, and localization: An improved R̂ for assessing convergence of MCMC. *Bayesian Analysis*, 16(2), 667–718.
+*Role: Problem-provenance, Module 8, optional depth only (PS8.3). Supports PS8.3's classic-vs-rank-normalized R-hat contrast (the published N(0,1)-vs-t₃ example: classic R̂ ≈ 1, rank-normalized R̂ = 1.39 against the 1.01 threshold). **Distinct from Gelman & Vehtari (2021)**, "What are the most important statistical ideas of the past 50 years?" (*JASA* 116(536), Section I above) — a different paper, with an overlapping but not identical author list, assigned as the Module 10 disciplinary retrospective. Do not conflate the two: this entry is the MCMC convergence-diagnostic methods paper; the Section I entry is the historical/retrospective essay.*
  
 ---
  
@@ -64,7 +70,7 @@
 *Role: Primary text, Module 3. Chs 1–2 and 4 cover the bootstrap idea (introduction, accuracy of a sample mean, empirical distribution function, and the plug-in principle). Ch 3 (random samples and probabilities) is background probability review — optional for students who need the notation; not required for any Goal. Ch 6 covers the bootstrap estimate of standard error and the parametric bootstrap. Ch 8 (More complicated data structures) covers one-sample and two-sample bootstrap extensions, more general data structures (Sec 8.4), and the moving blocks bootstrap (Sec 8.6) — required for Goal 5. Ch 10 (Estimates of bias) covers bootstrap and jackknife bias estimation; optional secondary depth for students who want the bias-estimation foundation before reading Ch 11. Ch 11 covers the jackknife — its definition, relationship to the bootstrap, and failure conditions. Chs 12–13 cover bootstrap-t and percentile confidence intervals, establishing the accuracy hierarchy that Ch 14 builds on. Ch 14, Secs 14.1–14.3 cover the BCa method — required for Goal 2; Sec 14.4 (ABC method) is secondary depth; Sec 14.5 (tooth data example) is optional depth, flagged by the authors as skippable on first reading.*
  
 **Davison, A. C., & Hinkley, D. V.** (1997). *Bootstrap Methods and Their Application*. Cambridge University Press.
-*Role: Secondary, Module 3. Sec 2.6.1 (consistency and asymptotic accuracy) is the primary source for the theoretical conditions under which bootstrap confidence intervals are valid — Goal 3. Sec 2.6.2 (rough statistics) and Sec 2.6.4 (when might the bootstrap fail?) are the failure-mode content for Goal 4. Sec 2.6.3 (conditional properties) is outside the module's scope. The failure modes material is not supplemental — understanding when a method breaks is part of knowing the method. Remediation for the dependence failure mode (moving blocks bootstrap) is covered in Efron & Tibshirani Ch 8, Sec 8.6.*
+*Role: Secondary, Module 3. Sec 2.6.1 (consistency and asymptotic accuracy) is the primary source for the theoretical conditions under which bootstrap confidence intervals are valid — Goal 3. Sec 2.6.2 (rough statistics) and Sec 2.6.4 (when might the bootstrap fail?) are the failure-mode content for Goal 4. Sec 2.6.3 (conditional properties) is outside the module's scope. The failure modes material is not supplemental — understanding when a method breaks is part of knowing the method. Remediation for the dependence failure mode (moving blocks bootstrap) is covered in Efron & Tibshirani Ch 8, Sec 8.6. Sec 3.8 (Hierarchical Data) is assigned as secondary reading for the clustered-data component of Goal 4 — it identifies why within-cluster correlation violates the resampling assumption behind the ordinary nonparametric bootstrap. This section's remediation content (cluster-aware resampling schemes) is not assigned; Goal 5's implementation requirement remains scoped to the moving blocks bootstrap only.*
  
 ---
  
@@ -143,6 +149,20 @@
  
 **Petersen, K. B., & Pedersen, M. S.** (2012). *The Matrix Cookbook*. Technical University of Denmark. (Freely available online.)
 *Role: Lookup reference. Matrix identities as needed throughout the program.*
+ 
+---
+
+## XI. Provenance & Access Notes
+
+*Access/license/URL metadata for sources already cited (or independently needing citation) elsewhere in this bibliography — not full citations. See Sections III–X above for the corresponding role assignments.*
+
+**Vehtari — Aalto BDA course (CS-E5710) assignment templates.** Notebooks at `avehtari.github.io/BDA_course_Aalto/assignments/template{1,2,3,4,5}.html`, plus the companion quiz page `avehtari.github.io/BDA_course_Aalto/assignments/assignment5.html`. CC-BY-NC 4.0. One-time confirmation of fit (per `Tier1_SourceSurvey_1_0.md` §2.3's caveat, cited here as fact-basis, not re-edited): the license terms are compatible with this program's use — adaptation and target values only, no republication of complete author solutions or of the `markmyassignment`/`aaltobda` tooling itself.
+
+**McElreath — *Statistical Rethinking* course-repo license note.** Course materials (`rmcelreath/stat_rethinking_2023` and related repos) are offered publicly for reuse. Verified source URLs: reedfrogs prompt `github.com/rmcelreath/stat_rethinking_2023/blob/main/homework/week06.pdf`; reedfrogs author solutions `.../week06_solutions.pdf`; Monks prompt `.../homework/week08.pdf`; Monks author solutions `.../week08_solutions.pdf`; Monks dataset (raw CSV) `github.com/rmcelreath/stat_rethinking_2022/blob/main/homework/week08_Monks.csv` (also `data(Monks)` in the `rethinking` package). Per project policy: adaptation and target values only, no republication of complete author solutions.
+
+**Gelman et al. — BDA3 official partial solutions PDF.** `sites.stat.columbia.edu/gelman/book/solutions3.pdf` (24 June 2019 build), recorded as a primary, directly-inspected source — Ch 5's solution *content* (not merely the statements) was verified against this document — rather than a secondary or TOC-level index.
+
+*Cross-reference: Robert & Casella, Introducing Monte Carlo Methods with R (2010) — problem-provenance role; see Section III.*
  
 ---
  

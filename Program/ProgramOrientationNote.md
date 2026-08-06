@@ -2,6 +2,8 @@
 ## Program Orientation Note
 *Read before Module 0*
 
+*Internal version 1.4 (07/23/2026, Phase 5A/Wave C). Filename unchanged per Phase 5 naming policy (`Phase5_SessionMap_and_Preconditions_1_1.md` §3.3) — version tracked here, not in the filename. This revision (spec §8 flag 4): (1) "A Note on Engagement" now acknowledges the problem sets as a third self-assessment instrument (drafted prose, not inventory-supplied verbatim — flagged for owner review in `Phase5A_WaveC_ExecutionReport.md`); (2) the module map gained a PS Core (hrs) column per DG-P1 Option A, presented as a breakout of the existing Est. Hours figures, not an addition — the 120-hour ceiling status is re-stated with arithmetic immediately below the table.*
+
 ---
 
 ## What This Program Is
@@ -40,21 +42,27 @@ The program has an architecture. The modules are not a collection of independent
 
 ## The Program's Module Map
 
-| Module | Name | Est. Hours | Core Contribution | Feeds Into |
-|--------|------|-----------|-------------------|------------|
-| 0 | Computational Thinking | 3–4 | Establishes the algorithmic framing of statistics | All modules |
-| 1 | Random Number Generation | 5–6 | Builds the simulation primitives everything else depends on | Modules 2, 3, 7 |
-| 2 | Monte Carlo Estimation | 12–15 | Error theory and variance reduction; importance sampling extended to resampling | Module 7 (SIR) |
-| 3 | Bootstrap & Resampling | 13–15 | Data-driven inference and its limits | Module 10 |
-| 4 | Optimization | 12–15 | Gradient, metaheuristic, and EM approaches to computing estimators | Module 5 |
-| 5 | Bayesian Modeling | 6–8 | Model construction as a distinct layer from computation | Modules 7, 8, 10 |
-| 6 | Markov Chains | 8–10 | Convergence theory that governs sampler quality | Modules 7, 8 |
-| 7 | MCMC Methods | 15–18 | SIR, MH, Gibbs, and Metropolis-within-Gibbs as a related family | Modules 8, 9 |
-| 8 | MCMC Diagnostics | 8–10 | Evaluating sampler output; workflow for trusting or questioning results | Module 10 |
-| 9 | Density Estimation | 6–8 | Nonparametric distribution estimation from data and MCMC output | Module 10 |
-| 10 | Applied Cases | 8–10 | Workflow integration and disciplinary retrospective | — |
+| Module | Name | Est. Hours | PS Core (hrs)* | Core Contribution | Feeds Into |
+|--------|------|-----------|------|-------------------|------------|
+| 0 | Computational Thinking | 3–4 | 0.00 | Establishes the algorithmic framing of statistics | All modules |
+| 1 | Random Number Generation | 5–6 | 3.50 | Builds the simulation primitives everything else depends on | Modules 2, 3, 7 |
+| 2 | Monte Carlo Estimation | 12–15 | 4.25 | Error theory and variance reduction; importance sampling extended to resampling | Module 7 (SIR) |
+| 3 | Bootstrap & Resampling | 13–15 | 4.83 | Data-driven inference and its limits | Module 10 |
+| 4 | Optimization | 12–15 | 3.83 | Gradient, metaheuristic, and EM approaches to computing estimators | Module 5 |
+| 5 | Bayesian Modeling | 6–8 | 2.75 | Model construction as a distinct layer from computation | Modules 7, 8, 10 |
+| 6 | Markov Chains | 8–10 | 2.67 | Convergence theory that governs sampler quality | Modules 7, 8 |
+| 7 | MCMC Methods | 15–18 | 5.75 | SIR, MH, Gibbs, and Metropolis-within-Gibbs as a related family | Modules 8, 9 |
+| 8 | MCMC Diagnostics | 8–10 | 3.50 | Evaluating sampler output; workflow for trusting or questioning results | Module 10 |
+| 9 | Density Estimation | 6–8 | 3.58 | Nonparametric distribution estimation from data and MCMC output | Module 10 |
+| 10 | Applied Cases | 8–10 | 0.00 | Workflow integration and disciplinary retrospective | — |
 
 **Total: ~96–119 hours.** *(Note: The previously stated total of 103–116 was a computation error; the corrected figure is the actual row sum. Module 3 revised from 10–12 to 13–15 hrs.)*
+
+***PS Core (hrs) is a breakout, not an addition.** Per DG-P1 Option A (`PSDEP-Phase0Resolutions.md`), each module's problem set designates a core subset (counted) and optional-depth problems (uncounted, sitting above the budget line). The figures above are the per-module core problem-set hours, re-added by hand from the terminal drafts and cross-reconciled across three independent legs — draft row sums, each WO's own §3 budget line, and the register's OF-9 live entry — with zero disagreement (`Phase4_HoursReconciliation_1_0.md` §§1–2). Program-wide: **2080 core min ≈ 34.7 hr across 44 core problems**, plus 10 optional problems (≈315 min ≈ 5.25 hr, uncounted against the ceiling).*
+
+*These hours are **already included** in the Est. Hours column, not additive to it — Phase 4's integration audit confirmed the existing Est. Hours figures bundle reading time and problem-set time together (that is why the whole-program total was assessed against the 120-hour ceiling as 96–119 hr, not as 96–119 hr plus a separate 34.7 hr). Adding this column does not change the Total line above.*
+
+**120-hour ceiling status (re-stated with arithmetic, `Phase4_HoursReconciliation_1_0.md` §4):** Lower bound 96 hr; upper bound 119 hr; ceiling 120 hr. **PASS at both bounds — upper-bound margin = 1 hr.** This margin is thin and is carried forward as a live watch item (F4-1, `Phase4_CloseoutNote_1_0.md` §3): any future addition, reading-guide revision, or module-map re-estimate must re-check the ceiling before it lands. This edit does not push the upper bound to or past 120 hr — the arithmetic reconciles, and no STOP-and-flag is triggered.
 
 ---
 
@@ -83,5 +91,7 @@ In addition to the spine, the program has three thematic arcs that run across mo
 The module reading guides contain focus notes, forward pointers, and conceptual questions. The focus notes tell you what to attend to and what to move past in each reading. The forward pointers tell you where each reading is building toward. The conceptual questions are the most important part: they are calibrated to distinguish between having read something and having understood it.
 
 A student who can answer the conceptual questions for each module has genuinely internalized the material. A student who can reproduce the reading's content without being able to answer them has not. The questions are not hard in a mathematical sense — they require explanation, connection, and reasoning, not calculation. But they do require that the reading was engaged with rather than processed.
+
+Since Wave 3, each module also carries a problem set — a third instrument, and a different one. Where the checklist and conceptual questions test whether the material was understood, the problem sets test whether that understanding survives implementation: whether it produces working code, the right diagnostic when something goes wrong, and estimates that meet a stated verification target rather than merely a plausible-looking one.
 
 *Read actively. The program rewards it.*
