@@ -58,13 +58,7 @@ The program has an architecture. The modules are not a collection of independent
 | 9 | Density Estimation | 6–8 | 3.58 | Nonparametric distribution estimation from data and MCMC output | Module 10 |
 | 10 | Applied Cases | 8–10 | 0.00 | Workflow integration and disciplinary retrospective | — |
 
-**Total: ~96–119 hours.** *(Note: The previously stated total of 103–116 was a computation error; the corrected figure is the actual row sum. Module 3 revised from 10–12 to 13–15 hrs.)*
-
-***PS Core (hrs) is a breakout, not an addition.** Per DG-P1 Option A (`PSDEP-Phase0Resolutions.md`), each module's problem set designates a core subset (counted) and optional-depth problems (uncounted, sitting above the budget line). The figures above are the per-module core problem-set hours, re-added by hand from the terminal drafts and cross-reconciled across three independent legs — draft row sums, each WO's own §3 budget line, and the register's OF-9 live entry — with zero disagreement (`Phase4_HoursReconciliation_1_0.md` §§1–2). Program-wide: **2080 core min ≈ 34.7 hr across 44 core problems**, plus 10 optional problems (≈315 min ≈ 5.25 hr, uncounted against the ceiling).*
-
-*These hours are **already included** in the Est. Hours column, not additive to it — Phase 4's integration audit confirmed the existing Est. Hours figures bundle reading time and problem-set time together (that is why the whole-program total was assessed against the 120-hour ceiling as 96–119 hr, not as 96–119 hr plus a separate 34.7 hr). Adding this column does not change the Total line above.*
-
-**120-hour ceiling status (re-stated with arithmetic, `Phase4_HoursReconciliation_1_0.md` §4):** Lower bound 96 hr; upper bound 119 hr; ceiling 120 hr. **PASS at both bounds — upper-bound margin = 1 hr.** This margin is thin and is carried forward as a live watch item (F4-1, `Phase4_CloseoutNote_1_0.md` §3): any future addition, reading-guide revision, or module-map re-estimate must re-check the ceiling before it lands. This edit does not push the upper bound to or past 120 hr — the arithmetic reconciles, and no STOP-and-flag is triggered.
+**Total: ~96–119 hours.** 
 
 ---
 
