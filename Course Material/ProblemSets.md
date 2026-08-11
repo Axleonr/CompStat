@@ -1,8 +1,5 @@
 # Computational Statistics Program — Problem Sets
 
-*v1.0*
-
-
 ## Module 0 — Computational Thinking & Statistical Algorithms
 
 ### PS0.1 — An estimator as an algorithm
@@ -35,29 +32,13 @@ Pick one estimator you already know well from prior coursework — for concreten
 
 ---
 
-### Alignment matrix — Module 0
-
-| Goal | Text (`Module_Goals_Reference.md`) | Problem(s) / justification |
-|---|---|---|
-| 0.1 | Reframe statistical procedures as algorithms: inputs, outputs, and the computational process connecting them | PS0.1 |
-| 0.2 | Distinguish between deriving a statistical result analytically and computing one algorithmically — and articulate why that distinction matters | PS0.1 |
-| 0.3 | Identify the questions that the computational framing opens up: convergence, sensitivity, efficiency, failure conditions | PS0.1 |
-| 0.4 | Situate the program's core methods (simulation, resampling, optimization, MCMC) within a unified algorithmic view of statistics | Deliberately unexercised — per WO-M0 §3, this is checklist/conceptual-question territory (no implementation verb; R2's mandatory-coverage rule does not apply) |
-| 0.5 | Read Tukey (1962) as a disciplinary argument — identify its central claim and assess its relevance to contemporary computational practice | Deliberately unexercised — per WO-M0 §3, a reading-and-conceptual-question goal with no problem-set vehicle by design (no implementation verb) |
-
-### Module 0 hours
-| Core problems | Core hours | Optional hours (uncounted) | Budget (§5) |
-|---|---|---|---|
-| 0 | 0 | 0.58 hr (35 min, PS0.1 only) | 0–1 |
-
-
----
-
 ## Module 1 — Random Number Generation & Simulation
 
 ### PS1.1 — Building and testing a linear congruential generator
 **Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 1, 2
+
 **Prerequisites:** None
+
 **Statement:**
 A linear congruential generator (LCG) produces a sequence of integers by the recurrence
 $$X_{n+1} = (aX_n + c) \bmod m,$$
@@ -198,28 +179,6 @@ Compare the two empirical rates (as a ratio) and comment, in 2–3 sentences, on
 - *Tier 2:* the naive rate is exactly $P(Z\geq 4)$, computable via your language's normal CDF (a citable, library-computable fact, not a number to recall). The improved bound $M = \frac{1}{a}e^{-a^2/2}$ is this problem's own closed-form derivation (shown above); the general accept-reject theorem underlying the acceptance-rate calculation is the same standard result used in PS1.3 (R&C Ex. 2.5).
 - *Tier 3:* under a stated seed, at $20{,}000{,}000$ naive attempts your empirical rate should fall within **3.167×10⁻⁵ ± 3.78×10⁻⁶**; at $20{,}000$ improved-method attempts your empirical rate should fall within **0.9466 ± 0.0048**. The ratio of improved to naive acceptance rate should be on the order of $10^4$ (this session's reference runs observed 23,000×–32,000× across five independent trials).
 **Discussion note:** *(folded)* The naive method isn't wrong, exactly — it's just spending nearly all of its 20 million draws generating values the problem doesn't want, and only accidentally landing in the target region about 1 time in 30,000. The improved proposal is shaped to put almost all of its mass exactly where the target's mass is (in the tail beyond $a$), so it wastes far less effort — this is the general lesson of good proposal design (echoing PS1.3's ranking discussion): match the proposal's shape to the target's shape *where the target actually has mass*, which for a deep tail means matching the tail's local behavior, not the distribution's overall shape. If your naive empirical rate is off by an order of magnitude, check you used a large enough attempt count — this is a rare-event probability, and both very small and very large empirical deviations are possible with insufficient attempts (this session's own log discloses exactly this sensitivity at a smaller attempt count that was tried and rejected in favor of the stated specification).
-
----
-
-## Alignment matrix — Module 1
-
-| Goal | Text | Problem(s) / justification |
-|---|---|---|
-| 1.1 | Explain why computers cannot produce true randomness and how pseudorandom number generators construct sequences that behave statistically as if random | PS1.1 (building and empirically testing an LCG from primitives is the concrete grounding for this explanatory goal; the conceptual questions instrument may address the explanatory framing more directly, per R2 — this goal's verb is "Explain," not an R2-mandatory implementation verb) |
-| 1.2 | Describe the key structural properties of a good uniform PRNG — period length, seed dependence, and the statistical tests used to evaluate generator quality | PS1.1 (period/seed-dependence note, two uniformity tests) primary; PS1.5 (RANDU's structural failure; seed-misuse facet) as the negative-case reinforcement |
-| 1.3 | Implement the inverse transform method for generating non-uniform random variates, and explain the conditions under which it is applicable | PS1.2 (both sub-parts). **Tier-fork resolution (recorded at draft time, per the M2-F3 convention):** part (a) resolved to **tier 1**, citing R&C Ex. 2.13 (solved, power-transform identity for the Pareto) rather than falling back to the tier-2 (2.2, unsolved) alternative offered in the WO — 2.13's construction was a clean, direct match to the brief with no adaptation strain. Part (b) is **tier 3** (original numerical-inversion construction on the standard normal; WO confirms no harvested candidate exists for this half of the goal) |
-| 1.4 | Implement the acceptance-rejection method, explain where its efficiency comes from, and identify the factors that make a proposal distribution better or worse | PS1.3 (two proposals, ranked) primary; PS1.6 (optional — naive-vs-tail-shaped-proposal contrast) reinforcement |
-| 1.5 | Trace a sample from an arbitrary distribution back to its uniform foundation — articulating the full generative chain from PRNG output to non-uniform draw | PS1.4 (Type C, full commented trace, reuses PS1.1's LCG per the module's interface note) |
-| 1.6 | Recognize the practical consequences of poor RNG choices: reproducibility failures, period exhaustion, and correlation artifacts in simulation output | PS1.5 (Type D — RANDU's hyperplane defect covers "correlation artifacts" from a bad generator; the seed-misuse facet covers "reproducibility failures" from bad seeding practice, satisfying R6's diagnosis-problem requirement for the module) |
-
-## Module 1 hours (per `PSDEP-F2Resolution.md`: core ≈ full §5 budget)
-
-| Core problems | Core hours (row-sum re-verified) | Optional hours (uncounted) | Budget (§5) |
-|---|---|---|---|
-| 5 (PS1.1–PS1.5) | PS1.1 40 + PS1.2 45 + PS1.3 50 + PS1.4 30 + PS1.5 45 = **210 min = 3.50 hr** | PS1.6 ≈ 35 min | 3–4 hr |
-
-Row-sum re-verified by hand against the WO's per-problem time caps (§3): 40+45+50+30+45 = 210 exactly, matching both the WO's stated "core ≈ 3.5 hrs" and the skeleton's pre-recorded planning figure — no arithmetic discrepancy found.
-
 
 ---
 
@@ -469,29 +428,6 @@ The mechanism failure is exact, not approximate: because $h(1-u)\equiv h(u)$, th
 
 ---
 
-## Alignment matrix — Module 2
-
-*(Per `ProblemSets_draft_skeleton.md` stub, filled per `ProblemSetRequirements1_1.md` R2. Goal 6's justification line is carried verbatim from WO-M2's ratified slate instruction, M2-F1.)*
-
-| Goal | Text | Problem(s) / justification |
-|---|---|---|
-| 2.1 | Derive the Monte Carlo estimator from first principles and characterize its error — establishing why the method works and what governs the rate at which accuracy improves with sample size | **PS2.1** (primary: derivation + n^(−1/2) log-log rate verification). Reinforced by PS2.3's MCSE part (Goal 1/2 tie-in). |
-| 2.2 | Explain the role of variance in Monte Carlo error and articulate why reducing variance is equivalent to getting more information from the same computational budget | **PS2.1** (variance/rate argument in the derivation step). **PS2.3** (MCSE-with-$S_{\text{eff}}$ part makes the "effective sample size = effective information" point concrete). |
-| 2.3 | Implement and explain antithetic variates and control variates as principled modifications to the basic estimator, identifying the structural conditions that make each effective | **PS2.2** (primary: both techniques implemented, structural conditions stated). **PS2.7** (optional: the same structural condition shown to fail on a non-monotone statistic — completes the picture). |
-| 2.4 | Implement importance sampling, explain the reweighting mechanism, and identify the conditions under which importance weights become pathological | **PS2.3** (primary: the exported importance sampler, reweighting mechanism, weight-degeneracy visible even in the test case). **PS2.4** (Type D: dedicated empirical diagnosis of pathological weights under a light-tailed proposal, per R6). |
-| 2.5 | Recognize antithetic variates, control variates, stratification, and importance sampling as mechanistically distinct interventions in the same underlying error quantity — each reducing variance by a different structural means, none changing the fundamental $n^{-1/2}$ convergence rate | **PS2.5** (primary: ≥3-technique comparative study at fixed budget, explicit $n^{-1/2}$-invariance note). Stratified sampling appears only as PS2.5's required one-sentence conceptual mention, per the module's constraint (no standalone implementation). PS2.1's discussion note previews the rate-invariance point PS2.5 makes explicit. |
-| 2.6 | Recognize importance sampling as a reweighting idea with scope beyond variance reduction — specifically, that resampling from importance weights produces an approximate sample from the target, laying the groundwork for SIR in Module 7 | **PS2.6 (optional only)** — per WO-M2's ratified slate instruction (M2-F1): Goal 6 is a *Recognize* goal exercised operationally only in optional PS2.6, backed by the conceptual questions and the spec's own permissive "may" (§6: "A Type C problem **may** end with resampling from importance weights as a forward hook to SIR"); deliberately not placed in core. |
-
-## Module 2 hours (reconciled from row sums)
-
-| Core problems | Core hours (row sum) | Optional hours (row sum, uncounted) | Budget (§5) |
-|---|---|---|---|
-| 5 (PS2.1–PS2.5: 45+60+60+45+45 = 255 min) | **4.25 hr** | PS2.6 (30) + PS2.7 (30) = 60 min = **1.00 hr** | 4–5 hr |
-
-Core total matches WO-M2 §3's stated 255 min exactly; within the §5 budget as drafted, consistent with `PSDEP-F2Resolution.md`.
-
----
-
 ## Module 3 — Bootstrap & Resampling
 
 ### PS3.1 — The bootstrap, from primitives, on a real-world-shaped dataset
@@ -714,36 +650,6 @@ Write 3–5 sentences diagnosing why this happens (hint: for an odd-sized sample
 
 ---
 
-## Alignment matrix — Module 3
-
-| Goal | Text (Module_Goals_Reference.md) | Problem(s) / justification |
-|---|---|---|
-| 3.1 | Derive the nonparametric bootstrap from first principles — the empirical distribution, why sampling from it simulates the sampling process, what assumptions that substitution requires | **PS3.1** (statement requires the plug-in-principle write-up directly) |
-| 3.2 | Implement parametric and nonparametric bootstrap and construct CIs through multiple methods, including bootstrap-t, percentile, and BCa | **PS3.1** (nonparametric implementation) + **PS3.2** (parametric implementation) + **PS3.3** (bootstrap-t, percentile, **and BCa** CI construction — BCa added 07/15/2026 per Flags DP-M3-2, now RESOLVED). **Fully certified** — all three named CI methods now have a drafted, tier-1/tier-3-verified vehicle. |
-| 3.3 | Explain the theoretical conditions under which bootstrap CIs are valid; distinguish consistency from finite-sample accuracy | **PS3.1** (H-3 narrowness bias — a concrete finite-sample inaccuracy) + **PS3.3** (the coverage experiment — accuracy hierarchy directly observed) |
-| 3.4 | Identify and diagnose conditions under which naive bootstrap fails: heavy-tailed distributions, extreme statistics, small samples, dependent or clustered data | **PS3.4** (heavy-tailed/infinite-variance failure) + **PS3.7, optional** (small-sample extreme-statistic failure — the median at n=15). *Dependent-data* diagnosis is also naturally visible in PS3.5 (secondary link; PS3.5's primary goal tag is 3.5, per the WO slate). *Clustered data* is **diagnostic/conceptual only, no implementation problem** — per DG-P2 (Option A) and the instructor note at the top of this file; this is the WO's own resolution, not a gap. |
-| 3.5 | Apply modified resampling strategies — including the moving blocks bootstrap — for dependent/structured data; explain what each modification corrects for and what residual limitations remain | **PS3.5** |
-| 3.6 | Relate the bootstrap to the Module 1 simulation primitives — a resampling algorithm, computationally analyzable like any other | **PS3.6** |
-
-### Module 3 hours (recomputed from row sums, per `PSDEP-F2Resolution.md`: core ≈ full §5 budget)
-
-| Problem | Core/Optional | Time |
-|---|---|---|
-| PS3.1 | Core | 45 min |
-| PS3.2 | Core | 40 min |
-| PS3.3 | Core | 75 min |
-| PS3.4 | Core | 45 min |
-| PS3.5 | Core | 45 min |
-| PS3.6 | Core | 40 min |
-| PS3.7 | Optional (uncounted) | 35 min |
-
-**Core total (re-added by hand from rows): 45 + 40 + 75 + 45 + 45 + 40 = 290 min = 4.83 hr** against the 4–5 hr §5 budget — within budget, matching the WO's original figure exactly (the 07/14 session's temporary 275 min/4.58 hr figure, carried while BCa was blocked, is superseded now that DP-M3-2 is resolved and PS3.3's full 75-minute scope is restored). 6 core problems, inside the 5–6 count, matching the WO's core-count target exactly.
-
----
-
-
----
-
 ## Module 4 — Optimization: Gradient Methods, Metaheuristics & EM
 
 ### PS4.1 — Two Estimators as Optimization Problems
@@ -904,31 +810,6 @@ For each schedule, classify each replication's final point as recovering the dom
 - **Tier 3:** your slow-geometric schedule's recovery rate should exceed your fast-geometric schedule's by at least 15 percentage points (reference run: 88/100 vs. 64/100, a 24-point gap) — the *direction and rough magnitude* of this gap is what must reproduce, not the exact counts, since outcomes are seed-dependent (Validation Log `PS4.5`, `reference_impls/ps4_5_ref.py`).
 
 **Discussion note:** *(folded)* Why n=30 here and not PS4.1's larger Dataset A: at n=400, moving (μ₁,μ₂) by half a unit changes the log-likelihood by roughly 100+ units — two orders of magnitude larger than any reasonable temperature — so every schedule ends up behaving like plain greedy hill-climbing and the schedules become indistinguishable (checked directly: all four schedules landed in a narrow 63–69% band at n=400). The smaller-n dataset keeps the temperature scale and the likelihood's dynamic range comparable, which is what makes the schedule actually matter — a reminder that "temperature" is only meaningful relative to the scale of the objective it's operating on. Optional theory sub-part (uncounted toward the 45 min above, for students who want the "why"): R&C Ex. 5.6's pseudo-posterior πₘ(θ|x) ∝ ℓ(θ|x)^m construction shows *analytically* that raising a likelihood to an increasing power concentrates its mass on the mode as m grows — exactly the mechanism a falling temperature (equivalent to a rising effective power 1/T) exploits.
-
----
-
-## Alignment Matrix — Module 4
-
-| Goal | Text (`Module_Goals_Reference.md`) | Problem(s) / justification |
-|---|---|---|
-| 4.1 | Formulate common statistical estimators as solutions to optimization problems, and identify the objective function features that determine which algorithmic family is appropriate | PS4.1 (two formulations: mixture MLE and median-as-L1-minimizer; grid comparison identifies multimodality as the feature separating the two datasets) |
-| 4.2 | Implement and explain Newton's and quasi-Newton methods, including the role of the Hessian and the practical significance of numerical stability and step selection | PS4.2 (Newton from primitives under two encodings; BFGS via its own update formula; step-size/stability Type D failure) |
-| 4.3 | Explain the statistical logic of EM — missing data, latent variables, lower-bound ascent — and derive the E and M steps from that framework | PS4.3 (full E-step/M-step derivation for the one-parameter mixture); PS4.4 (extends the same logic to the full five-parameter mixture) |
-| 4.4 | Explain why EM guarantees monotone likelihood increase, why this does not guarantee a global maximum, and what Wu (1983) establishes over Dempster et al. (1977) | PS4.4 (numeric monotonicity verification; Type D bad-initialization run demonstrating convergence to an inferior local optimum). The Wu-vs-Dempster-et-al. citation half of this goal is **not** exercised by any problem — it is conceptual-question territory per WO-M4 §5's escalation note; PS4.4's discussion note may carry a labeled-preview pointer to the citation but tests neither paper directly. |
-| 4.5 | Recognize when metaheuristic approaches are warranted over gradient or EM methods, and understand their basic operating principles without requiring deep implementation | PS4.5 (**optional** vehicle, per `PSDEP-M1M3M4SlateResolution.md` M4-D1, ratified 07/10/2026 — running/lightly-modifying a provided SA loop, capped per §6's "without requiring deep implementation" constraint). **Recorded consequence:** for core-only students, Goal 5 is met by reading plus an uncounted optional problem, not a counted core one — an accepted, spec-sanctioned effect (ProblemSetRequirements1_1.md §6, Module 4 paragraph), recorded here so it is not silent. |
-
----
-
-## Module 4 hours
-
-| Core problems | Core hours (sum) | Optional hours (uncounted) | Budget (§5) |
-|---|---|---|---|
-| PS4.1 (55) + PS4.2 (70) + PS4.3 (45) + PS4.4 (60) = **230 min = 3.83 hr** | 3.83 hr | PS4.5 ≈ 45 min | 3–4 hr |
-
-Reflects the DP-8/E-M4-1 Dataset A′ addition: PS4.1 raised 45→55, so core total is 230 min (3.83 hr) — a ruled +10 on the slate-resolved planning figure of 220 (`ProblemSets_draft_skeleton.md`, `PSDEP-F2Resolution.md`), in-band per DP-8 (230–235) and within the §5 3–4 hr envelope. 4 core problems, PS4.5 optional/uncounted.
-
----
-
 
 ---
 
@@ -1135,27 +1016,6 @@ Self-audit checklist (this module's R1 mechanism):
 
 ---
 
-## Alignment matrix — Module 5
-
-| Goal | Text (`Module_Goals_Reference.md`) | Problem(s) / justification |
-|---|---|---|
-| 5.1 | Specify a Bayesian model as a computational object — joint distribution, likelihood, prior, and posterior — and articulate what each component commits you to | **PS5.1** (core — the two-parameter Normal model, full component-by-component commitment statement); PS5.6 (optional, redundant illustration on a second dataset) |
-| 5.2 | Reason about prior selection as a modeling choice with verifiable consequences, not a subjective input to be chosen arbitrarily or defensively | **PS5.2** (core — three priors, analytic + simulated predictive consequences, sensitivity statement); **PS5.4** (core — prior-predictive-simulation angle on a hierarchical scale prior); PS5.5, PS5.6 (optional, redundant depth) |
-| 5.3 | Identify the structural patterns that arise in multiparameter and hierarchical models, and explain what hierarchical structure implies computationally | **PS5.1** (core, multiparameter half — nuisance-parameter integration, Student-$t$ marginal); **PS5.3** (core, hierarchical half — the module's primary anchor: nonconjugate no-closed-form case *and* conjugate shrinkage-formula case); **PS5.4** (core — the hierarchical prior structure itself, prior-predictive angle); PS5.5, PS5.6 (optional, redundant depth) |
-| 5.4 | Criticize and revise a Bayesian model by interrogating its assumptions — prior sensitivity, likelihood misspecification, and predictive adequacy — independently of how it will be fit | **PS5.2** and **PS5.4** exercise the *prior-sensitivity* facet (core, via analytic comparison and prior-predictive simulation respectively). The *likelihood-misspecification* and *predictive-adequacy* facets are **deliberately unexercised** — per WO-M5 §2's recorded disposition (Wave A [m14]): conceptual-question/checklist territory, no problem-set vehicle by design. This justification is carried here per that disposition, not reopened. |
-| 5.5 | Maintain a clear separation between the modeling layer and the computational layer: understand what questions belong to model construction and what questions belong to the sampler | **Deliberately unexercised** — per WO-M5 §2's recorded disposition (Wave A [m14]): no problem-set vehicle by design. PS5.3's forward pointer to Module 7 (the nonconjugate model *is* the computational problem Module 7 solves) and PS5.1's improper-prior/no-prior-predictive-defined discussion gesture at this separation informally, but neither problem claims this goal. |
-
-## Module 5 hours
-
-| Core problems | Core hours (row-summed) | Optional hours (uncounted, row-summed) | Budget (§5) |
-|---|---|---|---|
-| PS5.1 (40) + PS5.2 (40) + PS5.3 (45) + PS5.4 (40) = **4 core problems, 165 min = 2.75 hr** | 2.75 hr | PS5.5 (35) + PS5.6 (30) = 65 min ≈ 1.08 hr | 2–3 hr |
-
-Core total re-verified by hand from this draft's own time fields: 40+40+45+40 = 165 min = 2.75 hr — matches the WO's stated core total exactly (`PSDEP-F2Resolution.md`: core ≈ full §5 budget); within the 2–3 hr budget. Optional total: 35+30 = 65 min, at the low end of the WO's "65–70 min" revision-note range (this draft's PS5.6 came in at 30 min rather than the WO's upper bound of 35, since the M5-F1 scoping decision removed the numeric-table evaluation step — see PS5.6's discussion note).
-
-
----
-
 ## Module 6 — Markov Chains as Computational Objects
 
 ### PS6.1 — Simulate, verify, and break: mixing, stationarity, and their absence
@@ -1299,29 +1159,6 @@ $$
 **Verification:** Parts A and B are **tier 1**: the results being (re)proved are two solved exercises harvested from MIT OCW 18.445's LPW-based problem sets (TV contraction; $d(t)$ monotonicity), chapter-mapped to this module's assigned Ch. 4 reading — your derivation should arrive at the boxed inequalities above via your own reasoning, not a transcription of the source's proof. Part C is **tier 3** (executed and logged; validation-log entry PS6.4): your computed $d(t)$ sequence must be **non-increasing** at every step you compute (any observed increase larger than floating-point noise, roughly $10^{-10}$, indicates an implementation bug); you should also see $d(0)$ well above $0.5$ and $d(t)$ shrinking to a very small number (below $10^{-4}$) by around $t \approx 15$–$20$ for this particular chain. Part D, if attempted, is an exact structural fact with zero tolerance: $d(t)$ must equal exactly $0.5$ for every $t$.
 
 **Discussion note:** (folded) The proof strategy in Part A is the elementary route — triangle inequality plus the fact that $P$'s rows sum to 1 — and it's worth noticing that it needs nothing beyond definitions you already have; it does *not* go through a coupling construction. LPW's own exposition of this material (§4.2–§4.4) leans heavily on coupling — building two copies of the chain on a shared probability space and bounding TV distance by their meeting time — which is a genuinely illuminating alternative technique, but one this module does not assign as reading (coupling is LPW Ch. 5, out of scope here). If you're curious what that alternative route looks like conceptually: two chains started from $\mu$ and $\nu$ respectively, run so that once they land on the same state they move together forever after — the probability they *haven't* yet met by time $t$ turns out to upper-bound $\lVert \mu P^t - \nu P^t\rVert_{TV}$, which gives another way to see why repeated applications of $P$ can only bring distributions closer together. You are not asked to formalize that argument here; the elementary proof in Part A is complete on its own and is the one this problem holds you to. Part B's derivation is the satisfying payoff of Part A: monotonicity of $d(t)$ isn't a separate fact requiring separate machinery — it falls straight out of contraction applied to the single pair $(\mu P^t, \pi)$, using $\pi$'s defining property $\pi P = \pi$ to keep the "target" side of the inequality fixed at $\pi$ across the step. Part C closes the loop back to PS6.3: mixing time (the first $t$ with $d(t)$ below some threshold) is only a *well-defined, unambiguous* number because $d(t)$ can't un-shrink partway through — without Part B's result, "the first $t$ below $\varepsilon$" could in principle mean different things depending on how far out you were willing to search. Part D (if you did it) makes the distinction between "monotonic" and "convergent" impossible to blur: the periodic chain's $d(t)$ is perfectly non-increasing — it's constant — while never once getting closer to 0. Monotonicity is a weaker, more generally-true statement than convergence; aperiodicity is what upgrades one into the other, and now you've seen that fact from three different angles across this module (a single trajectory that won't settle, in PS6.1; a flat vs. decaying $d(t)$ curve, here).
-
----
-
-## Alignment matrix — Module 6
-
-| Goal | Text (Module_Goals_Reference.md) | Problem(s) / justification |
-|---|---|---|
-| 6.1 | Observe a concrete Markov chain running on a simple target — identifying mixing, stationarity, and failure to converge as empirical phenomena before formalizing them theoretically | **PS6.1** (Parts A–D directly produce all three named phenomena — mixing/stationarity via the main chain's empirical-vs-analytic agreement, failure to converge via the periodic chain — and the write-up requires naming each explicitly; M6-D2 slate instruction discharged). **PS6.3** touches Goal 1 empirically as a secondary effect (Part C's mixing observation on the $n$-cycle family), per the WO's "(1 empirically)" annotation — not counted as this goal's primary vehicle. |
-| 6.2 | Define the essential structural properties of a Markov chain — irreducibility, aperiodicity, and stationarity — and explain what each guarantees about long-run behavior | **PS6.1** (irreducibility and aperiodicity confirmed by inspection in the Statement; stationarity established via $\pi P=\pi$ in Part B; the write-up's item (iii) requires the student to state which guarantee — existence vs. convergence — each property is responsible for, using the periodic-chain contrast to make the distinction concrete) |
-| 6.3 | Explain detailed balance as a sufficient condition for stationarity, and identify why it is the condition that MCMC algorithms are designed to satisfy | **PS6.2** (numerically verifies detailed balance on a reversible birth–death chain; exhibits its failure — with a nonzero, computed net flow — on a non-reversible chain that nonetheless has a valid stationary distribution, directly modeling the "sufficient, not necessary" relationship; discussion note previews the M6→M7 bridge: detailed balance as the local, engineerable condition MH's acceptance ratio is designed to enforce) |
-| 6.4 | Characterize mixing time and the spectral gap as measures of convergence speed, and develop geometric intuition for why some chains mix slowly | **PS6.3** (*uses* the theory: empirical mixing-time-vs-spectral-gap study on the lazy $n$-cycle family, exhibiting the diffusive $n^2$-scaling geometric intuition directly, plus the two-state hand-derived definitional anchor) **and PS6.4** (*justifies* the theory: proves the TV-contraction and $d(t)$-monotonicity results that make "mixing time" a coherent, well-defined quantity in the first place — without Part B's monotonicity result, PS6.3's "first $t$ below threshold" definition would not obviously be unambiguous). These are complementary, not redundant: PS6.3 measures mixing time; PS6.4 establishes that the thing being measured is well-defined. |
-| 6.5 | Connect poor mixing directly to downstream consequences — explain what slow mixing implies for the quality of estimates derived from sampler output | **PS6.3** Part D (the 3–5 sentence write-up explicitly connects spectral-gap magnitude to the reliability of a fixed-length occupancy-based estimate, referencing the student's own PS6.1 experience as the concrete point of comparison) |
-
-**R6 (Type D / failure-mode representation) note:** discharged twice in this module, per the WO's own instruction — **PS6.2**'s non-reversible chain is a constructed failing configuration (detailed balance fails, with the failure's computational symptom — nonzero net flow — produced and interpreted), and **PS6.3**'s slow-mixing end of the $n$-cycle sweep is a diagnosed slow-mixing configuration (large $n$, small gap, large $\tau_n$, interpreted for its estimate-quality consequences in Goal 5). Both problems carry an explicit `/D` in their Type tag for this reason.
-
-## Module 6 hours
-
-| Core problems | Core hours (row sum) | Optional hours (uncounted) | Budget (§5) |
-|---|---|---|---|
-| 4 (PS6.1, PS6.2, PS6.3, PS6.4) | 40 + 35 + 50 + 35 = 160 min = 2.67 hr (2h40m) | 0 (zero optional, per the WO's no-enrichment disposition) | 2–3 hr |
-
-Re-added by hand from the problem rows above (not restated from the WO without re-checking): 40 + 35 = 75; 75 + 50 = 125; 125 + 35 = **160 min = 2.67 hr** — matches WO-M6 §3's own stated total and OF-9's recorded M6 core row sum (160 min) exactly; within the 2–3 hr §5 budget.
-
 
 ---
 
@@ -1509,28 +1346,6 @@ function metropolis_sampler(theta0, n_iter, delta):
 
 ---
 
-## Alignment matrix — Module 7
-
-| Goal | Text | Problem(s) / justification |
-|---|---|---|
-| 7.1 | Explain Sampling Importance Resampling (SIR) as a bridge from importance sampling to approximate sampling — connecting back to Module 2 and framing the central challenge that MCMC addresses | **PS7.1** (primary vehicle: implements SIR literally reusing the student's PS2.3 importance sampler, discussion note frames the IS→MCMC bridge) |
-| 7.2 | Derive the Metropolis-Hastings algorithm from the detailed balance condition, and explain how the acceptance ratio enforces the correct stationary distribution | **PS7.2, Part A** (derivation from detailed balance to the symmetric-proposal acceptance formula) |
-| 7.3 | Implement Metropolis-Hastings and characterize how proposal distribution choice governs the tradeoff between acceptance rate and autocorrelation | **PS7.2, Part B** (primary vehicle: from-scratch RW-MH at 3 proposal scales, acceptance-rate/autocorrelation tradeoff). Per the WO, PS7.7's bug-hunt (optional) does **not** count toward this goal — it interrogates given code rather than building a sampler from scratch. |
-| 7.4 | Derive Gibbs sampling from the structure of full conditional distributions, and explain why acceptance is guaranteed at every step | **PS7.3** (derive both full conditionals + implement + explain *both* clauses, including the guaranteed-acceptance-as-MH-special-case clause per `PSDEP-M7SlateResolution.md` M7-D1) + **PS7.4** (implement/export on the ten-pump hierarchical model; derives and uses the gamma full conditionals) |
-| 7.5 | Distinguish random-scan from deterministic-scan Gibbs — including why the deterministic-scan version does not satisfy detailed balance in general — and explain when each framing is appropriate | *(Per DG-P4 / `PSDEP-Phase0Resolutions.md`: routed to the program's conceptual questions, not a drafted problem. No harvested or original candidate exists program-wide for this scan-order distinction — see the Ch. 6/7 harvest summaries — and the spec's own §6 language explicitly permits this disposition. No problem drafted; do not read this row's absence as an oversight.)* |
-| 7.6 | Implement Metropolis-within-Gibbs for models where full conditionals are not available in closed form, and identify when this hybrid is warranted | **PS7.5** (conjugate mean / non-conjugate half-Cauchy scale; MH-within-Gibbs reusing PS7.2's accept/reject machinery) |
-| 7.7 | Recognize SIR, MH, and Gibbs as members of a common family of approximate sampling strategies — each solving the same core problem by different design choices | *(Carries no implementation verb — per WO-M7 §2, exercised through discussion notes rather than a standalone problem.)* Discussion notes of **PS7.1** (SIR framed explicitly against the "common family" question), **PS7.2** (MH's different mechanism/failure-mode contrast with SIR), and **PS7.3** (Gibbs as an MH special case) build this recognition cumulatively; also picked up by the program's conceptual questions (outside this problem set's scope). |
-
-## Module 7 hours (re-added by hand from the drafted problems)
-
-| Core problems | Core hours (re-summed) | Optional hours (uncounted) | Budget (§5) |
-|---|---|---|---|
-| 6 (PS7.1–PS7.6) | 40+75+50+75+60+45 = 345 min = **5.75 hr** | PS7.7 = 45 min | 5–6 hr |
-
-Matches the WO's own slate-resolved planning figure (345 min / 5.75 hr) exactly; within the §5 budget.
-
----
-
 ## Module 8 — MCMC Diagnostics & Reliability
 
 ### PS8.1 — ACF and ESS From Scratch on Your Stored Chain
@@ -1703,33 +1518,6 @@ Then, in a few sentences, identify which draws should not be retained and why �
 
 ---
 
-## Alignment Matrix — Module 8
-
-| Goal | Text | Problem(s) / justification |
-|---|---|---|
-| 8.1 | Explain effective sample size as the central measure of MCMC output quality — distinguishing it from raw sample count and connecting it to the autocorrelation structure of the chain | PS8.1 |
-| 8.2 | Compute and interpret autocorrelation function estimates from MCMC output, and explain what high autocorrelation implies for the reliability of downstream estimates | PS8.1 |
-| 8.3 | Apply trace plots, R-hat, and ESS as principled convergence diagnostics — understanding what each measures and what it can and cannot detect | PS8.2 (core: classic R-hat, trace plots, and the R-hat-is-fundamentally-multi-chain limitation; ESS ceiling from PS8.1 also feeds this). PS8.3 (optional depth only): the classic-vs-rank-normalized "R-hat can be fooled" contrast. Per `PSDEP-M8SlateResolution.md` M8-D2, core coverage of this goal rests on PS8.2 alone and must not depend on PS8.3 — satisfied, since PS8.3 is optional and PS8.2 independently exercises trace plots, R-hat (with an explicit statement of which definition), and the "what can/cannot be detected" framing (the single-chain-vs-multi-chain point in PS8.2's own discussion note). |
-| 8.4 | Explain warm-up and its role in allowing the chain to reach the typical set, and distinguish between samples that should and should not be retained | PS8.6 (sole discharge, per M8-D1: standalone problem, not a PS8.5 sub-part) |
-| 8.5 | Explain why thinning does not improve statistical efficiency, and identify the narrow circumstances where it may be practically justified | PS8.4 |
-| 8.6 | Develop a reliable iterative workflow for running a sampler, evaluating its output, and deciding whether to trust results or return to the sampler | PS8.5 |
-
-## Module 8 Hours
-
-| Problem | Core/Optional | Time |
-|---|---|---|
-| PS8.1 | Core | 45 min |
-| PS8.2 | Core | 50 min |
-| PS8.3 | Optional | 30 min (uncounted) |
-| PS8.4 | Core | 35 min |
-| PS8.5 | Core | 50 min |
-| PS8.6 | Core | 30 min |
-
-Core total (re-added from rows): 45 + 50 + 35 + 50 + 30 = **210 min = 3.5 hr** — matches WO-M8 §3's stated core total exactly, within the 3–4 hr §5 budget. Optional (uncounted): PS8.3 = 30 min.
-
-
----
-
 ## Module 9 — Density Estimation
 
 ### PS9.1 — Histogram and Gaussian-kernel KDE from scratch: the bias-variance tradeoff
@@ -1883,26 +1671,3 @@ Using seed $=7$ exactly: your LOO-CV-selected bandwidth should yield a KDE with 
 **Discussion note:** (folded) The generative truth has two modes at $\pm 1.186$ (from the mixture's symmetric $\pm 1.3$ component means, each with $\mathrm{sd}=1.0$). $h_{\mathrm{CV}}$'s two peaks (near $-1.03$ and $1.49$) land close to the true mode locations — in this instance, the data-driven choice happens to recover the right qualitative picture. $h_{\text{large}}$'s single peak (near $-0.30$) sits almost exactly *between* the two true modes: it isn't a bad location for a single "compromise" summary, but it actively misrepresents the population as unimodal-and-centered when it is really two symmetric subpopulations — a viewer shown only this plot would draw the wrong conclusion about the data's structure. Neither choice was unreasonable to make *before* the reveal: LOO-CV is a standard, principled selector, and "smooth more when $n$ is small and you're unsure" is genuinely sound practical advice in general — it just happens to be wrong here. That is the point of this problem: a defensible process does not guarantee a correct outcome, and mode count in particular is exactly the kind of feature a bandwidth choice can silently erase or fabricate. The base-rate check (Notes, validation log) found this exact divergence in only about 42% of draws from this population — worth a sentence in your own write-up: bimodality that is only sometimes visible, depending on the specific sample, is itself a realistic and common situation, not a contrived one.
 
 ---
-
-## Alignment matrix — Module 9
-
-| Goal | Text | Problem(s) / justification |
-|---|---|---|
-| 9.1 | Articulate the density estimation problem — what it means to estimate a distribution nonparametrically, and why point estimates and parametric models are sometimes insufficient | **PS9.1** (framing, nominal attachment — per `PSDEP-M9SlateResolution.md` M9-P3: "Articulate" is not an implementation verb, R2 requires no dedicated problem, and §6 pins Goals 1–2 jointly to the KDE item; recorded so it is not read as an omission). Part A's histogram-first framing and its discussion note carry this goal. |
-| 9.2 | Implement kernel density estimation, explain the role of the kernel and bandwidth, and characterize the bias-variance tradeoff that bandwidth selection governs | **PS9.1** (primary vehicle: from-scratch Gaussian-kernel KDE, bandwidth sweep, ISE-vs-h bias-variance pattern) |
-| 9.3 | Apply principled bandwidth selection methods and explain the consequences of under- and over-smoothing for the resulting estimate | **PS9.2** (primary vehicle: Silverman's (1986) rule-of-thumb selector, Ch 3 §3.4 Eq 3.31, implemented from the confirmed formula and compared against PS9.1's sweep-optimal $h^\*$ and both grid extremes; discussion note interprets the oversmoothing consequence specific to this bimodal data). Source-access STOP (historical Flag A) resolved 07/15/2026 when the owner supplied the required pages in-session — see `ExecutionSummary_M9.md` Reconciliation Addendum for the closure record. **R2 now satisfied for this goal.** |
-| 9.4 | Explain the Rao-Blackwell estimator as a variance-reduction strategy for density estimation, and identify why it is particularly well-suited to MCMC settings where conditional distributions are already available | **PS9.3** (RB density estimate on the imported PS7.4 chain, variance-compared against plain KDE; Part D's explanation targets the "why MCMC settings" clause directly) |
-| 9.5 | Implement nearest-neighbor density estimation and contrast its bias-variance characteristics with those of kernel methods | **PS9.4** (from-scratch kNN estimator, ISE contrast with PS9.1's KDE, tail-behavior focus) |
-| 9.6 | Interpret density estimates critically — recognizing what each method implicitly assumes and how those assumptions affect the estimate — rather than treating output as an objective description of the data | **PS9.5** (Type D: two defensible bandwidths, qualitatively different mode-count pictures, generative truth reveals one choice wrong) |
-
-All six goals now have an exercising problem; no NOT-EXERCISED rows remain.
-
-## Module 9 hours
-
-| Core problems drafted | Core hours (re-summed) | WO slate-resolved figure | Budget (§5) | Status |
-|---|---|---|---|---|
-| 5 of 5 (PS9.1, PS9.2, PS9.3, PS9.4, PS9.5) | 55+35+45+40+40 = 215 min = **3.58 hr** | 215 min = 3.58 hr | 3–4 hr | Matches the WO's slate-resolved figure exactly; within budget. Full slate delivered — no open gap. |
-
-
----
-
