@@ -1,5 +1,7 @@
 # Computational Statistics Program — Problem Sets
 
+***This is an archived copy of the complete Problem Sets as delivered by Phase 5 of the Problem Set Draft***
+
 *Version 1.0 (assembled 07/23/2026, Phase 5B). Governing specification: `ProblemSetRequirements1_1.md` (design spec, §7 anatomy, §4 sourcing/provenance tiers). Build scaffold: `ProblemSets_draft_skeleton.md`. This document is **student-facing**. Drafting-process material (session flags, execution summaries, cross-module drafting notes) has been stripped from the problem text below and carried into the instructor-facing companion set — see "Companion documents" below. Ten modules (M0–M9), assembled from their terminal, Phase-3-corrected and Phase-4-certified drafts; Module 10 (Applied Cases) has no problem set by design (spec §6) and is not included here.*
 
 **Changelog**
