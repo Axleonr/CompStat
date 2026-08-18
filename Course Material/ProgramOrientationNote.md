@@ -1,6 +1,4 @@
-# Program Orientation Note
-
-*Internal version 1.4.*
+# Program Orientation
 
 ---
 
@@ -88,6 +86,6 @@ The module reading guides contain focus notes, forward pointers, and conceptual 
 
 A student who can answer the conceptual questions for each module has genuinely internalized the material. A student who can reproduce the reading's content without being able to answer them has not. The questions are not hard in a mathematical sense — they require explanation, connection, and reasoning, not calculation. But they do require that the reading was engaged with rather than processed.
 
-Since Wave 3, each module also carries a problem set — a third instrument, and a different one. Where the checklist and conceptual questions test whether the material was understood, the problem sets test whether that understanding survives implementation: whether it produces working code, the right diagnostic when something goes wrong, and estimates that meet a stated verification target rather than merely a plausible-looking one.
+Each module also carries a problem set — a third instrument, and a different one. Where the checklist and conceptual questions test whether the material was understood, the problem sets test whether that understanding survives implementation: whether it produces working code, the right diagnostic when something goes wrong, and estimates that meet a stated verification target rather than merely a plausible-looking one.
 
 *Read actively. The program rewards it.*

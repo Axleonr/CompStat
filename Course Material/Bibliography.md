@@ -1,4 +1,4 @@
-# Computational Statistics Program — Bibliography
+# Computational Statistics — Bibliography
  
 *Internal version 1.4.*
  

@@ -1,7 +1,6 @@
-# Computational Statistics — Module Goals Reference
-## Modules 0–10
+# Computational Statistics — Goals Reference
 
-*Supplement to the Program Guide. Records specific goals defined in the intermediate-level refinement pass. Goals are meant to be assessable: a student completing the module should be able to demonstrate each one.*
+*Supplement to the Program Guide. Goals are meant to be assessable: a student completing the module should be able to demonstrate each one.*
 
 ---
 
