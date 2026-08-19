@@ -42,21 +42,24 @@ The program has an architecture. The modules are not a collection of independent
 
 ## The Program's Module Map
 
-| Module | Name | Est. Hours | PS Core (hrs)* | Core Contribution | Feeds Into |
+| Module | Name | Est. Hours | Core Contribution | Feeds Into |
 |--------|------|-----------|------|-------------------|------------|
-| 0 | Computational Thinking | 3–4 | 0.00 | Establishes the algorithmic framing of statistics | All modules |
-| 1 | Random Number Generation | 5–6 | 3.50 | Builds the simulation primitives everything else depends on | Modules 2, 3, 7 |
-| 2 | Monte Carlo Estimation | 12–15 | 4.25 | Error theory and variance reduction; importance sampling extended to resampling | Module 7 (SIR) |
-| 3 | Bootstrap & Resampling | 13–15 | 4.83 | Data-driven inference and its limits | Module 10 |
-| 4 | Optimization | 12–15 | 3.83 | Gradient, metaheuristic, and EM approaches to computing estimators | Module 5 |
-| 5 | Bayesian Modeling | 6–8 | 2.75 | Model construction as a distinct layer from computation | Modules 7, 8, 10 |
-| 6 | Markov Chains | 8–10 | 2.67 | Convergence theory that governs sampler quality | Modules 7, 8 |
-| 7 | MCMC Methods | 15–18 | 5.75 | SIR, MH, Gibbs, and Metropolis-within-Gibbs as a related family | Modules 8, 9 |
-| 8 | MCMC Diagnostics | 8–10 | 3.50 | Evaluating sampler output; workflow for trusting or questioning results | Module 10 |
-| 9 | Density Estimation | 6–8 | 3.58 | Nonparametric distribution estimation from data and MCMC output | Module 10 |
-| 10 | Applied Cases | 8–10 | 0.00 | Workflow integration and disciplinary retrospective | — |
+| 0 | Computational Thinking | 3–4 | Establishes the algorithmic framing of statistics | All modules |
+| 1 | Random Number Generation | 5–6 | Builds the simulation primitives everything else depends on | Modules 2, 3, 7 |
+| 2 | Monte Carlo Estimation | 12–15 | Error theory and variance reduction; importance sampling extended to resampling | Module 7 (SIR) |
+| 3 | Bootstrap & Resampling | 13–15 | Data-driven inference and its limits | Module 10 |
+| 4 | Optimization | 12–15 | Gradient, metaheuristic, and EM approaches to computing estimators | Module 5 |
+| 5 | Bayesian Modeling | 6–8 | Model construction as a distinct layer from computation | Modules 7, 8, 10 |
+| 6 | Markov Chains | 8–10 | Convergence theory that governs sampler quality | Modules 7, 8 |
+| 7 | MCMC Methods | 15–18 | SIR, MH, Gibbs, and Metropolis-within-Gibbs as a related family | Modules 8, 9 |
+| 8 | MCMC Diagnostics | 8–10 | Evaluating sampler output; workflow for trusting or questioning results | Module 10 |
+| 9 | Density Estimation | 6–8 | Nonparametric distribution estimation from data and MCMC output | Module 10 |
+| 10 | Applied Cases | 8–10 | Workflow integration and disciplinary retrospective | — |
 
-**Total: ~96–119 hours.** 
+**Estimated total: ~96–119 hours.** 
+
+**These totals do not include optional depth material.*
+
 
 ---
 
