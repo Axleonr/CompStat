@@ -43,7 +43,7 @@ The program has an architecture. The modules are not a collection of independent
 ## The Program's Module Map
 
 | Module | Name | Est. Hours | Core Contribution | Feeds Into |
-|--------|------|-----------|------|-------------------|------------|
+|--------|------|------------|-------------------|------------|
 | 0 | Computational Thinking | 3–4 | Establishes the algorithmic framing of statistics | All modules |
 | 1 | Random Number Generation | 5–6 | Builds the simulation primitives everything else depends on | Modules 2, 3, 7 |
 | 2 | Monte Carlo Estimation | 12–15 | Error theory and variance reduction; importance sampling extended to resampling | Module 7 (SIR) |
