@@ -393,12 +393,12 @@ Begin with the concrete example (LPW Ch 3) before formalizing anything. The modu
 	- **Focus**: This is the core formal theory. For each property (irreducibility, aperiodicity, stationarity, detailed balance), connect it back to what you observed in Ch 3: what does this property guarantee about long-run behavior, and what failure does its absence produce? Detailed balance is the most important concept here — it is the condition that MCMC algorithms are designed to satisfy.
 	- **Builds toward**: Detailed balance from this chapter is the condition that Module 7 will use to derive the Metropolis-Hastings acceptance ratio.
 
-4. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times* [Primary]
+3. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times* [Primary]
 **Ch 4: Introduction to Markov Chain Mixing — total variation distance, convergence theorem, mixing time**
 	- **Focus**: Focus on mixing time as an operational concept: how many steps does it take for the chain to be close to stationarity, and what determines that number? Total variation distance is the measure — understand what it is measuring and why it is the right quantity. The coupling characterization of total variation distance (Proposition 4.7, Figure 4.2) is worth sitting with: it gives a second, more intuitive way to see what the distance is measuring beyond the formal definition.
 	- **Builds toward**: Mixing time is the bridge from formal theory to practical consequences: a chain with slow mixing produces correlated output, which is what Module 8's ESS diagnostic measures.
 
-5. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times* [Primary]
+4. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times* [Primary]
 **Ch 12: Secs 12.1–12.2 (spectral representation, relaxation time, spectral gap);
 Sec 12.3.1 (the n-cycle example only);
 Sec 12.7 (Time Averages)**
