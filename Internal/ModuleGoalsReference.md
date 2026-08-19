@@ -5,6 +5,11 @@
 
 ---
 
+*(08/18/26) Goals should be referenced as "Goal M.n" where M = #Module and n = #goal.*
+*They will stay as is in this reference document because of Markdown formatting. To be cleaned up in the front-facing files.*
+
+---
+
 ## Module 0 — Computational Thinking & Statistical Algorithms
 
 **High-level goal:** Reframe statistical procedures as algorithms acting on data, and establish the computational vocabulary that organizes the rest of the program.
