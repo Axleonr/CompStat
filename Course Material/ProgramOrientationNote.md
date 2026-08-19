@@ -58,7 +58,7 @@ The program has an architecture. The modules are not a collection of independent
 
 **Estimated total: ~96–119 hours.** 
 
-**These hours estimates include only core material (optional depth readings and optional problems are unaccounted).*
+**These hours estimates include only core material; they **do not account** for any of the optional readings and problems.*
 
 
 ---
