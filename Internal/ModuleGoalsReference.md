@@ -55,7 +55,7 @@
 **High-level goal:** Perform inference through data-driven simulation, understand the theoretical basis for its validity, and recognize the conditions under which it breaks down.
 
 1. Derive the nonparametric bootstrap from first principles — articulating what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires
-2. Implement parametric and nonparametric bootstrap and construct confidence intervals through multiple methods, including bootstrap-t, percentile, and BCa approaches
+2. Implement parametric and nonparametric bootstrap and construct confidence intervals through multiple methods, including bootstrap-t, percentile, and BCa approaches; explain the accuracy hierarchy among these methods — distinguishing first-order from second-order accuracy — and identify which methods are transformation-respecting and why that property matters.
 3. Explain the theoretical conditions under which bootstrap confidence intervals are valid, and distinguish between the bootstrap's consistency and its accuracy in finite samples
 4. Identify and diagnose the conditions under which naive bootstrap fails: heavy-tailed distributions, extreme statistics, small samples, and dependent or clustered data
 5. Apply modified resampling strategies — including the moving blocks bootstrap — for dependent and structured data, and explain what each modification corrects for and what residual limitations remain
