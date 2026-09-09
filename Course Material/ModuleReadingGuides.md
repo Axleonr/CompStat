@@ -66,12 +66,12 @@ The module has a natural two-stage structure: uniform generation first, then non
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-•	Explain why a computer cannot generate true randomness, and describe what a pseudorandom number generator actually does?
-•	Name and describe the key structural properties of a good uniform PRNG: period length, seed dependence, and the statistical tests used to evaluate output quality?
-•	Implement the inverse transform method and state the conditions under which it applies?
-•	Implement acceptance-rejection, explain where its efficiency comes from, and identify what makes a proposal distribution better or worse?
-•	Trace a sample from an arbitrary target distribution back through the full generative chain to the PRNG output?
-•	Describe at least two practical consequences of poor RNG choices in simulation?
+- Explain why a computer cannot generate true randomness, and describe what a pseudorandom number generator actually does?
+- Name and describe the key structural properties of a good uniform PRNG: period length, seed dependence, and the statistical tests used to evaluate output quality?
+- Implement the inverse transform method and state the conditions under which it applies?
+- Implement acceptance-rejection, explain where its efficiency comes from, and identify what makes a proposal distribution better or worse?
+- Trace a sample from an arbitrary target distribution back through the full generative chain to the PRNG output?
+- Describe at least two practical consequences of poor RNG choices in simulation?
 
 #### Conceptual Questions
 5.	A pseudorandom number generator is entirely deterministic — given the same seed, it produces the exact same sequence every time. In what sense, then, can its output be called "random"? What does randomness mean here, and how is that meaning established?
@@ -118,12 +118,12 @@ The Rao-Blackwell principle — that conditioning on available structure reduces
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-•	Derive the Monte Carlo estimator from first principles and state what governs the rate at which accuracy improves with sample size?
-•	Explain why variance is the central controlling quantity in Monte Carlo error, and articulate the equivalence between reducing variance and getting more information from the same computational budget?
-•	Implement antithetic variates and control variates and identify the structural conditions that make each effective?
-•	Implement importance sampling, explain the reweighting mechanism, and describe the conditions under which importance weights become pathological?
-•	Explain antithetic variates, control variates, stratification, and importance sampling as four distinct interventions in the same underlying error quantity?
-•	Explain how resampling from importance weights extends the importance sampling idea from estimation to approximate sampling, and why this matters for Module 7?
+- Derive the Monte Carlo estimator from first principles and state what governs the rate at which accuracy improves with sample size?
+- Explain why variance is the central controlling quantity in Monte Carlo error, and articulate the equivalence between reducing variance and getting more information from the same computational budget?
+- Implement antithetic variates and control variates and identify the structural conditions that make each effective?
+- Implement importance sampling, explain the reweighting mechanism, and describe the conditions under which importance weights become pathological?
+- Explain antithetic variates, control variates, stratification, and importance sampling as four distinct interventions in the same underlying error quantity?
+- Explain how resampling from importance weights extends the importance sampling idea from estimation to approximate sampling, and why this matters for Module 7?
 
 #### Conceptual Questions
 10.	The Monte Carlo estimator is justified by the CLT. What exactly does that justification give you, and what does it not give you? What would have to be true about your simulation for the CLT-based confidence intervals to be valid?
@@ -166,7 +166,7 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	**Stage 1b — More complicated data structures and block bootstrap**
 
 	- *Efron & Tibshirani*, 
-	**Ch 8** [Required for Goal 5]
+	**Ch 8**
 
 		- **Focus**: Ch 8 extends the basic bootstrap to data structures where straightforward nonparametric resampling breaks down or requires modification. Read **Secs 8.2–8.4** to understand what complications arise with one-sample problems involving structure, two-sample problems, and more general data arrangements. **Sec 8.5 (lutenizing hormone example)** shows the failure of naive resampling for serially correlated data in a concrete setting — read it alongside the failure mechanism established in Davison & Hinkley Sec 2.6.4, which diagnoses the same problem from the theoretical side. **Sec 8.6 (the moving blocks bootstrap)** is the required remediation: focus on what the blocks bootstrap corrects for, how block length is chosen, and what residual limitations remain. Goal 5 requires you to explain what this modification preserves that naive resampling destroys.
 
@@ -200,9 +200,9 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 		- **Builds toward**: Ch 14, where BCa corrects both the coverage limitations of the percentile interval and the transformation problems of bootstrap-t simultaneously.
 
 	- *Efron & Tibshirani*, 
-	**Ch 14, Secs 14.1–14.3** [Required for Goal 2]
+	**Ch 14, Secs 14.1–14.3**
 
-		- **Focus**: Secs 14.1–14.3 are the core of the BCa method: the motivation (neither bootstrap-t nor percentile passes the criteria for a good confidence interval), the worked example establishing the need for improvement, and the BCa construction including the bias-correction and acceleration constants. Focus on what BCa achieves that neither Ch 12 nor Ch 13 achieves alone: it is both second-order accurate and transformation-respecting. The accuracy hierarchy — standard normal < percentile < BCa, in terms of coverage error rate — is the conceptual payoff of the entire confidence interval sequence.
+		- **Focus**: Secs 14.1–14.3, required for Goal 2, are the core of the BCa method: the motivation (neither bootstrap-t nor percentile passes the criteria for a good confidence interval), the worked example establishing the need for improvement, and the BCa construction including the bias-correction and acceleration constants. Focus on what BCa achieves that neither Ch 12 nor Ch 13 achieves alone: it is both second-order accurate and transformation-respecting. The accuracy hierarchy — standard normal < percentile < BCa, in terms of coverage error rate — is the conceptual payoff of the entire confidence interval sequence.
 
 			> Sec 14.4 (ABC method) is secondary depth — read if you want to understand how BCa endpoints can be approximated analytically without Monte Carlo. Sec 14.5 (tooth data example) is optional depth; the authors flag it as more advanced and skippable on first reading.
 
@@ -499,7 +499,7 @@ After finishing the reading, can you:
 	- **Builds toward**: Geyer’s ESS definition is what Goal 1 asks you to explain; his autocorrelation treatment is what Goal 2 requires.
 	
 2. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.* [Primary]
-**Ch 11: MCMC in practice — convergence diagnostics, R-hat, trace plots, warm-up, and ESS**
+**Ch 11: Basics of Markov chain simulation — convergence diagnostics, R-hat, trace plots, warm-up, and ESS**
 	- **Focus**: Read alongside Geyer. Focus on **Secs 11.4–11.5**. Sec 11.4 translates the theoretical concepts into an applied diagnostic workflow: how to use trace plots to identify mixing problems, how R-hat diagnoses between-chain versus within-chain variance, and what warm-up is doing. Sec 11.5 develops the effective number of simulation draws (n_eff) — the ESS formula, the variogram-based autocorrelation estimator used to compute it, and the stopping rules (R-hat < 1.1 and n_eff ≥ 5m). Both sections are required; Sec 11.5 is what Goal 1 and the stopping-rule component of Goal 6 depend on. This is the chapter to return to when running a sampler in practice.
 
 	- **Builds toward**: Goal 1 (ESS formula and computation), and the diagnostic workflow that Goal 6 asks you to internalize as a reliable iterative practice, not a one-time checklist.
@@ -576,17 +576,17 @@ After finishing the reading, can you:
 	
 4. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.* [Secondary]
 **Ch 6, Sec 6.4.4: Rao-Blackwellization for density estimation in MCMC settings**
-	- **Focus**: Read as a targeted extension of the Rao-Blackwell material from Module 2. G&H Sec 6.4.4 develops the general principle — that conditioning on available structure reduces variance without changing what you are estimating (Eq. 6.81 via the conditional variance formula) — and then applies it in a Monte Carlo estimation context. The connection to density estimation specifically runs through the following link: Gibbs samplers produce full conditional distributions as a byproduct at every step, and averaging over those conditionals to estimate a posterior density yields a lower-variance estimate than using the marginal samples alone. Keep that density-estimation application explicitly in view while reading the general variance-reduction derivation in Sec 6.4.4. Goal 4 asks why this strategy is particularly well-suited to MCMC settings.
-	- **Builds toward**: This reading connects directly back to Module 2’s Rao-Blackwellization material and forward to Module 10’s posterior predictive check workflow.
+	- **Focus**: G&H Sec 6.4.4 develops the general principle — that conditioning on available structure reduces variance without changing what you are estimating (Eq. 6.81 via the conditional variance formula) — and then applies it in a Monte Carlo estimation context. The connection to density estimation specifically runs through the following link: Gibbs samplers produce full conditional distributions as a byproduct at every step, and averaging over those conditionals to estimate a posterior density yields a lower-variance estimate than using the marginal samples alone. Keep that density-estimation application explicitly in view while reading the general variance-reduction derivation in Sec 6.4.4. Goal 4 asks why this strategy is particularly well-suited to MCMC settings.
+	- **Builds toward**: This reading connects forward to Module 10’s posterior predictive check workflow.
 	
-5. *Silverman (1986) — Density Estimation for Statistics and Data Analysis* [Primary (for Goal 5)]
+5. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*
 **Ch 5, Sec 5.2: The nearest-neighbour estimator**
 	- **Focus**: Sec 5.1 frames the chapter — read it as a brief introduction situating nearest-neighbour and adaptive methods as responses to the kernel estimator’s limitations in sparse regions. Sec 5.2 is the core: the definition of the nearest-neighbour estimator (Eq. 5.1), the formal bias-variance expressions (Eqs. 5.4–5.5), and the explicit comparison with the kernel estimator at the same point (Eq. 5.6). Focus on the bias-variance contrast that Goal 5 specifically asks for: in nearest-neighbour estimation, the local bandwidth adapts to data density, giving different behavior in sparse and dense regions than a fixed-bandwidth kernel. The comparison in Sec 5.2 shows where nearest-neighbour overcorrects. 
 		> **Sec 5.3 (adaptive kernel estimates)** is optional depth — read if you want to see how the chapter’s logic leads to a hybrid approach that blends kernel and nearest-neighbour ideas.
 		> **Sec 5.4 (maximum penalized likelihood)** is outside this module’s scope.
 	- **Builds toward**: The local vs. global bandwidth distinction is a principled algorithmic choice with predictable consequences — understanding it completes the module’s coverage of the density estimation design space.
 
-6. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.* [Secondary (for Goal 5)]
+6. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.*
 **Ch 10, Sec 10.4.3.1: Nearest-neighbour density estimation**
 	- **Focus**: Read after Silverman Sec 5.2 as confirmatory depth. G&H provides a more applied treatment of the same nearest-neighbour material with worked examples and practical guidance. Goal 5 is met by Silverman; G&H reinforces it.
 	- **Builds toward**: Together with Silverman Sec 5.2, this reading ensures both the formal bias-variance analysis and the practical implementation perspective are covered for Goal 5.
