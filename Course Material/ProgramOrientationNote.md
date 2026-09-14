@@ -24,7 +24,7 @@ The program has an architecture. The modules are not a collection of independent
 
 **Modules 1–2** build the computational foundation. Module 1 examines where random numbers come from — how a deterministic algorithm produces sequences that behave statistically as random, and how non-uniform samples are generated from the uniform base. These are the simulation primitives that every subsequent method depends on, and understanding them is not optional. Module 2 develops Monte Carlo estimation: why it works, how its error behaves, and how to reduce that error systematically through importance sampling, variance reduction, and related techniques. Importance sampling in particular is introduced here as an idea with consequences beyond variance reduction — that thread is picked up in Module 7.
 
-**Modules 3–4** cover two distinct computational inference paradigms. Module 3 develops the bootstrap: data-driven inference through resampling, its theoretical basis, and — equally important — the conditions under which it fails. Module 4 covers optimization as a computational inference strategy: gradient methods, the EM algorithm, and the metaheuristic approaches that handle objectives resistant to gradient descent. These two modules are relatively self-contained and feed primarily into Module 10's applied workflow.
+**Modules 3–4** cover two distinct computational inference paradigms. Module 3 develops the bootstrap: data-driven inference through resampling, its theoretical basis, and — equally important — the conditions under which it fails. Module 4 covers optimization as a computational inference strategy: gradient methods, the EM algorithm, and the metaheuristic approaches that handle objectives resistant to gradient descent. These two modules are relatively self-contained, and feed only into Module 10's applied workflow.
 
 **Module 5** shifts to Bayesian modeling, but deliberately. The module focuses on model construction — specifying a joint distribution, choosing a prior, building the likelihood, and reasoning about the posterior as a computational object — without yet introducing the algorithms needed to sample it. This separation is intentional and important: a student who only learns to run a sampler on a given posterior has not learned Bayesian modeling. Module 5 builds the modeling layer; Modules 7–8 build the computational layer on top of it.
 
@@ -48,7 +48,7 @@ The program has an architecture. The modules are not a collection of independent
 | 1 | Random Number Generation | 5–6 | Builds the simulation primitives everything else depends on | Modules 2, 3, 7 |
 | 2 | Monte Carlo Estimation | 12–15 | Error theory and variance reduction; importance sampling extended to resampling | Module 7 (SIR) |
 | 3 | Bootstrap & Resampling | 13–15 | Data-driven inference and its limits | Module 10 |
-| 4 | Optimization | 12–15 | Gradient, metaheuristic, and EM approaches to computing estimators | Module 5 |
+| 4 | Optimization | 12–15 | Gradient, metaheuristic, and EM approaches to computing estimators | Module 10 |
 | 5 | Bayesian Modeling | 6–8 | Model construction as a distinct layer from computation | Modules 7, 8, 10 |
 | 6 | Markov Chains | 8–10 | Convergence theory that governs sampler quality | Modules 7, 8 |
 | 7 | MCMC Methods | 15–18 | SIR, MH, Gibbs, and Metropolis-within-Gibbs as a related family | Modules 8, 9 |

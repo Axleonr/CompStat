@@ -21,17 +21,17 @@ Read in the order given.
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Describe a familiar statistical procedure (e.g., least squares, MLE) as an algorithm — specifying its inputs, the computational process, and its outputs?
-- Articulate the difference between deriving a statistical result analytically and computing one algorithmically, and explain why that distinction matters for how we evaluate methods?
-- Name the questions the computational framing opens up (convergence, sensitivity, efficiency, failure conditions) and give one concrete example of each?
-- Locate simulation, resampling, optimization, and MCMC within a unified algorithmic view of statistics?
-- State Tukey’s central argument in one or two sentences and assess whether it has aged well?
+- Describe a familiar statistical procedure (e.g., least squares, MLE) as an algorithm — specifying its inputs, the computational process, and its outputs? (Goal 0.1)
+- Articulate the difference between deriving a statistical result analytically and computing one algorithmically, and explain why that distinction matters for how we evaluate methods? (Goal 0.2)
+- Name the questions the computational framing opens up (convergence, sensitivity, efficiency, failure conditions) and give one concrete example of each? (Goal 0.3)
+- Locate simulation, resampling, optimization, and MCMC within a unified algorithmic view of statistics? (Goal 0.4)
+- State Tukey’s central argument in one or two sentences and assess whether it has aged well? (Goal 0.5)
 
 #### Conceptual Questions
-1.	Tukey writes that “data analysis” is not the same as mathematical statistics. What is the substance of that distinction, and what does it imply about how statistical methods should be evaluated?
-2.	What does Efron & Hastie mean by an “algorithm” in the context of statistical inference? How is this different from a formula or a theorem?
-3.	The computational framing of statistics asks: how fast does this converge, how sensitive is it to its inputs, under what conditions does it fail? Pick one of these questions and explain why it could not be asked — or was much harder to answer — in a purely analytical framework.
-4.	Efron & Hastie describe a shift in statistical practice as computation became cheap. What was that shift, and what did it make possible that was not possible before?
+1.	Tukey writes that “data analysis” is not the same as mathematical statistics. What is the substance of that distinction, and what does it imply about how statistical methods should be evaluated? (Goal 0.5)
+2.	What does Efron & Hastie mean by an “algorithm” in the context of statistical inference? How is this different from a formula or a theorem? (Goal 0.2)
+3.	The computational framing of statistics asks: how fast does this converge, how sensitive is it to its inputs, under what conditions does it fail? Pick one of these questions and explain why it could not be asked — or was much harder to answer — in a purely analytical framework. (Goal 0.3)
+4.	Efron & Hastie describe a shift in statistical practice as computation became cheap. What was that shift, and what did it make possible that was not possible before? (Goal 0.4)
  
 ## Module 1 — Random Number Generation & Simulation
 **High-level goal**: Understand how randomness is constructed computationally, and build the simulation primitives that all subsequent methods depend on.
@@ -66,19 +66,19 @@ The module has a natural two-stage structure: uniform generation first, then non
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Explain why a computer cannot generate true randomness, and describe what a pseudorandom number generator actually does?
-- Name and describe the key structural properties of a good uniform PRNG: period length, seed dependence, and the statistical tests used to evaluate output quality?
-- Implement the inverse transform method and state the conditions under which it applies?
-- Implement acceptance-rejection, explain where its efficiency comes from, and identify what makes a proposal distribution better or worse?
-- Trace a sample from an arbitrary target distribution back through the full generative chain to the PRNG output?
-- Describe at least two practical consequences of poor RNG choices in simulation?
+- Explain why a computer cannot generate true randomness, and describe what a pseudorandom number generator actually does? (Goal 1.1)
+- Name and describe the key structural properties of a good uniform PRNG: period length, seed dependence, and the statistical tests used to evaluate output quality? (Goal 1.2)
+- Implement the inverse transform method and state the conditions under which it applies? (Goal 1.3)
+- Implement acceptance-rejection, explain where its efficiency comes from, and identify what makes a proposal distribution better or worse? (Goal 1.4)
+- Trace a sample from an arbitrary target distribution back through the full generative chain to the PRNG output? (Goal 1.5)
+- Describe at least two practical consequences of poor RNG choices in simulation? (Goal 1.6)
 
 #### Conceptual Questions
-5.	A pseudorandom number generator is entirely deterministic — given the same seed, it produces the exact same sequence every time. In what sense, then, can its output be called "random"? What does randomness mean here, and how is that meaning established?
-6.	The inverse transform and acceptance-rejection methods both produce draws from a target distribution, but they work in fundamentally different ways. What does each method require, and what does each assume about the target? When would you prefer one over the other?
-7.	Period exhaustion is rarely discussed in practice. Why does it matter, and under what conditions could it become a real problem rather than a theoretical concern?
-8.	Devroye treats the uniform generation problem as already solved and takes U(0,1) draws as given. Why is this a sensible division of labor? What would break if the uniform draws were not actually independent?
-9.	Module 2 builds Monte Carlo estimation on top of the simulation primitives from this module. What specific properties of your RNG output does the validity of a Monte Carlo estimate depend on?
+5.	A pseudorandom number generator is entirely deterministic — given the same seed, it produces the exact same sequence every time. In what sense, then, can its output be called "random"? What does randomness mean here, and how is that meaning established? (Goal 1.1)
+6.	The inverse transform and acceptance-rejection methods both produce draws from a target distribution, but they work in fundamentally different ways. What does each method require, and what does each assume about the target? When would you prefer one over the other? (Goal 1.3)
+7.	Period exhaustion is rarely discussed in practice. Why does it matter, and under what conditions could it become a real problem rather than a theoretical concern? (Goal 1.6)
+8.	Devroye treats the uniform generation problem as already solved and takes U(0,1) draws as given. Why is this a sensible division of labor? What would break if the uniform draws were not actually independent? (Goal 1.5)
+9.	Module 2 builds Monte Carlo estimation on top of the simulation primitives from this module. What specific properties of your RNG output does the validity of a Monte Carlo estimate depend on? (Goal 1.6)
  
 ## Module 2 — Monte Carlo Estimation & Variance Reduction
 **High-level goal**: Understand Monte Carlo as a principled estimation strategy, characterize its error, and learn to reduce that error — through importance sampling, stratification, and other variance reduction techniques — without simply adding more samples.
@@ -118,18 +118,18 @@ The Rao-Blackwell principle — that conditioning on available structure reduces
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Derive the Monte Carlo estimator from first principles and state what governs the rate at which accuracy improves with sample size?
-- Explain why variance is the central controlling quantity in Monte Carlo error, and articulate the equivalence between reducing variance and getting more information from the same computational budget?
-- Implement antithetic variates and control variates and identify the structural conditions that make each effective?
-- Implement importance sampling, explain the reweighting mechanism, and describe the conditions under which importance weights become pathological?
-- Explain antithetic variates, control variates, stratification, and importance sampling as four distinct interventions in the same underlying error quantity?
-- Explain how resampling from importance weights extends the importance sampling idea from estimation to approximate sampling, and why this matters for Module 7?
+- Derive the Monte Carlo estimator from first principles and state what governs the rate at which accuracy improves with sample size? (Goal 2.1)
+- Explain why variance is the central controlling quantity in Monte Carlo error, and articulate the equivalence between reducing variance and getting more information from the same computational budget? (Goal 2.2)
+- Implement antithetic variates and control variates and identify the structural conditions that make each effective? (Goal 2.3)
+- Implement importance sampling, explain the reweighting mechanism, and describe the conditions under which importance weights become pathological? (Goal 2.4)
+- Explain antithetic variates, control variates, stratification, and importance sampling as four distinct interventions in the same underlying error quantity? (Goal 2.5)
+- Explain how resampling from importance weights extends the importance sampling idea from estimation to approximate sampling, and why this matters for Module 7? (Goal 2.6)
 
 #### Conceptual Questions
-10.	The Monte Carlo estimator is justified by the CLT. What exactly does that justification give you, and what does it not give you? What would have to be true about your simulation for the CLT-based confidence intervals to be valid?
-11.	Control variates can substantially reduce variance, but they require knowing the expectation of a correlated random variable. If you knew that expectation, in what sense would you still need Monte Carlo? What is the practical scope of control variates?
-12.	Antithetic variates, control variates, stratification, and importance sampling all reduce variance. They do so by different mechanisms. Describe each mechanism in one sentence, and explain why none of them changes the fundamental n^−1/² convergence rate.
-13.	Importance sampling reweights draws from a proposal to estimate an expectation under a different target. What makes this idea useful beyond variance reduction? What problem does it solve that ordinary Monte Carlo cannot?
+10.	The Monte Carlo estimator is justified by the CLT. What exactly does that justification give you, and what does it not give you? What would have to be true about your simulation for the CLT-based confidence intervals to be valid? (Goal 2.1)
+11.	Control variates can substantially reduce variance, but they require knowing the expectation of a correlated random variable. If you knew that expectation, in what sense would you still need Monte Carlo? What is the practical scope of control variates? (Goal 2.3)
+12.	Antithetic variates, control variates, stratification, and importance sampling all reduce variance. They do so by different mechanisms. Describe each mechanism in one sentence, and explain why none of them changes the fundamental n^−1/² convergence rate. (Goal 2.5)
+13.	Importance sampling reweights draws from a proposal to estimate an expectation under a different target. What makes this idea useful beyond variance reduction? What problem does it solve that ordinary Monte Carlo cannot? (Goal 2.6)
  
 ## Module 3 — Bootstrap & Resampling
 **High-level goal**: Perform inference through data-driven simulation, understand the theoretical basis for its validity, and recognize the conditions under which it breaks down.
@@ -179,7 +179,7 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	- *Efron & Tibshirani*, 
 	**Ch 11** [Required]
 
-		- **Focus**: Read after Ch 6. Ch 11 defines the jackknife, derives its standard error and bias estimates, and establishes its relationship to the bootstrap — the jackknife is a linear approximation to the bootstrap, and the two agree for linear statistics but diverge for nonlinear ones. **Sec 11.6 (failure of the jackknife for non-smooth statistics like the median)** is important: it illustrates that method failure is diagnosable, not merely possible. Goal 2 requires understanding this relationship.
+		- **Focus**: Read after Ch 6. Ch 11 defines the jackknife, derives its standard error and bias estimates, and establishes its relationship to the bootstrap — the jackknife is a linear approximation to the bootstrap, and the two agree for linear statistics but diverge for nonlinear ones. **Sec 11.6 (failure of the jackknife for non-smooth statistics like the median)** is important: it illustrates that method failure is diagnosable, not merely possible.
 
 		- **Builds toward**: The failure modes discussion in Davison & Hinkley, where the bootstrap itself encounters analogous limits.
 
@@ -222,24 +222,24 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Derive the nonparametric bootstrap from first principles — defining the empirical distribution, explaining why sampling from it simulates the sampling process, and stating what assumptions that requires?
-- Implement parametric and nonparametric bootstrap and construct bootstrap-t, percentile, and BCa confidence intervals?
-- Explain the theoretical conditions under which bootstrap confidence intervals are valid, and distinguish consistency from finite-sample accuracy?
-- Identify the conditions under which naive bootstrap fails: heavy tails, extreme statistics, small samples, and dependent or clustered data?
-- Articulate why clustered data violates the i.i.d. assumption underlying naive resampling, and distinguish this clustering failure mechanism from the serial-dependence failure mechanism addressed by the moving blocks bootstrap?
-- Apply the moving blocks bootstrap for serially dependent data, explain what block resampling preserves that naive resampling destroys, and identify the role of block length in the bias-variance tradeoff of the procedure?
-- Implement bootstrap-t, percentile, and BCa confidence intervals and explain what each assumes and what accuracy guarantees each provides?
-- Explain the accuracy hierarchy — first-order vs. second-order accuracy — and identify which interval methods achieve each?
-- Explain transformation-respecting as a property and identify which methods satisfy it?
-- Describe the bootstrap as a resampling algorithm and connect it to the simulation primitives from Module 1?
+- Derive the nonparametric bootstrap from first principles — defining the empirical distribution, explaining why sampling from it simulates the sampling process, and stating what assumptions that requires? (Goal 3.1)
+- Implement parametric and nonparametric bootstrap and construct bootstrap-t, percentile, and BCa confidence intervals? (Goal 3.2)
+- Explain the theoretical conditions under which bootstrap confidence intervals are valid, and distinguish consistency from finite-sample accuracy? (Goal 3.3)
+- Identify the conditions under which naive bootstrap fails: heavy tails, extreme statistics, small samples, and dependent or clustered data? (Goal 3.4)
+- Articulate why clustered data violates the i.i.d. assumption underlying naive resampling, and distinguish this clustering failure mechanism from the serial-dependence failure mechanism addressed by the moving blocks bootstrap? (Goal 3.4)
+- Apply the moving blocks bootstrap for serially dependent data, explain what block resampling preserves that naive resampling destroys, and identify the role of block length in the bias-variance tradeoff of the procedure? (Goal 3.5)
+- Implement bootstrap-t, percentile, and BCa confidence intervals and explain what each assumes and what accuracy guarantees each provides? (Goal 3.2)
+- Explain the accuracy hierarchy — first-order vs. second-order accuracy — and identify which interval methods achieve each? (Goal 3.2)
+- Explain transformation-respecting as a property and identify which methods satisfy it? (Goal 3.2)
+- Describe the bootstrap as a resampling algorithm and connect it to the simulation primitives from Module 1? (Goal 3.6)
 
 #### Conceptual Questions
-15.	The bootstrap replaces the unknown population distribution with the empirical distribution. What exactly does that substitution assume, and under what conditions is it a good approximation? What does “consistency” mean here?
-16.	There are multiple ways to construct a bootstrap confidence interval (bootstrap-t, percentile, BCa). They give different answers in finite samples. Why do they differ, and when does the difference matter?
-16a.	The BCa method is described as both second-order accurate and transformation-respecting, while the percentile method is transformation-respecting but only first-order accurate, and the bootstrap-t is second-order accurate but not transformation-respecting. Explain what each of these properties means and why BCa achieves both while the others achieve only one.
-17.	The bootstrap is sometimes described as “assumption-free.” Is that accurate? What does the bootstrap assume, and what does it not assume?
-18.	The bootstrap fails for heavy-tailed distributions of the mean. Explain the mechanism of that failure — why does the empirical distribution not capture the behavior of the tail, and why does that matter for the bootstrap confidence interval?
-19.	The moving blocks bootstrap corrects for temporal dependence by resampling overlapping blocks of consecutive observations rather than individual draws. What property of the data is being preserved, and what does naive resampling destroy? What role does block length play in the bias-variance tradeoff of the procedure?
+15.	The bootstrap replaces the unknown population distribution with the empirical distribution. What exactly does that substitution assume, and under what conditions is it a good approximation? What does “consistency” mean here? (Goal 3.1)
+16.	There are multiple ways to construct a bootstrap confidence interval (bootstrap-t, percentile, BCa). They give different answers in finite samples. Why do they differ, and when does the difference matter? (Goal 3.2)
+16a.	The BCa method is described as both second-order accurate and transformation-respecting, while the percentile method is transformation-respecting but only first-order accurate, and the bootstrap-t is second-order accurate but not transformation-respecting. Explain what each of these properties means and why BCa achieves both while the others achieve only one. (Goal 3.2)
+17.	The bootstrap is sometimes described as “assumption-free.” Is that accurate? What does the bootstrap assume, and what does it not assume? (Goal 3.3)
+18.	The bootstrap fails for heavy-tailed distributions of the mean. Explain the mechanism of that failure — why does the empirical distribution not capture the behavior of the tail, and why does that matter for the bootstrap confidence interval? (Goal 3.4)
+19.	The moving blocks bootstrap corrects for temporal dependence by resampling overlapping blocks of consecutive observations rather than individual draws. What property of the data is being preserved, and what does naive resampling destroy? What role does block length play in the bias-variance tradeoff of the procedure? (Goal 3.5)
  
 ## Module 4 — Optimization: Gradient Methods, Metaheuristics & EM
 **High-level goal**: Compute estimators via optimization, understand the structural differences between gradient, metaheuristic, and EM approaches, and know which problem features determine which method is appropriate.
@@ -307,32 +307,32 @@ Introduction, Newton's Method and Root Finding, Newton's Method and Optimization
 
 9. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.* [Reference]
 **Ch 3: Sec 3.3 (Simulated annealing); Sec 3.4 (Genetic algorithms)**
-	- **Focus**: Read for orientation and conceptual understanding, not implementation depth. The goal is to understand when metaheuristic approaches are warranted — discontinuous objectives, multimodal landscapes, discrete or combinatorial search spaces — and what each method does at the level of operating principles. No implementation is required for Goal 5.
+	- **Focus**: Read for orientation and conceptual understanding, not implementation depth. The goal is to understand when metaheuristic approaches are warranted — discontinuous objectives, multimodal landscapes, discrete or combinatorial search spaces — and what each method does at the level of operating principles.
 	> **Forward pointer**: Simulated annealing accepts worse solutions with a probability controlled by a temperature schedule. This is structurally parallel to the Metropolis-Hastings acceptance step in Module 7 — both use a ratio-based acceptance criterion to explore a target landscape. Noticing that parallel before reaching Module 7 makes the MH acceptance ratio feel less arbitrary when you derive it from detailed balance.
 
 ### Self-Assessment
 
 #### Quick Checklist
 After finishing the reading, can you:
-- Formulate at least two common statistical estimators as optimization problems, and identify which objective function features determine the appropriate algorithmic family?
-- Explain Newton's method and quasi-Newton methods, including the role of the Hessian and the practical significance of numerical stability and step selection?
-- Explain the statistical logic of EM — missing data, latent variables, lower-bound ascent — and describe the construction of the E and M steps?
-- Explain why EM guarantees monotone likelihood increase, why this does not guarantee a global maximum, and what Wu (1983) establishes over Dempster et al. (1977)?
-- Recognize when metaheuristic approaches are warranted and describe the basic operating principles of simulated annealing and genetic algorithms without requiring deep implementation?
+- Formulate at least two common statistical estimators as optimization problems, and identify which objective function features determine the appropriate algorithmic family? (Goal 4.1)
+- Explain Newton's method and quasi-Newton methods, including the role of the Hessian and the practical significance of numerical stability and step selection? (Goal 4.2)
+- Explain the statistical logic of EM — missing data, latent variables, lower-bound ascent — and describe the construction of the E and M steps? (Goal 4.3)
+- Explain why EM guarantees monotone likelihood increase, why this does not guarantee a global maximum, and what Wu (1983) establishes over Dempster et al. (1977)? (Goal 4.4)
+- Recognize when metaheuristic approaches are warranted and describe the basic operating principles of simulated annealing and genetic algorithms without requiring deep implementation? (Goal 4.5)
 
 #### Conceptual Questions
-20. Newton's method converges quadratically near a solution but can diverge or cycle far from one. What is the mechanism of quadratic convergence, and what can go wrong far from the solution?
-21. Quasi-Newton methods approximate the Hessian rather than computing it exactly. What is the tradeoff? When would you prefer BFGS over Newton's method, and when might the approximation cause problems?
-22. EM is described as an algorithm for "maximum likelihood from incomplete data." What does incomplete data mean in this context, and how does that framing generate the two-step structure?
-23. EM guarantees that the likelihood increases at every iteration. Does this mean it will find the global maximum? Explain what Wu (1983) says about where EM converges and why that is weaker than convergence to the MLE.
-24. Simulated annealing accepts worse solutions with some probability. Gradient methods always move in an improving direction. What problem does that probabilistic acceptance solve, and why does gradient descent not solve it?
+20. Newton's method converges quadratically near a solution but can diverge or cycle far from one. What is the mechanism of quadratic convergence, and what can go wrong far from the solution? (Goal 4.2)
+21. Quasi-Newton methods approximate the Hessian rather than computing it exactly. What is the tradeoff? When would you prefer BFGS over Newton's method, and when might the approximation cause problems? (Goal 4.2)
+22. EM is described as an algorithm for "maximum likelihood from incomplete data." What does incomplete data mean in this context, and how does that framing generate the two-step structure? (Goal 4.3)
+23. EM guarantees that the likelihood increases at every iteration. Does this mean it will find the global maximum? Explain what Wu (1983) says about where EM converges and why that is weaker than convergence to the MLE. (Goal 4.4)
+24. Simulated annealing accepts worse solutions with some probability. Gradient methods always move in an improving direction. What problem does that probabilistic acceptance solve, and why does gradient descent not solve it? (Goal 4.5)
  
 ## Module 5 — Bayesian Modeling Framework
 **High-level goal**: Construct and reason about Bayesian models as structured computational objects, independent of the sampling algorithms used to fit them.
  
 ### Reading Sequence
 All readings come from *Gelman et al. (BDA)*. The module is self-contained within that text. Read in order — earlier chapters build the modeling vocabulary that later chapters require. 
-Ch 7 (simulation-based inference) is explicitly deferred to Module 7: do not read ahead.
+
  
 1. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.* [Primary]
 **Ch 1: Probability and inference**
@@ -356,18 +356,18 @@ Ch 7 (simulation-based inference) is explicitly deferred to Module 7: do not rea
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Specify a Bayesian model as a computational object — joint distribution, likelihood, prior, and posterior — and articulate what each component commits you to?
-- Reason about prior selection as a modeling choice with verifiable consequences, distinguishing between informative, weakly informative, and vague priors and explaining what each implies?
-- Identify the structural patterns in multiparameter and hierarchical models and explain what hierarchical structure implies computationally?
-- Criticize a Bayesian model by interrogating prior sensitivity, likelihood misspecification, and predictive adequacy — independently of how the model will be fit?
-- Maintain a clear separation between modeling questions (what is the right prior? is the likelihood appropriate?) and computational questions (how do I sample the posterior?)?
+- Specify a Bayesian model as a computational object — joint distribution, likelihood, prior, and posterior — and articulate what each component commits you to? (Goal 5.1)
+- Given a choice among informative, weakly informative, and vague priors, justify it by its verifiable consequences for the posterior, rather than treating the choice as arbitrary or a defensive hedge? (Goal 5.2)
+- Identify the structural patterns in multiparameter and hierarchical models and explain what hierarchical structure implies computationally? (Goal 5.3)
+- Criticize a Bayesian model by interrogating prior sensitivity, likelihood misspecification, and predictive adequacy — independently of how the model will be fit? (Goal 5.4)
+- Maintain a clear separation between modeling questions (what is the right prior? is the likelihood appropriate?) and computational questions (how do I sample the posterior?)? (Goal 5.5)
 
 #### Conceptual Questions
-25.	A Bayesian model specifies a joint distribution over data and parameters. What does this specification assume, and what work does the prior do within that specification? Is the prior subjective?
-26.	Prior sensitivity analysis tests whether the posterior changes substantially when the prior changes. What would a large change in the posterior imply about your model? What would a small change imply? When is sensitivity analysis required and when can it be skipped?
-27.	Hierarchical models pool information across groups. What is the computational cost of that pooling? Why does it make closed-form posterior computation generally impossible?
-28.	This module deliberately separates modeling from computation. Why is that separation useful? What goes wrong if you think about the two together?
-29.	BDA Ch 11 (Basics of Markov chain simulation) is deferred to Module 7. What question does that chapter answer that this module does not? What does Module 5 equip you to do that you could not do after only reading about MCMC methods?
+25.	A Bayesian model specifies a joint distribution over data and parameters. What does this specification assume, and what work does the prior do within that specification? Is the prior subjective? (Goal 5.1)
+26.	Prior sensitivity analysis tests whether the posterior changes substantially when the prior changes. What would a large change in the posterior imply about your model? What would a small change imply? When is sensitivity analysis required and when can it be skipped? (Goal 5.4)
+27.	Hierarchical models pool information across groups. What is the computational cost of that pooling? Why does it make closed-form posterior computation generally impossible? (Goal 5.3)
+28.	This module deliberately separates modeling from computation. Why is that separation useful? What goes wrong if you think about the two together? (Goal 5.5)
+29.	BDA Ch 11 (Basics of Markov chain simulation) is deferred to Module 7. What question does that chapter answer that this module does not? What does Module 5 equip you to do that you could not do after only reading about MCMC methods? (Goal 5.5)
 *Note: This question deliberately asks you to reason about a chapter you have not yet read. You are not expected to know what BDA Ch 11 contains — you are expected to reason from what Module 5 does cover: what modeling questions it settles, and what questions it leaves open. The answer you construct here will be tested against the actual Ch 11 content when you reach Module 7.*
  
 ## Module 6 — Markov Chains as Computational Objects
@@ -409,19 +409,19 @@ Sec 12.7 (Time Averages)**
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Describe a concrete Markov chain mixing on a simple target, and identify mixing, stationarity, and failure to converge as empirical phenomena?
-- Define irreducibility, aperiodicity, and stationarity and explain what each guarantees about long-run behavior?
-- Explain detailed balance as a sufficient condition for stationarity and state why it is the condition MCMC algorithms are designed to satisfy?
-- Define mixing time and the spectral gap as measures of convergence speed and develop geometric intuition for why some chains mix slowly?
-- Connect poor mixing to downstream consequences for MCMC output quality — explaining what slow mixing implies for estimates derived from sampler output?
+- Describe a concrete Markov chain mixing on a simple target, and identify mixing, stationarity, and failure to converge as empirical phenomena? (Goal 6.1)
+- Define irreducibility, aperiodicity, and stationarity and explain what each guarantees about long-run behavior? (Goal 6.2)
+- Explain detailed balance as a sufficient condition for stationarity and state why it is the condition MCMC algorithms are designed to satisfy? (Goal 6.3)
+- Define mixing time and the spectral gap as measures of convergence speed and develop geometric intuition for why some chains mix slowly? (Goal 6.4)
+- Connect poor mixing to downstream consequences for MCMC output quality — explaining what slow mixing implies for estimates derived from sampler output? (Goal 6.5)
 
 #### Conceptual Questions
-30.	Irreducibility, aperiodicity, and detailed balance are all conditions a Markov chain can satisfy. What does each condition guarantee individually, and what do they guarantee together?
-31.	Detailed balance is described as a sufficient condition for stationarity, not a necessary one. What does that mean? Could you construct a chain that has the right stationary distribution but does not satisfy detailed balance?
-32.	Mixing time measures how long it takes a chain to get close to stationarity. "Close" is measured in total variation distance. Why is total variation the right distance measure here? What would it mean for a chain to be "not close" to its stationary distribution?
-33.	The spectral gap governs mixing speed. What is the relationship between a small spectral gap and slow mixing? Using the n-cycle as a concrete case, explain why a longer cycle has a smaller spectral gap and what that implies for how long the chain takes to mix.
-34.	This module argues that understanding Markov chains as dynamical systems is not optional background for MCMC practitioners. Make that argument concretely: what would a student who skipped this module be unable to explain or diagnose?
-35.	Theorem 12.21 shows that the number of MCMC samples needed to estimate a posterior expectation to a given accuracy scales with the inverse of the spectral gap. What does this mean in practical terms for a chain that mixes slowly, and why isn't the number of raw samples alone an adequate measure of how much information you have?
+30.	Irreducibility, aperiodicity, and detailed balance are all conditions a Markov chain can satisfy. What does each condition guarantee individually, and what do they guarantee together? (Goal 6.2)
+31.	Detailed balance is described as a sufficient condition for stationarity, not a necessary one. What does that mean? Could you construct a chain that has the right stationary distribution but does not satisfy detailed balance? (Goal 6.3)
+32.	Mixing time measures how long it takes a chain to get close to stationarity. "Close" is measured in total variation distance. Why is total variation the right distance measure here? What would it mean for a chain to be "not close" to its stationary distribution? (Goal 6.4)
+33.	The spectral gap governs mixing speed. What is the relationship between a small spectral gap and slow mixing? Using the n-cycle as a concrete case, explain why a longer cycle has a smaller spectral gap and what that implies for how long the chain takes to mix. (Goal 6.4)
+34.	This module argues that understanding Markov chains as dynamical systems is not optional background for MCMC practitioners. Make that argument concretely: what would a student who skipped this module be unable to explain or diagnose? (Goal 6.5)
+35.	Theorem 12.21 shows that the number of MCMC samples needed to estimate a posterior expectation to a given accuracy scales with the inverse of the spectral gap. What does this mean in practical terms for a chain that mixes slowly, and why isn't the number of raw samples alone an adequate measure of how much information you have? (Goal 6.5)
  
 ## Module 7 — MCMC Methods
 **High-level goal**: Implement and understand the core approximate sampling algorithms — SIR, Metropolis-Hastings, Gibbs, and Metropolis-within-Gibbs — as a related family of design choices whose behavior follows from the theory in Module 6.
@@ -471,20 +471,20 @@ Begin with SIR as a conceptual bridge from Module 2’s importance sampling to t
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Explain SIR as a bridge from importance sampling to approximate sampling, and identify where the connection to Module 2 lies?
-- Derive the Metropolis-Hastings acceptance ratio from the detailed balance condition and explain what it enforces?
-- Characterize how proposal distribution choice governs the acceptance rate / autocorrelation tradeoff in MH?
-- Derive Gibbs sampling from full conditional distributions and explain why acceptance is guaranteed at every step?
-- Distinguish random-scan from deterministic-scan Gibbs and explain why the deterministic-scan version does not satisfy detailed balance in general?
-- Implement Metropolis-within-Gibbs and identify when this hybrid is warranted?
-- Describe SIR, MH, and Gibbs as three members of a common family of approximate sampling strategies, each solving the same core problem by different design choices?
+- Explain SIR as a bridge from importance sampling to approximate sampling, tracing the connection back to Module 2 and framing the central challenge that MCMC addresses? (Goal 7.1)
+- Derive the Metropolis-Hastings acceptance ratio from the detailed balance condition and explain what it enforces? (Goal 7.2)
+- Characterize how proposal distribution choice governs the acceptance rate / autocorrelation tradeoff in MH? (Goal 7.3)
+- Derive Gibbs sampling from full conditional distributions and explain why acceptance is guaranteed at every step? (Goal 7.4)
+- Distinguish random-scan from deterministic-scan Gibbs and explain why the deterministic-scan version does not satisfy detailed balance in general? (Goal 7.5)
+- Implement Metropolis-within-Gibbs and identify when this hybrid is warranted? (Goal 7.6)
+- Describe SIR, MH, and Gibbs as three members of a common family of approximate sampling strategies, each solving the same core problem by different design choices? (Goal 7.7)
 
 #### Conceptual Questions
-36.	SIR produces an approximate sample from a target distribution by resampling from importance weights. What limits its accuracy, and why does naive SIR fail in high dimensions? What problem does MCMC solve that SIR does not?
-37.	The Metropolis-Hastings acceptance ratio ensures the chain has the correct stationary distribution. Explain the mechanism: what would happen to the stationary distribution if you changed the ratio?
-38.	A narrow proposal distribution in MH produces high acceptance rates but strongly autocorrelated samples. A wide proposal produces frequent rejections and similarly slow exploration. What is being traded off, and is there a principled way to resolve the tradeoff?
-39.	Gibbs sampling is sometimes described as “MH with acceptance probability 1.” VanDerwerken (2017) shows this is only true for the random-scan version. What is the substantive difference between random-scan and deterministic-scan Gibbs, and why does it matter for the chain’s theoretical properties?
-40.	Metropolis-within-Gibbs combines MH steps for some parameters with Gibbs steps for others. When is this warranted, and what does it require about the model structure?
+36.	SIR produces an approximate sample from a target distribution by resampling from importance weights. What limits its accuracy, and why does naive SIR fail in high dimensions? What problem does MCMC solve that SIR does not? (Goal 7.1)
+37.	The Metropolis-Hastings acceptance ratio ensures the chain has the correct stationary distribution. Explain the mechanism: what would happen to the stationary distribution if you changed the ratio? (Goal 7.2)
+38.	A narrow proposal distribution in MH produces high acceptance rates but strongly autocorrelated samples. A wide proposal produces frequent rejections and similarly slow exploration. What is being traded off, and is there a principled way to resolve the tradeoff? (Goal 7.3)
+39.	Gibbs sampling is sometimes described as “MH with acceptance probability 1.” VanDerwerken (2017) shows this is only true for the random-scan version. What is the substantive difference between random-scan and deterministic-scan Gibbs, and why does it matter for the chain’s theoretical properties? (Goal 7.5)
+40.	Metropolis-within-Gibbs combines MH steps for some parameters with Gibbs steps for others. When is this warranted, and what does it require about the model structure? (Goal 7.6)
  
 ## Module 8 — MCMC Diagnostics & Reliability
 **High-level goal**: Evaluate MCMC output critically using principled diagnostics, understand what convergence does and does not guarantee, and develop a reliable workflow for determining when sampler output can be trusted.
@@ -537,20 +537,20 @@ Secondary depth: Robert & Casella (2004), Ch 6 (Markov chains). For students who
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Explain effective sample size as the central measure of MCMC output quality, distinguishing it from raw sample count and connecting it to autocorrelation?
-- Compute and interpret autocorrelation function estimates from MCMC output and explain what high autocorrelation implies for reliability?
-- Apply trace plots, R-hat, and ESS as principled diagnostics — explaining what each measures and what it can and cannot detect?
-- Explain warm-up and its role in allowing the chain to reach the typical set, and distinguish samples that should and should not be retained?
+- Explain effective sample size as the central measure of MCMC output quality, distinguishing it from raw sample count and connecting it to autocorrelation? (Goal 8.1)
+- Compute and interpret autocorrelation function estimates from MCMC output and explain what high autocorrelation implies for reliability? (Goal 8.2)
+- Apply trace plots, R-hat, and ESS as principled diagnostics — explaining what each measures and what it can and cannot detect? (Goal 8.3)
+- Explain warm-up and its role in allowing the chain to reach the typical set, and distinguish samples that should and should not be retained? (Goal 8.4)
   *(Note: The “typical set” refers to the region of high posterior probability where the chain must reside before warm-up samples are discarded. This terminology comes from the HMC literature; in the sources assigned here it appears as “reaching stationarity” or “escaping the influence of starting values” in BDA, and “the run being long enough” in Geyer.)*
-- Explain why thinning does not improve statistical efficiency and identify the narrow circumstances where it may be practically justified?
-- Describe a reliable iterative workflow for running a sampler, evaluating its output, and deciding whether to trust results or return to the sampler?
+- Explain why thinning does not improve statistical efficiency and identify the narrow circumstances where it may be practically justified? (Goal 8.5)
+- Describe a reliable iterative workflow for running a sampler, evaluating its output, and deciding whether to trust results or return to the sampler? (Goal 8.6)
 
 #### Conceptual Questions
-41.	Effective sample size is smaller than the raw number of MCMC draws whenever the chain is autocorrelated. Explain the mechanism: why does autocorrelation reduce the information content of each additional draw?
-42.	R-hat diagnoses convergence by comparing within-chain to between-chain variance across multiple chains. What does a high R-hat value indicate? What does a low R-hat value guarantee? Is a low R-hat sufficient to conclude the chain has converged?
-43.	Trace plots are often the first diagnostic a practitioner examines. What are you looking for in a trace plot, and what failure modes can a trace plot detect? What failure modes can it miss?
-44.	Link & Eaton (2012) show that thinning does not improve statistical efficiency. Given that, why do many practitioners continue to thin? Evaluate the common justifications for thinning in light of the paper’s result.
-45.	Warm-up samples are discarded. What is the conceptual justification? What determines how many warm-up samples to discard, and what happens if you discard too few?
+41.	Effective sample size is smaller than the raw number of MCMC draws whenever the chain is autocorrelated. Explain the mechanism: why does autocorrelation reduce the information content of each additional draw? (Goal 8.1)
+42.	R-hat diagnoses convergence by comparing within-chain to between-chain variance across multiple chains. What does a high R-hat value indicate? What does a low R-hat value guarantee? Is a low R-hat sufficient to conclude the chain has converged? (Goal 8.3)
+43.	Trace plots are often the first diagnostic a practitioner examines. What are you looking for in a trace plot, and what failure modes can a trace plot detect? What failure modes can it miss? (Goal 8.3)
+44.	Link & Eaton (2012) show that thinning does not improve statistical efficiency. Given that, why do many practitioners continue to thin? Evaluate the common justifications for thinning in light of the paper’s result. (Goal 8.5)
+45.	Warm-up samples are discarded. What is the conceptual justification? What determines how many warm-up samples to discard, and what happens if you discard too few? (Goal 8.4)
  
 ## Module 9 — Density Estimation
 **High-level goal**: Estimate distributions nonparametrically from data and from MCMC output, understand the bias-variance tradeoffs governing each method, and apply density estimation as a practical tool for interpreting posterior and predictive distributions.
@@ -594,20 +594,20 @@ After finishing the reading, can you:
 ### Self-Assessment
 #### Quick Checklist
 After finishing the reading, can you:
-- Articulate the density estimation problem — what it means to estimate a distribution nonparametrically and why point estimates and parametric models are sometimes insufficient?
-- Implement kernel density estimation, explain the role of kernel and bandwidth, and characterize the bias-variance tradeoff that bandwidth selection governs?
-- Apply at least one principled bandwidth selection method and explain the consequences of under- and over-smoothing?
-- Explain the Rao-Blackwell estimator as a variance-reduction strategy for density estimation and identify why it is well-suited to MCMC settings?
-- Implement nearest-neighbor density estimation and contrast its bias-variance characteristics with KDE?
-- Interpret density estimates critically, recognizing what each method implicitly assumes and how those assumptions affect the estimate?
+- Articulate the density estimation problem — what it means to estimate a distribution nonparametrically and why point estimates and parametric models are sometimes insufficient? (Goal 9.1)
+- Implement kernel density estimation, explain the role of kernel and bandwidth, and characterize the bias-variance tradeoff that bandwidth selection governs? (Goal 9.2)
+- Apply at least one principled bandwidth selection method and explain the consequences of under- and over-smoothing? (Goal 9.3)
+- Explain the Rao-Blackwell estimator as a variance-reduction strategy for density estimation and identify why it is particularly well-suited to MCMC settings, where conditional distributions are already available? (Goal 9.4)
+- Implement nearest-neighbor density estimation and contrast its bias-variance characteristics with KDE? (Goal 9.5)
+- Interpret density estimates critically, recognizing what each method implicitly assumes and how those assumptions affect the estimate? (Goal 9.6)
 
 #### Conceptual Questions
-46.	The kernel estimator places a smooth kernel at each observation and sums. What determines the shape of the resulting estimate? Why does the choice of kernel matter much less than the choice of bandwidth?
-47.	Bandwidth selection is a bias-variance problem. Describe the tradeoff precisely: what does a small bandwidth optimize, what does a large bandwidth optimize, and what does the optimal bandwidth balance?
-48.	Silverman’s rule-of-thumb bandwidth assumes the data are approximately Gaussian. When is this assumption dangerous, and what would you use instead?
-49. *The Rao-Blackwell theorem says that conditioning on available structure can only reduce the variance of an unbiased estimator. How does this idea translate into a practical variance reduction strategy for Monte Carlo estimators? What does "conditioning" mean in this context, and what determines whether it is feasible to apply?*
-50.	The Rao-Blackwell estimator for posterior densities averages over full conditionals available from a Gibbs sampler. Why does conditioning on additional information reduce variance? And why is this information only available in certain sampler architectures?
-51.	Nearest-neighbor estimation uses a local bandwidth — the bandwidth at each point is determined by the local data density. What is the consequence in sparse regions? In dense regions? How does this compare to the behavior of a fixed-bandwidth kernel estimator in the same regions?
+46.	The kernel estimator places a smooth kernel at each observation and sums. What determines the shape of the resulting estimate? Why does the choice of kernel matter much less than the choice of bandwidth? (Goal 9.2)
+47.	Bandwidth selection is a bias-variance problem. Describe the tradeoff precisely: what does a small bandwidth optimize, what does a large bandwidth optimize, and what does the optimal bandwidth balance? (Goal 9.2)
+48.	Silverman’s rule-of-thumb bandwidth assumes the data are approximately Gaussian. When is this assumption dangerous, and what would you use instead? (Goal 9.3)
+49. *The Rao-Blackwell theorem says that conditioning on available structure can only reduce the variance of an unbiased estimator. How does this idea translate into a practical variance reduction strategy for Monte Carlo estimators? What does "conditioning" mean in this context, and what determines whether it is feasible to apply?* (Goal 9.4)
+50.	The Rao-Blackwell estimator for posterior densities averages over full conditionals available from a Gibbs sampler. Why does conditioning on additional information reduce variance? And why is this information only available in certain sampler architectures? (Goal 9.4)
+51.	Nearest-neighbor estimation uses a local bandwidth — the bandwidth at each point is determined by the local data density. What is the consequence in sparse regions? In dense regions? How does this compare to the behavior of a fixed-bandwidth kernel estimator in the same regions? (Goal 9.5)
  
 ## Module 10 — Applied Cases
 **High-level goal**: Integrate the program’s methods into coherent, reproducible analyses of realistic problems, developing the workflow judgment that distinguishes competent method application from genuine computational statistical practice.
@@ -641,19 +641,19 @@ The goal is judgment, not coverage. A case that deploys one method thoughtfully 
 ### Self-Assessment
 #### Quick Checklist
 After completing Module 10, can you:
-- Select and justify appropriate methods for each component of a multi-part applied problem?
-- Construct, fit, and diagnose a Bayesian model end-to-end — from prior specification through MCMC sampling, diagnostic evaluation, and interpretation of posterior output?
-- Apply bootstrap inference as a validation or subsidiary analysis tool within a larger workflow, and recognize when its assumptions are stressed?
-- Demonstrate a posterior predictive check as a model criticism tool — explaining what it tests, what a failure implies, and what it cannot detect?
-- Produce a complete analysis that is reproducible, honestly reported, and explicit about the assumptions and limitations of every methodological choice?
-- Situate the program’s methods within the broader arc of modern statistical practice using Efron & Hastie (Epilogue) and Gelman & Vehtari (2021)?
+- Select and justify appropriate methods for each component of a multi-part applied problem, recognizing when a problem's structure calls for a specific tool and when alternatives would be equally valid? (Goal 10.1)
+- Construct, fit, and diagnose a Bayesian model end-to-end — from prior specification through MCMC sampling, diagnostic evaluation, and interpretation of posterior output? (Goal 10.2)
+- Apply bootstrap inference as a validation or subsidiary analysis tool within a larger workflow, and recognize when its assumptions are stressed? (Goal 10.3)
+- Demonstrate a posterior predictive check as a model criticism tool — explaining what it tests, what a failure implies, and what it cannot detect? (Goal 10.4)
+- Produce a complete analysis that is reproducible, honestly reported, and explicit about the assumptions and limitations of every methodological choice? (Goal 10.5)
+- Situate the program’s methods within the broader arc of modern statistical practice using Efron & Hastie (Epilogue) and Gelman & Vehtari (2021)? (Goal 10.6)
 
 #### Conceptual Questions
-52.	Tukey (1962) argued for a reformation of statistics toward data analysis. Looking back at the program, which methods most directly embody Tukey’s argument? Which remain more ‘mathematical statistics’ in his sense?
-53.	Gelman & Vehtari (2021) list several ideas they consider most important in the past 50 years. Which of these ideas does this program cover? Which does it not cover, and why might those omissions be defensible at this scope?
-54.	A posterior predictive check shows that your model cannot reproduce a key feature of the data. What are your options, and what does each option commit you to?
-55.	The program treats the bootstrap and MCMC as conceptually related: both are simulation-based inference methods. What do they share, and where does the analogy break down?
-56.	In Efron & Hastie’s retrospective, statistics moves between Applications, Mathematics, and Computation across the twentieth century. Where would you locate the program’s methods on that map, and does that location feel right to you?
+52.	Tukey (1962) argued for a reformation of statistics toward data analysis. Looking back at the program, which methods most directly embody Tukey’s argument? Which remain more ‘mathematical statistics’ in his sense? (Goal 10.6)
+53.	Gelman & Vehtari (2021) list several ideas they consider most important in the past 50 years. Which of these ideas does this program cover? Which does it not cover, and why might those omissions be defensible at this scope? (Goal 10.6)
+54.	A posterior predictive check shows that your model cannot reproduce a key feature of the data. What are your options, and what does each option commit you to? (Goal 10.4)
+55.	The program treats the bootstrap and MCMC as conceptually related: both are simulation-based inference methods. What do they share, and where does the analogy break down? (Goal 10.1)
+56.	In Efron & Hastie’s retrospective, statistics moves between Applications, Mathematics, and Computation across the twentieth century. Where would you locate the program’s methods on that map, and does that location feel right to you? (Goal 10.6)
  
 
 
