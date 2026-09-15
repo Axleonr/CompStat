@@ -4,7 +4,7 @@
 
 ### PS8.1 — ACF and ESS From Scratch on Your Stored Chain
 
-**Type:** I | **Tier:** 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 1, 2
+**Type:** I | **Tier:** 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 8.1, 8.2
 
 **Prerequisites:** requires your saved PS7.4 chain (the ten-pump hierarchical Gamma-Poisson Gibbs sampler).
 
@@ -22,7 +22,7 @@ Implement this from scratch and compute ρ_k for k = 0, ..., 50, for every one o
 
 Then implement the effective sample size (ESS) from scratch using the **initial-positive-sequence estimator**: pair consecutive autocorrelations as Γ_m = ρ_{2m} + ρ_{2m+1} for m = 0, 1, 2, ...; let M be the largest index such that Γ_0, ..., Γ_M are all strictly positive (stop pairing at the first m with Γ_m ≤ 0); the integrated autocorrelation time is τ = −1 + 2·Σ_{m=0}^{M} Γ_m, and ESS = n / τ. Apply this to all eleven columns.
 
-Cross-check both your ACF and your ESS against a named library implementation available in your chosen language (R1.4 — library as oracle only, never as a substitute for your own implementation): for example, in Python, `statsmodels.tsa.stattools.acf` and `arviz.ess` (use the classical, non-rank-normalized ESS option — in `arviz` this is `method="mean"`, not the rank-normalized default — since your from-scratch estimator is the classical definition and the comparison must use matching definitions); in R, `stats::acf` and `coda::effectiveSize`; in Julia, `StatsBase.autocor` and `MCMCChains.ess` (classical/basic option). Whichever library you use, name it in your write-up.
+Cross-check both your ACF and your ESS against a named library implementation available in your chosen language (library as oracle only, never as a substitute for your own implementation): for example, in Python, `statsmodels.tsa.stattools.acf` and `arviz.ess` (use the classical, non-rank-normalized ESS option — in `arviz` this is `method="mean"`, not the rank-normalized default — since your from-scratch estimator is the classical definition and the comparison must use matching definitions); in R, `stats::acf` and `coda::effectiveSize`; in Julia, `StatsBase.autocor` and `MCMCChains.ess` (classical/basic option). Whichever library you use, name it in your write-up.
 
 Finally, write 3–5 sentences connecting your ESS results to the ACF structure you observed: which of the eleven parameters showed the highest lag-1 autocorrelation and the lowest ESS, which showed the lowest autocorrelation and highest ESS, and why that pattern is consistent with beta's role as a hyperparameter shared across all ten pumps versus each theta_i being informed more directly by its own pump's data.
 
@@ -36,7 +36,7 @@ Finally, write 3–5 sentences connecting your ESS results to the ACF structure 
 
 ### PS8.2 — Multi-Chain R-hat on a Healthy and a Failing Sampler
 
-**Type:** I/V | **Tier:** 3 | **Core/Optional:** Core | **Time:** 50 min | **Goals:** 3
+**Type:** I/V | **Tier:** 3 | **Core/Optional:** Core | **Time:** 50 min | **Goals:** 8.3
 
 **Prerequisites:** requires your saved PS7.4 chain (healthy pump Gibbs) and your saved PS7.6 chain (failing bimodal RW-MH); you will also re-run each sampler from new starting points (your own PS7.4/PS7.6 code, not a new sampler).
 
@@ -52,7 +52,7 @@ For m chains of n retained draws each of some scalar parameter, with chain means
 - pooled variance estimate: Var⁺ = ((n−1)/n)·W + (1/n)·B
 - R-hat = √(Var⁺ / W)
 
-Implement this from scratch (no library R-hat function — this is the from-scratch core of the problem; a library implementation may only be used afterward as an optional sanity check, per R4, and is not required).
+Implement this from scratch (no library R-hat function — this is the from-scratch core of the problem; a library implementation may only be used afterward as an optional sanity check, and is not required).
 
 **Healthy configuration:** re-run your PS7.4 pump Gibbs sampler four times, from dispersed initial values of beta: 0.1, 1.0, 5.0, and 20.0 (use four different seeds, one per chain, of your choice), 20,000 iterations each. Discard the first 2,000 iterations of each chain as warm-up. Compute R-hat for all eleven saved parameters (theta_1, ..., theta_10, beta).
 
@@ -70,7 +70,7 @@ Produce trace plots for both configurations (all four chains overlaid on one plo
 
 ### PS8.3 — When Classic R-hat Is Fooled *(Optional)*
 
-**Type:** V/D | **Tier:** 1+3 | **Core/Optional:** Optional | **Time:** 30 min | **Goals:** 3
+**Type:** V/D | **Tier:** 1+3 | **Core/Optional:** Optional | **Time:** 30 min | **Goals:** 8.3
 
 **Prerequisites:** None (this problem does not use your PS7.4/PS7.6 chains — it constructs its own small example).
 
@@ -104,7 +104,7 @@ Tier 3.
 
 ### PS8.4 — Does Thinning Help? A Fixed-Budget Comparison
 
-**Type:** V | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 35 min | **Goals:** 5
+**Type:** V | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 35 min | **Goals:** 8.5
 
 **Prerequisites:** requires your saved PS7.4 chain (healthy pump Gibbs); you will also re-run this sampler many times (your own PS7.4 code) to assess estimator variance empirically.
 
@@ -133,7 +133,7 @@ Then, in 3–5 sentences, identify the narrow circumstances under which thinning
 
 ### PS8.5 — Capstone: Diagnose, Adjust, Rerun, Re-Evaluate
 
-**Type:** D | **Tier:** 3 | **Core/Optional:** Core | **Time:** 50 min | **Goals:** 6
+**Type:** D | **Tier:** 3 | **Core/Optional:** Core | **Time:** 50 min | **Goals:** 8.6
 
 **Prerequisites:** requires your saved PS7.6 chain (failing bimodal RW-MH) and your PS8.2 R-hat implementation and result for that same failing configuration; you will re-run the PS7.6 sampler itself (your own code) with a changed proposal scale.
 
@@ -168,7 +168,7 @@ Separately, and worth noting for its own sake: your Module 7 Gibbs sampler (PS7.
 
 ### PS8.6 — Warm-Up Sensitivity on a Badly Initialized Run
 
-**Type:** I | **Tier:** 3 | **Core/Optional:** Core | **Time:** 30 min | **Goals:** 4
+**Type:** I | **Tier:** 3 | **Core/Optional:** Core | **Time:** 30 min | **Goals:** 8.4
 
 **Prerequisites:** requires your PS7.4 pump Gibbs sampler code (you will re-run it from a new, deliberately poor initial state — this is not your saved PS7.4 chain itself, but a fresh, short rerun of the same code) and your PS7.4 long-run converged posterior mean of beta, which serves as this problem's baseline.
 
@@ -185,6 +185,6 @@ Then, in a few sentences, identify which draws should not be retained and why �
 
 **Verification:** [Tier 3.] Averaged over your 30 replications, the average gap using all 10 draws should exceed the average gap using the last 8 draws (first 2 discarded) by at least 50% (ratio > 1.5), for beta.
 
-**Discussion note:** A single 10-iteration replication's with/without comparison can go either way — we found the "discard warm-up" side smaller in only about 84% of individual short replications, which is exactly why this problem asks you to average over 30 of them rather than trust any one run. That is not a flaw in the exercise; it is itself an honest lesson about warm-up: the *benefit* of discarding early draws is a statement about reducing systematic bias in expectation, not a guarantee that removes noise from any single short run. Averaged over enough replications, the benefit becomes clearly visible (this session's reference run found the with-warm-up gap roughly 2.3–2.8 times the without-warm-up gap, consistently, across several independent 30-replication batches). You should also notice that beta (the shared hyperparameter) shows a larger absolute gap than theta_5 (a pump-specific parameter) under the bad initialization — beta starts furthest, in relative terms, from its equilibrium value (1000 vs. a true posterior mean near 6), while each theta_i is pulled hard toward its own pump's data on the very first Gibbs step regardless of beta's starting value. The general principle Goal 4 wants you to take from this: draws generated before the chain has reached the typical set of the posterior are not samples *from* the posterior, and averaging them in — even just a couple of badly-placed early draws in a short chain — measurably pulls your estimate away from the truth in the direction of wherever you happened to start.
+**Discussion note:** A single 10-iteration replication's with/without comparison can go either way — we found the "discard warm-up" side smaller in only about 84% of individual short replications, which is exactly why this problem asks you to average over 30 of them rather than trust any one run. That is not a flaw in the exercise; it is itself an honest lesson about warm-up: the *benefit* of discarding early draws is a statement about reducing systematic bias in expectation, not a guarantee that removes noise from any single short run. Averaged over enough replications, the benefit becomes clearly visible (this session's reference run found the with-warm-up gap roughly 2.3–2.8 times the without-warm-up gap, consistently, across several independent 30-replication batches). You should also notice that beta (the shared hyperparameter) shows a larger absolute gap than theta_5 (a pump-specific parameter) under the bad initialization — beta starts furthest, in relative terms, from its equilibrium value (1000 vs. a true posterior mean near 6), while each theta_i is pulled hard toward its own pump's data on the very first Gibbs step regardless of beta's starting value. The general principle Goal 8.4 wants you to take from this: draws generated before the chain has reached the typical set of the posterior are not samples *from* the posterior, and averaging them in — even just a couple of badly-placed early draws in a short chain — measurably pulls your estimate away from the truth in the direction of wherever you happened to start.
 
 ---

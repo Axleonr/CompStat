@@ -3,7 +3,7 @@
 ## Module 7 — MCMC Methods
 
 ### PS7.1 — SIR: from importance weights to an approximate sample
-**Type:** C | **Tier:** 3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 1 (7 via discussion note)
+**Type:** C | **Tier:** 3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 7.1 (7 via discussion note)
 **Prerequisites:** Requires your PS2.3 importance sampler — the named functions `log_importance_ratios`, `normalize_weights`, and `is_estimate`, unchanged, on PS2.3's own bioassay data and prior.
 
 **Statement:**
@@ -21,20 +21,20 @@ Sampling Importance Resampling (SIR) treats $\{(\alpha^{(i)},\beta^{(i)}), w^{(i
 
 **Verification:** Tier 3 (executed and logged). For every one of the four resamples, against your own reference estimates: $|\text{resampled }\alpha\text{ mean} - \text{reference}| < 0.15$; $|\text{resampled }\alpha\text{ variance} - \text{reference}| < 0.20$; $|\text{resampled }\beta\text{ mean} - \text{reference}| < 0.65$; $|\text{resampled }\beta\text{ variance} - \text{reference}| < 6.5$.
 
-**Discussion note:** (folded) All four resamples should land inside the stated tolerances — this is a well-conditioned SIR setup because $M$ (1,000 or 5,000) is kept well below the importance sample's effective size (roughly 14,000–14,600 out of $N=50{,}000$, about 28–29%: this bioassay likelihood is informative but doesn't push the posterior so far from the wide prior that weights collapse the way they did on PS2.3's own tiny 6-point *validation* case — that ESS≈1.354-out-of-6 was a deliberately small test input, not representative of a production-sized draw). If you experiment with $M$ approaching or exceeding the effective sample size, the *without-replacement* resamples in particular degrade sharply — you start being forced to include many low-weight draws just to fill the quota, and the resampled distribution drifts back toward the (wrong) proposal rather than the target. That failure mode is a preview of a lesson this module returns to for MCMC as well: an approximate-sampling scheme is only as good as its effective sample size, however that size is achieved. Note also what this problem does *not* have that a closed-form-target check would: your "ground truth" here (the large-$N$ IS-weighted reference) is itself a Monte Carlo estimate, not an independent fact — the same pattern your PS2.6 preview (if you did it) already used at a smaller scale. That's an acceptable cross-check (two estimates from related but distinct procedures agreeing), not a weaker one, precisely because SIR and the weighted estimate can fail independently (a resampling bug won't show up in the weights themselves, and vice versa). Note the division of labor: this problem's check guards only the *resampling* step, because both sides of the comparison share the same weights — a bug in the weights themselves would corrupt reference and resample identically and pass unnoticed here. What guards the weights is your PS2.3 machine-checked test case (the fixed six-point validation against known outputs); this problem builds on functions already validated there, which is why it can focus its own check on the one new thing it introduces. Goal 7's "common family" framing: SIR, MH, and Gibbs are three different answers to the same question — how do you get draws from a target you can only evaluate (up to a constant), when direct sampling isn't available? SIR's answer is "weight-then-resample, once"; MH and Gibbs (below) build an iterative Markov chain instead, trading SIR's one-shot weight degeneracy risk for a different set of tuning/mixing risks you'll spend the rest of this module characterizing.
+**Discussion note:** (folded) All four resamples should land inside the stated tolerances — this is a well-conditioned SIR setup because $M$ (1,000 or 5,000) is kept well below the importance sample's effective size (roughly 14,000–14,600 out of $N=50{,}000$, about 28–29%: this bioassay likelihood is informative but doesn't push the posterior so far from the wide prior that weights collapse the way they did on PS2.3's own tiny 6-point *validation* case — that ESS≈1.354-out-of-6 was a deliberately small test input, not representative of a production-sized draw). If you experiment with $M$ approaching or exceeding the effective sample size, the *without-replacement* resamples in particular degrade sharply — you start being forced to include many low-weight draws just to fill the quota, and the resampled distribution drifts back toward the (wrong) proposal rather than the target. That failure mode is a preview of a lesson this module returns to for MCMC as well: an approximate-sampling scheme is only as good as its effective sample size, however that size is achieved. Note also what this problem does *not* have that a closed-form-target check would: your "ground truth" here (the large-$N$ IS-weighted reference) is itself a Monte Carlo estimate, not an independent fact — the same pattern your PS2.6 preview (if you did it) already used at a smaller scale. That's an acceptable cross-check (two estimates from related but distinct procedures agreeing), not a weaker one, precisely because SIR and the weighted estimate can fail independently (a resampling bug won't show up in the weights themselves, and vice versa). Note the division of labor: this problem's check guards only the *resampling* step, because both sides of the comparison share the same weights — a bug in the weights themselves would corrupt reference and resample identically and pass unnoticed here. What guards the weights is your PS2.3 machine-checked test case (the fixed six-point validation against known outputs); this problem builds on functions already validated there, which is why it can focus its own check on the one new thing it introduces. Goal 7.7's "common family" framing: SIR, MH, and Gibbs are three different answers to the same question — how do you get draws from a target you can only evaluate (up to a constant), when direct sampling isn't available? SIR's answer is "weight-then-resample, once"; MH and Gibbs (below) build an iterative Markov chain instead, trading SIR's one-shot weight degeneracy risk for a different set of tuning/mixing risks you'll spend the rest of this module characterizing.
 
 ---
 
 ### PS7.2 — Random-walk Metropolis-Hastings: the proposal-scale tradeoff
-**Type:** I/V | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 75 min | **Goals:** 2, 3 (7 via discussion note)
+**Type:** I/V | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 75 min | **Goals:** 7.2, 7.3 (7 via discussion note)
 **Prerequisites:** None.
 
 **Statement:**
-*Part A (derivation, Goal 2).* A random-walk Metropolis sampler proposes $\theta' = \theta + \varepsilon$ with $\varepsilon$ drawn from a distribution symmetric about 0 (so the proposal density satisfies $q(\theta' \mid \theta) = q(\theta \mid \theta')$). Starting from the detailed-balance condition $\pi(\theta)\,q(\theta'\mid\theta)\,\alpha(\theta,\theta') = \pi(\theta')\,q(\theta\mid\theta')\,\alpha(\theta',\theta)$, derive the Metropolis-Hastings acceptance probability for this symmetric-proposal case, and show it reduces to
+*Part A (derivation, Goal 7.2).* A random-walk Metropolis sampler proposes $\theta' = \theta + \varepsilon$ with $\varepsilon$ drawn from a distribution symmetric about 0 (so the proposal density satisfies $q(\theta' \mid \theta) = q(\theta \mid \theta')$). Starting from the detailed-balance condition $\pi(\theta)\,q(\theta'\mid\theta)\,\alpha(\theta,\theta') = \pi(\theta')\,q(\theta\mid\theta')\,\alpha(\theta',\theta)$, derive the Metropolis-Hastings acceptance probability for this symmetric-proposal case, and show it reduces to
 $$\alpha(\theta,\theta') = \min\left(1, \frac{\pi(\theta')}{\pi(\theta)}\right).$$
 State in one or two sentences why the proposal terms cancel here but would not in general (asymmetric-proposal) Metropolis-Hastings.
 
-*Part B (implementation, Goals 2–3).* Implement this random-walk Metropolis sampler from scratch (loops, arithmetic, your language's uniform RNG only — no MCMC library calls) targeting $\pi(\theta) = N(0,1)$, with proposal increments $\varepsilon \sim N(0, \delta^2)$. Run the sampler for $50{,}000$ iterations at each of three proposal scales, $\delta \in \{0.1, 1, 10\}$, from the same starting point and using a seed you set and report (a fresh seed per $\delta$, or one seed reused across all three — either is acceptable, but report which). For each $\delta$, record: the acceptance rate; the sample mean and variance of the chain (all $50{,}000$ draws, no warm-up discarded — warm-up handling is Module 8's subject, not this problem's); and the lag-1 and lag-20 sample autocorrelations, $\hat\rho_k = \frac{\sum_t (\theta_t-\bar\theta)(\theta_{t+k}-\bar\theta)}{\sum_t (\theta_t - \bar\theta)^2}$.
+*Part B (implementation, Goals 7.2–7.3).* Implement this random-walk Metropolis sampler from scratch (loops, arithmetic, your language's uniform RNG only — no MCMC library calls) targeting $\pi(\theta) = N(0,1)$, with proposal increments $\varepsilon \sim N(0, \delta^2)$. Run the sampler for $50{,}000$ iterations at each of three proposal scales, $\delta \in \{0.1, 1, 10\}$, from the same starting point and using a seed you set and report (a fresh seed per $\delta$, or one seed reused across all three — either is acceptable, but report which). For each $\delta$, record: the acceptance rate; the sample mean and variance of the chain (all $50{,}000$ draws, no warm-up discarded — warm-up handling is Module 8's subject, not this problem's); and the lag-1 and lag-20 sample autocorrelations, $\hat\rho_k = \frac{\sum_t (\theta_t-\bar\theta)(\theta_{t+k}-\bar\theta)}{\sum_t (\theta_t - \bar\theta)^2}$.
 
 **Deliverable:** Your derivation (Part A, a few lines of algebra + the one-to-two-sentence cancellation note). A table with one row per $\delta \in \{0.1, 1, 10\}$ and columns: acceptance rate, sample mean, sample variance, lag-1 ACF, lag-20 ACF. A 4–6 sentence interpretation of the acceptance-rate/autocorrelation tradeoff across the three scales — in particular, compare what lag-1 vs. lag-20 autocorrelation tells you at each scale, since they don't tell the same story here.
 
@@ -45,7 +45,7 @@ State in one or two sentences why the proposal terms cancel here but would not i
 ---
 
 ### PS7.3 — Two-stage Gibbs sampler on a conjugate Binomial/Beta joint
-**Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 50 min | **Goals:** 4
+**Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 50 min | **Goals:** 7.4
 **Prerequisites:** None.
 
 **Statement:**
@@ -59,7 +59,7 @@ with mean $n\alpha/(\alpha+\beta)$ and variance $\dfrac{n\alpha\beta(\alpha+\bet
 
 *Part B (implementation).* Implement the two-stage Gibbs sampler from scratch: initialize $Y_0$, then alternate $X_t \sim \text{Binomial}(n, Y_{t-1})$ and $Y_t \sim \text{Beta}(X_t+\alpha,\, n-X_t+\beta)$, for $20{,}000$ iterations, discarding the first $1{,}000$ as warm-up. Set and report your seed. Separately, implement **direct sampling** from the same joint: draw $Y \sim \text{Beta}(\alpha,\beta)$, then $X \mid Y \sim \text{Binomial}(n, Y)$ — no Markov chain, just $19{,}000$ independent $(X,Y)$ draws.
 
-*Part C (Goal 4, second clause).* Explain why this Gibbs sampler accepts every proposed draw with probability 1. Specifically: view each Gibbs step as a Metropolis-Hastings step whose proposal distribution is the *exact* full conditional (e.g., proposing $Y' \sim p(y \mid x)$ rather than some other candidate distribution). Write out the MH acceptance ratio $\alpha(\text{current}, \text{proposed}) = \min\left(1, \frac{\pi(\text{proposed})\,q(\text{current}\mid \text{proposed})}{\pi(\text{current})\,q(\text{proposed}\mid\text{current})}\right)$ for this case (where $\pi$ is that step's target — the full conditional itself) and show algebraically that it equals 1 identically, for any current/proposed pair. This is why Gibbs needs no accept/reject step at all: it is the special case of Metropolis-Hastings where the proposal *is* the target.
+*Part C (Goal 7.4, second clause).* Explain why this Gibbs sampler accepts every proposed draw with probability 1. Specifically: view each Gibbs step as a Metropolis-Hastings step whose proposal distribution is the *exact* full conditional (e.g., proposing $Y' \sim p(y \mid x)$ rather than some other candidate distribution). Write out the MH acceptance ratio $\alpha(\text{current}, \text{proposed}) = \min\left(1, \frac{\pi(\text{proposed})\,q(\text{current}\mid \text{proposed})}{\pi(\text{current})\,q(\text{proposed}\mid\text{current})}\right)$ for this case (where $\pi$ is that step's target — the full conditional itself) and show algebraically that it equals 1 identically, for any current/proposed pair. This is why Gibbs needs no accept/reject step at all: it is the special case of Metropolis-Hastings where the proposal *is* the target.
 
 **Deliverable:** Parts A and C as short derivations (a few lines of algebra each). For Part B: your $19{,}000$ post-warm-up Gibbs draws of $X$ and your $19{,}000$ direct-sampling draws of $X$; a histogram of each overlaid on the closed-form Beta-Binomial pmf from Part A; a small table comparing (Gibbs mean, Gibbs variance), (direct-sampling mean, direct-sampling variance), and (closed-form mean, closed-form variance).
 
@@ -72,7 +72,7 @@ with mean $n\alpha/(\alpha+\beta)$ and variance $\dfrac{n\alpha\beta(\alpha+\bet
 ---
 
 ### PS7.4 — Hierarchical Gibbs sampler: ten-pump failure-rate estimation (healthy chain export)
-**Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 75 min | **Goals:** 4 (6-adjacent interpretation)
+**Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 75 min | **Goals:** 7.4 (6-adjacent interpretation)
 **Prerequisites:** None.
 
 **Statement:**
@@ -104,7 +104,7 @@ For this sampler, "one column per parameter" means eleven columns: $\theta_1,\do
 ---
 
 ### PS7.5 — Metropolis-within-Gibbs: a non-conjugate conditional
-**Type:** I | **Tier:** 3 | **Core/Optional:** Core | **Time:** 60 min | **Goals:** 6
+**Type:** I | **Tier:** 3 | **Core/Optional:** Core | **Time:** 60 min | **Goals:** 7.6
 **Prerequisites:** Reuses your PS7.2 random-walk Metropolis-Hastings step (the accept/reject machinery, not its target).
 
 **Statement:**
@@ -122,12 +122,12 @@ Run the sampler for $20{,}000$ iterations, alternating a direct draw of $\mu$ (G
 
 **Verification:** Tier 3 (executed and logged). At $n=50$, $n_{\text{iter}}=20{,}000$ (burn-in 2,000), $\delta=0.5$: your posterior mean of $\mu$ should satisfy $|\text{mean} - 5.0| < 1.0$; your posterior mean of $\sigma$ should satisfy $|\text{mean} - 2.0| < 0.7$; your $\sigma$-step acceptance rate should fall in $[0.25, 0.55]$ (this last one is a sanity check that $\delta=0.5$ is reasonably tuned for this problem, not a recovery check — an acceptance rate far outside this band suggests a bug in the $\sigma$ target, not bad luck).
 
-**Discussion note:** (folded) If your acceptance rate is near 0 or near 1, check the sign in your accept/reject comparison and your handling of $\sigma' \le 0$ before assuming your data draw was unlucky — this is the same A5.2-style bug class (inverted inequality) that PS7.7 hunts for directly. The general principle for Goal 6: Metropolis-within-Gibbs is warranted whenever a model has a mix of conjugate and non-conjugate structure — which is the common case for any realistically-specified hierarchical or non-conjugate-prior model, not a rare edge case. You don't need every conditional to be tractable to use Gibbs; you only need *a* valid way to update each block of parameters given the rest, and an MH step (as here) is one such way whenever direct sampling isn't available. This is also why the module doesn't ask you to derive an MH acceptance ratio from scratch a second time: the accept/reject *machinery* from PS7.2 is completely general-purpose — only the target density changes.
+**Discussion note:** (folded) If your acceptance rate is near 0 or near 1, check the sign in your accept/reject comparison and your handling of $\sigma' \le 0$ before assuming your data draw was unlucky — this is the same A5.2-style bug class (inverted inequality) that PS7.7 hunts for directly. The general principle for Goal 7.6: Metropolis-within-Gibbs is warranted whenever a model has a mix of conjugate and non-conjugate structure — which is the common case for any realistically-specified hierarchical or non-conjugate-prior model, not a rare edge case. You don't need every conditional to be tractable to use Gibbs; you only need *a* valid way to update each block of parameters given the rest, and an MH step (as here) is one such way whenever direct sampling isn't available. This is also why the module doesn't ask you to derive an MH acceptance ratio from scratch a second time: the accept/reject *machinery* from PS7.2 is completely general-purpose — only the target density changes.
 
 ---
 
 ### PS7.6 — Diagnosing a stuck sampler: a well-separated bimodal target
-**Type:** D | **Tier:** 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 3 (failure); feeds Module 8
+**Type:** D | **Tier:** 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 7.3 (failure); feeds Module 8
 **Prerequisites:** None (reuses your PS7.2 RW-MH machinery, but any from-scratch RW-MH implementation is fine here).
 
 **Statement:**
@@ -148,7 +148,7 @@ For this problem, save the $\delta=0.5$, $\theta_0=-5$ chain (single column, $\t
 ---
 
 ### PS7.7 — Bug hunt: three ways a Metropolis sampler can look right and be wrong *(optional)*
-**Type:** D | **Tier:** 1+3 | **Core/Optional:** Optional | **Time:** 45 min | **Goals:** 2, 3 (does not count toward Goal 3's from-scratch requirement)
+**Type:** D | **Tier:** 1+3 | **Core/Optional:** Optional | **Time:** 45 min | **Goals:** 7.2, 7.3 (does not count toward Goal 3's from-scratch requirement)
 **Prerequisites:** None.
 
 **Statement:**

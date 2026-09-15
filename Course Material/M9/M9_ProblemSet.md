@@ -3,7 +3,7 @@
 ## Module 9 — Density Estimation
 
 ### PS9.1 — Histogram and Gaussian-kernel KDE from scratch: the bias-variance tradeoff
-**Type:** I/V | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 55 min | **Goals:** 1, 2
+**Type:** I/V | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 55 min | **Goals:** 9.1, 9.2
 **Prerequisites:** None.
 
 **Statement:**
@@ -13,9 +13,9 @@ f_0(x) = 0.55 \cdot N(x; -2.0,\, 0.6^2) \;+\; 0.45 \cdot N(x; 2.0,\, 0.9^2).
 $$
 This is your **known density** for this problem: fully specified, so any density estimate you compute can be checked directly against it. Draw a sample of $n=500$ from $f_0$ (draw a component indicator per observation with the stated mixture weights, then draw from the indicated component's normal), using a seed you set and report.
 
-*Part A (histogram — Goal 1 framing).* Implement a histogram density estimator from scratch: choose bin edges over a stated range with a given bin width $h$, count the sample points falling in each bin, and normalize so the result integrates to 1 (height $=$ count $/(n \cdot h)$). Compute it at three bin widths: $h \in \{0.15,\ 0.5,\ 2.0\}$ — deliberately too fine, plausibly reasonable, and too coarse. This is the estimator that motivates the rest of the module: notice, before moving to Part B, what goes wrong at each extreme (Goal 1 — articulating why a fixed-bin, hard-edged estimator is an unsatisfying solution to the density estimation problem).
+*Part A (histogram — Goal 9.1 framing).* Implement a histogram density estimator from scratch: choose bin edges over a stated range with a given bin width $h$, count the sample points falling in each bin, and normalize so the result integrates to 1 (height $=$ count $/(n \cdot h)$). Compute it at three bin widths: $h \in \{0.15,\ 0.5,\ 2.0\}$ — deliberately too fine, plausibly reasonable, and too coarse. This is the estimator that motivates the rest of the module: notice, before moving to Part B, what goes wrong at each extreme (Goal 9.1 — articulating why a fixed-bin, hard-edged estimator is an unsatisfying solution to the density estimation problem).
 
-*Part B (Gaussian-kernel KDE — Goal 2, the core of this problem).* Implement a Gaussian-kernel KDE from scratch:
+*Part B (Gaussian-kernel KDE — Goal 9.2, the core of this problem).* Implement a Gaussian-kernel KDE from scratch:
 $$
 \hat f_h(x) = \frac{1}{nh}\sum_{i=1}^n K\!\left(\frac{x - x_i}{h}\right), \qquad K(u) = \frac{1}{\sqrt{2\pi}}e^{-u^2/2}.
 $$
@@ -40,7 +40,7 @@ by numerical integration (e.g., a fine grid and the trapezoid rule over a range 
 ---
 
 ### PS9.2 — Bandwidth selector (Silverman's rule of thumb)
-**Type:** I/V | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 35 min | **Goals:** 3
+**Type:** I/V | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 35 min | **Goals:** 9.3
 **Prerequisites:** Reuses your PS9.1 synthetic sample (same seed, same known mixture density) and your PS9.1 sweep results.
 
 **Statement:**
@@ -60,11 +60,11 @@ Using your PS9.1 sample ($n=500$): compute $\hat\sigma$ (sample standard deviati
 - **Tier 2:** the selector formula itself (Eq 3.31, with $A$ per Eq 3.30) — confirmed against Silverman (1986) Ch 3 §3.4, pp. 43–48.
 - **Tier 3:** your $h_{\text{Silverman}}$ should fall in $[0.45, 0.65]$ for this density and $n=500$. Your $\mathrm{ISE}(h_{\text{Silverman}})$ should exceed your $\mathrm{ISE}(h^\*)$ by a ratio of **at least 2.5** — i.e., the selector should land clearly on the oversmoothed side of your sweep, well short of either grid extreme.
 
-**Discussion note:** (folded) $A$ is a single global spread number computed from your whole sample — it has no way to "see" that the data actually came from two well-separated components, so it necessarily returns a bandwidth calibrated as if smoothing toward *some* single-bump reference distribution with roughly the same overall spread. Silverman's own discussion of exactly this situation (Fig 3.3; an equal mixture of unit-variance normals, means separated by a stated amount) shows the rule-of-thumb bandwidth increasingly exceeding the true asymptotically-optimal one as that separation grows past roughly two standard deviations, worsening steadily beyond that. Your PS9.1 mixture isn't literally that idealized case (unequal weights, unequal component variances), but the separation here in standard-deviation units is well into the range where Silverman's own analysis shows this degradation — and your own numbers confirm it directly: $h_{\text{Silverman}}$ lands 2–3$\times$ your sweep-optimal $h^\*$, and its ISE is several times worse, without ever approaching the *catastrophic* oversmoothing of the grid's own $h=2.0$ extreme. This is the practical lesson Goal 3 is after: a "principled," textbook-recommended selector is not the same thing as *the* optimal bandwidth for your particular data — it is a generically-reasonable default, deliberately biased toward safety (undersmoothing is harder to fix by eye than oversmoothing), which will systematically oversmooth exactly the kind of multimodal structure this module has been asking you to detect and characterize in every other problem in this set.
+**Discussion note:** (folded) $A$ is a single global spread number computed from your whole sample — it has no way to "see" that the data actually came from two well-separated components, so it necessarily returns a bandwidth calibrated as if smoothing toward *some* single-bump reference distribution with roughly the same overall spread. Silverman's own discussion of exactly this situation (Fig 3.3; an equal mixture of unit-variance normals, means separated by a stated amount) shows the rule-of-thumb bandwidth increasingly exceeding the true asymptotically-optimal one as that separation grows past roughly two standard deviations, worsening steadily beyond that. Your PS9.1 mixture isn't literally that idealized case (unequal weights, unequal component variances), but the separation here in standard-deviation units is well into the range where Silverman's own analysis shows this degradation — and your own numbers confirm it directly: $h_{\text{Silverman}}$ lands 2–3$\times$ your sweep-optimal $h^\*$, and its ISE is several times worse, without ever approaching the *catastrophic* oversmoothing of the grid's own $h=2.0$ extreme. This is the practical lesson Goal 9.3 is after: a "principled," textbook-recommended selector is not the same thing as *the* optimal bandwidth for your particular data — it is a generically-reasonable default, deliberately biased toward safety (undersmoothing is harder to fix by eye than oversmoothing), which will systematically oversmooth exactly the kind of multimodal structure this module has been asking you to detect and characterize in every other problem in this set.
 
 ---
 ### PS9.3 — Rao-Blackwellized density estimate vs. plain KDE (pump-failure Gibbs output)
-**Type:** C | **Tier:** 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 4
+**Type:** C | **Tier:** 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 9.4
 **Prerequisites:** Requires your saved PS7.4 chain.
 
 **Statement:**
@@ -95,7 +95,7 @@ Your RB curve must integrate to between 0.97 and 1.03 over the range you compute
 
 ---
 ### PS9.4 — Nearest-neighbor density estimation: tail behavior vs. KDE
-**Type:** I/V | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 5
+**Type:** I/V | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 9.5
 **Prerequisites:** Reuses your PS9.1 synthetic sample (same seed, same known mixture density) and your PS9.1 sweep-optimal KDE.
 
 **Statement:**
@@ -121,7 +121,7 @@ Then examine **tail behavior**, where kNN and KDE are known to diverge sharply. 
 
 ---
 ### PS9.5 — Two defensible bandwidths, two different stories (Type D)
-**Type:** D | **Tier:** 3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 6
+**Type:** D | **Tier:** 3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 9.6
 **Prerequisites:** None (new dataset; does not reuse PS9.1's sample).
 
 **Statement:**

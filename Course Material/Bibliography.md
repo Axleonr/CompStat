@@ -1,6 +1,20 @@
 # Computational Statistics — Bibliography
  
-*Internal version 1.4.*
+## Module Index
+
+| Module | Sources |
+|---|---|
+| 0 | Tukey (1962); Efron & Hastie (2016) |
+| 1 | Owen (2013); L'Ecuyer (1998); L'Ecuyer (1999); Devroye (1986) |
+| 2 | Robert & Casella (2004); Owen (2013); Glasserman (2003) |
+| 3 | Efron (1979); Efron & Tibshirani (1993); Davison & Hinkley (1997) |
+| 4 | Lange (2010); Nocedal & Wright (2006); Dempster, Laird & Rubin (1977); Wu (1983); Givens & Hoeting (2013) |
+| 5 | Gelman et al. (2013) BDA3 |
+| 6 | Levin, Peres & Wilmer (2009) |
+| 7 | Givens & Hoeting (2013); Gelman et al. (2013) BDA3; Robert & Casella (2004); Roberts & Rosenthal (2001); VanDerwerken (2017) |
+| 8 | Geyer (1992); Gelman et al. (2013) BDA3; Stan Development Team; Flegal, Haran & Jones (2008); Cowles & Carlin (1996); Link & Eaton (2012); Robert & Casella (2004); Givens & Hoeting (2013) |
+| 9 | Silverman (1986); Givens & Hoeting (2013) |
+| 10 | Gelman et al. (2013) BDA3; Efron & Hastie (2016); Gelman & Vehtari (2021); Donoho (2017) |
  
 ## I. Disciplinary Orientation
  
@@ -163,7 +177,6 @@ Course materials (`rmcelreath/stat_rethinking_2023` and related repos) are offer
 **Gelman et al. — BDA3 official partial solutions PDF.** \
 `sites.stat.columbia.edu/gelman/book/solutions3.pdf` (24 June 2019 build), recorded as a primary, directly-inspected source — Ch 5's solution *content* (not merely the statements) was verified against this document — rather than a secondary or TOC-level index.
 
-*Cross-reference: Robert & Casella, Introducing Monte Carlo Methods with R (2010) — problem-provenance role; see Section III.*
  
 
 

@@ -3,7 +3,7 @@
 ## Module 2 — Monte Carlo Estimation & Variance Reduction
 
 ### PS2.1 — Plain Monte Carlo integration and the n^(−1/2) rate
-**Type:** I/V | **Tier:** 2 (estimand) + 3 (rate-plot slope) | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 1, 2
+**Type:** I/V | **Tier:** 2 (estimand) + 3 (rate-plot slope) | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 2.1, 2.2
 **Prerequisites:** None
 
 **Statement:**
@@ -34,12 +34,12 @@ draw a **fresh, independent** set of $n$ uniforms (do not reuse draws across gri
 - **Tier 3 (rate-plot slope):** your fitted slope should fall in **[-0.80, -0.20]** (verified across 2000 seeds). This band is wider than a naive "should be $-0.5$" expectation because a *single* realization per grid point is genuinely noisy at the small-$n$ end of the grid. A slope near 0 (error not shrinking) or a slope steeper than about $-1$ both indicate a implementation problem, not sampling noise.
 
 **Discussion note:** *(folded — instructor-facing, no solution code)*
-A correct implementation should show noisy but clearly decreasing error as $n$ grows, with the log-log slope landing in the stated band the large majority of the time — we found about 97.75% of independent single-run realizations on this exact grid land inside [-0.80, -0.20], with the extreme 0.5th/99.5th percentiles near -0.85/-0.14. Common failure modes: (a) accidentally computing a cumulative/running average across grid points instead of fresh independent draws per $n$, which correlates the errors and can distort the fitted slope in either direction; (b) mis-specifying the exponent or the domain of $U$ (e.g., drawing from $(-1,1)$ instead of $(0,1)$), which breaks the closed-form check immediately at any $n$; (c) an off-by-one or vectorization bug that silently uses $n-1$ or double-counts a draw, usually visible as a small but consistent bias that does not shrink with $n$. This problem establishes the module's baseline rate — PS2.2 through PS2.5 all reduce the *constant* in front of $n^{-1/2}$ without changing the exponent itself, which is exactly what those problems' write-ups should note explicitly (preview of Goal 5).
+A correct implementation should show noisy but clearly decreasing error as $n$ grows, with the log-log slope landing in the stated band the large majority of the time — we found about 97.75% of independent single-run realizations on this exact grid land inside [-0.80, -0.20], with the extreme 0.5th/99.5th percentiles near -0.85/-0.14. Common failure modes: (a) accidentally computing a cumulative/running average across grid points instead of fresh independent draws per $n$, which correlates the errors and can distort the fitted slope in either direction; (b) mis-specifying the exponent or the domain of $U$ (e.g., drawing from $(-1,1)$ instead of $(0,1)$), which breaks the closed-form check immediately at any $n$; (c) an off-by-one or vectorization bug that silently uses $n-1$ or double-counts a draw, usually visible as a small but consistent bias that does not shrink with $n$. This problem establishes the module's baseline rate — PS2.2 through PS2.5 all reduce the *constant* in front of $n^{-1/2}$ without changing the exponent itself, which is exactly what those problems' write-ups should note explicitly (preview of Goal 2.5).
 
 ---
 
 ### PS2.2 — Antithetic variates and control variates: measured variance reduction
-**Type:** I/V | **Tier:** 2 (estimands + structural identities) + 3 (achieved variance-reduction ratios) | **Core/Optional:** Core | **Time:** 60 min | **Goals:** 3
+**Type:** I/V | **Tier:** 2 (estimands + structural identities) + 3 (achieved variance-reduction ratios) | **Core/Optional:** Core | **Time:** 60 min | **Goals:** 2.3
 **Prerequisites:** None (may reuse your PS2.1 plain-MC code as the baseline, but this problem is self-contained if not)
 
 **Statement:**
@@ -81,7 +81,7 @@ Common failure modes:
 ---
 
 ### PS2.3 — The importance sampler (module export): bioassay posterior via prior proposal
-**Type:** I | **Tier:** 1 | **Core/Optional:** Core | **Time:** 60 min | **Goals:** 4 (+1, 2 via the MCSE part)
+**Type:** I | **Tier:** 1 | **Core/Optional:** Core | **Time:** 60 min | **Goals:** 2.4 (+1, 2 via the MCSE part)
 **Prerequisites:** None. **This problem is exported:** package your solution as the four named functions below exactly as specified — Module 7's SIR problem will require them by name and by this problem's ID.
 
 **Statement:**
@@ -118,7 +118,7 @@ Finally, using `is_ess` and the weighted variance of your test-case draws, compu
 - The four named functions, implemented from primitives (arithmetic and the language's own exp/log — no library ESS, IS, or Bayesian-inference routines).
 - The 1–2 sentence prior-cancellation explanation.
 - The function outputs on the test case: the six log-ratios, the six normalized weights, the posterior-mean estimate of $(\alpha,\beta)$, the ESS, and the two MCSEs.
-- 3–5 sentences: (a) what the test-case weights themselves already reveal about importance-weight degeneracy (look at how many of the six weights are essentially zero), and (b) how the MCSE compares to what you'd expect from a plain Monte Carlo estimator with the same *nominal* sample size (6) versus its *effective* sample size ($S_{\text{eff}}$) — this is the direct link back to Goals 1–2's error characterization.
+- 3–5 sentences: (a) what the test-case weights themselves already reveal about importance-weight degeneracy (look at how many of the six weights are essentially zero), and (b) how the MCSE compares to what you'd expect from a plain Monte Carlo estimator with the same *nominal* sample size (6) versus its *effective* sample size ($S_{\text{eff}}$) — this is the direct link back to Goals 2.1–2.2's error characterization.
 
 **Verification:**
 - **Tier 1 (all values below are machine-checked against the original Aalto A4 test-input/output values):**
@@ -136,7 +136,7 @@ This is the module's exported artifact: Module 7's SIR problem (PS7.1) will requ
 ---
 
 ### PS2.4 — Diagnosing importance-weight degeneracy: a light-tailed proposal on a heavy-tailed target
-**Type:** D | **Tier:** 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 4
+**Type:** D | **Tier:** 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 2.4
 **Prerequisites:** None
 
 **Statement:**
@@ -174,7 +174,7 @@ Common failure modes:
 ---
 
 ### PS2.5 — Comparing variance-reduction techniques at a fixed budget
-**Type:** V | **Tier:** 2 (estimand) + 3 (achieved variances and their ordering) | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 5
+**Type:** V | **Tier:** 2 (estimand) + 3 (achieved variances and their ordering) | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 2.5
 **Prerequisites:** None (structurally similar to PS2.2 and PS2.4, but a new target)
 
 **Statement:**
@@ -206,12 +206,12 @@ For each of the four estimators, repeat the entire estimator independently $R=20
   - **Ordering:** importance sampling's variance should be far below control variate's, which should be at or modestly below antithetic's and plain's (which should be close to each other).
 
 **Discussion note:** *(folded — instructor-facing, no solution code)*
-This problem is deliberately built so the three techniques do *not* perform similarly — unlike PS2.2's dramatic e^U example, this is a case where the mechanism-target mismatch is real and instructive. Analytically (sanity-checked against the executed run, not given to students as the target): the antithetic ratio is exactly $(1-p)/(1-2p)\approx 1.024$, because the joint event "both $Z>2$ and $-Z>2$" is impossible for $c=2>0$, so the achievable negative correlation is bounded by $-p^2$ — tiny, since $p$ itself is tiny. The control variate's optimal-$c$ ratio is $1/(1-\rho^2)\approx 1.151$ where $\rho^2 = \phi(2)^2/[p(1-p)]\approx 0.131$ — a genuine, moderate correlation between $Z$ and the indicator. Importance sampling wins decisively because it directly addresses *where the budget is spent*: half of the proposal's draws now land above the threshold, versus only ≈2.3% under the plain sampler, which is exactly the lever a rare-event problem needs. Students should walk away recognizing this as the central lesson of Goal 5: these are mechanistically distinct interventions, and which one helps — and by how much — depends on the specific structure of the target and the statistic, not a fixed hierarchy of "better" techniques. A student who reports "antithetic did nothing" is not reporting a bug; a student whose antithetic ratio happens to land at 0.9 should say so plainly rather than "fixing" it. Common failure modes: (a) expecting antithetic to show a large reduction because it did in PS2.2, and treating a near-1 ratio as an implementation error; (b) forgetting the fixed-workload accounting for antithetic (n/2 draws, not n); (c) computing the IS weight with the wrong sign in the exponent (should shrink weight for draws far from the target region, not grow it).
+This problem is deliberately built so the three techniques do *not* perform similarly — unlike PS2.2's dramatic e^U example, this is a case where the mechanism-target mismatch is real and instructive. Analytically (sanity-checked against the executed run, not given to students as the target): the antithetic ratio is exactly $(1-p)/(1-2p)\approx 1.024$, because the joint event "both $Z>2$ and $-Z>2$" is impossible for $c=2>0$, so the achievable negative correlation is bounded by $-p^2$ — tiny, since $p$ itself is tiny. The control variate's optimal-$c$ ratio is $1/(1-\rho^2)\approx 1.151$ where $\rho^2 = \phi(2)^2/[p(1-p)]\approx 0.131$ — a genuine, moderate correlation between $Z$ and the indicator. Importance sampling wins decisively because it directly addresses *where the budget is spent*: half of the proposal's draws now land above the threshold, versus only ≈2.3% under the plain sampler, which is exactly the lever a rare-event problem needs. Students should walk away recognizing this as the central lesson of Goal 2.5: these are mechanistically distinct interventions, and which one helps — and by how much — depends on the specific structure of the target and the statistic, not a fixed hierarchy of "better" techniques. A student who reports "antithetic did nothing" is not reporting a bug; a student whose antithetic ratio happens to land at 0.9 should say so plainly rather than "fixing" it. Common failure modes: (a) expecting antithetic to show a large reduction because it did in PS2.2, and treating a near-1 ratio as an implementation error; (b) forgetting the fixed-workload accounting for antithetic (n/2 draws, not n); (c) computing the IS weight with the wrong sign in the exponent (should shrink weight for draws far from the target region, not grow it).
 
 ---
 
 ### PS2.6 — Optional: resampling from importance weights (a preview of SIR, Module 7)
-**Type:** C | **Tier:** 2 (theoretical motivation) + 3 (executed agreement check) | **Core/Optional:** Optional | **Time:** 30 min | **Goals:** 6
+**Type:** C | **Tier:** 2 (theoretical motivation) + 3 (executed agreement check) | **Core/Optional:** Optional | **Time:** 30 min | **Goals:** 2.6
 **Prerequisites:** Requires your PS2.3 importance sampler (the four named functions)
 
 **Statement:** *This problem is a preview of Sampling Importance Resampling (SIR), which Module 7 formalizes as a full approximate-sampling method (PS7.1 — built on your PS2.3 functions; this problem is an optional preview of the same resampling pattern, not a prerequisite). Do not implement or explain any MCMC machinery here — this is strictly the importance-sampling-to-resampling bridge.*
@@ -237,7 +237,7 @@ Expect ESS around 25–35% of $N=4000$ for this model — degenerate relative to
 ---
 
 ### PS2.7 — Optional: when antithetic variates don't help — a non-monotone statistic
-**Type:** V | **Tier:** 2 (estimand) + 3 (executed variance ratio) | **Core/Optional:** Optional | **Time:** 30 min | **Goals:** 3, 5
+**Type:** V | **Tier:** 2 (estimand) + 3 (executed variance ratio) | **Core/Optional:** Optional | **Time:** 30 min | **Goals:** 2.3, 2.5
 **Prerequisites:** Builds on PS2.2(a)'s antithetic code (same pairing construction, a different $h$)
 
 **Statement:**
@@ -257,6 +257,6 @@ Implement the plain estimator and the antithetic estimator exactly as in PS2.2(a
 - **Tier 3 (executed variance ratio):** your ratio (plain variance ÷ antithetic variance) should fall in **[0.35, 0.65]** — notably **below 1**, meaning antithetic pairing is *worse* than plain Monte Carlo here, not merely unhelpful. This is a tight, confidently-set band: unlike PS2.5's antithetic case (a small, noisy true effect), this one rests on an exact algebraic identity ($h(1-u)\equiv h(u)$), so the true population ratio is exactly $0.5$ and the calibration spread around it is small.
 
 **Discussion note:** *(folded — instructor-facing, no solution code)*
-The mechanism failure is exact, not approximate: because $h(1-u)\equiv h(u)$, the "pair average" $[h(U_i)+h(1-U_i)]/2$ collapses to $h(U_i)$ itself — you have paid for $n$ evaluations but only ever learn $n/2$ independent facts about $h$, exactly halving your effective sample size relative to a plain $n$-draw estimator. This is the cleanest possible illustration that antithetic variance reduction is *not* a free property of pairing $U$ with $1-U$ — it specifically requires the negative-correlation structure that monotonicity guarantees, and a symmetric $h$ is close to a worst case rather than a neutral one. Frame this for students as completing the module's Goal 3/5 picture: PS2.2(a) showed antithetic variates working dramatically; PS2.5 showed them barely working on a different, non-symmetric but non-monotone-friendly target; this problem shows them actively backfiring on a symmetric target. Common failure modes: (a) not noticing the exact algebraic identity and instead treating the observed ratio as "just noisy," missing the deterministic explanation; (b) accidentally implementing $h(1-u)$ with a sign error that breaks the exact-symmetry check (verify $h(1-u)=h(u)$ numerically before running the variance comparison).
+The mechanism failure is exact, not approximate: because $h(1-u)\equiv h(u)$, the "pair average" $[h(U_i)+h(1-U_i)]/2$ collapses to $h(U_i)$ itself — you have paid for $n$ evaluations but only ever learn $n/2$ independent facts about $h$, exactly halving your effective sample size relative to a plain $n$-draw estimator. This is the cleanest possible illustration that antithetic variance reduction is *not* a free property of pairing $U$ with $1-U$ — it specifically requires the negative-correlation structure that monotonicity guarantees, and a symmetric $h$ is close to a worst case rather than a neutral one. Frame this for students as completing the module's Goal 2.3/2.5 picture: PS2.2(a) showed antithetic variates working dramatically; PS2.5 showed them barely working on a different, non-symmetric but non-monotone-friendly target; this problem shows them actively backfiring on a symmetric target. Common failure modes: (a) not noticing the exact algebraic identity and instead treating the observed ratio as "just noisy," missing the deterministic explanation; (b) accidentally implementing $h(1-u)$ with a sign error that breaks the exact-symmetry check (verify $h(1-u)=h(u)$ numerically before running the variance comparison).
 
 ---

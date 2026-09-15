@@ -3,7 +3,7 @@
 ## Module 3 — Bootstrap & Resampling
 
 ### PS3.1 — The bootstrap, from primitives, on a real-world-shaped dataset
-**Type:** I | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 1, 2
+**Type:** I | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 3.1, 3.2
 **Prerequisites:** None
 
 **Statement:**
@@ -19,7 +19,7 @@ Two datasets below represent repair times (in some time unit) for two groups of 
 
 **ILEC group (n = 1,664)** — generate your own sample: draw 1,664 values from a Gamma distribution with shape parameter 0.3282 and scale parameter 25.625 (this gamma choice reproduces the published ILEC mean ≈ 8.41 and SE-of-mean ≈ s/√n ≈ 0.36). Set and report your own seed.
 
-Implement the **nonparametric bootstrap** for the sample mean **from primitives**: write your own loop that (i) draws $n$ indices with replacement from $\{1,\dots,n\}$ using your language's uniform RNG, (ii) forms the resample, (iii) computes the resample mean, and (iv) repeats this $r=10{,}000$ times to build the bootstrap distribution. Do not call a library bootstrap routine (e.g., `boot()` in R, `scipy.stats.bootstrap`) — the resampling loop itself is the thing Goal 2 asks you to implement.
+Implement the **nonparametric bootstrap** for the sample mean **from primitives**: write your own loop that (i) draws $n$ indices with replacement from $\{1,\dots,n\}$ using your language's uniform RNG, (ii) forms the resample, (iii) computes the resample mean, and (iv) repeats this $r=10{,}000$ times to build the bootstrap distribution. Do not call a library bootstrap routine (e.g., `boot()` in R, `scipy.stats.bootstrap`) — the resampling loop itself is the thing Goal 3.2 asks you to implement.
 
 For each group, compute:
 1. The bootstrap standard error (the sample SD of your $r$ bootstrap means).
@@ -38,12 +38,12 @@ Finally, write 3–5 sentences explaining *why* resampling with replacement from
 - **Tier 1**, narrowness relation: your CLEC bootstrap SE should be within about ±10% of $s/\sqrt n \cdot \sqrt{(n-1)/n}$.
 - **Tier 1**, two-arm contrast: your CLEC bootstrap SE should be at least 8× your ILEC bootstrap SE (reflecting the sample-size asymmetry — this is the point of using two arms of very different size).
 
-**Discussion note:** (folded guidance; no solution code) A correct implementation should show the CLEC bootstrap distribution is much wider than ILEC's — driven almost entirely by the ~72× difference in sample size, not by a difference in how skewed the two underlying populations are. A common error is calling a library bootstrap function instead of writing the resample loop — this technically produces a similar-looking number but doesn't exercise Goal 2's "implement." Another common miss: forgetting that the percentile CI is read directly off the bootstrap distribution's quantiles, not computed from a formula. On the narrowness check: this factor is *exact* for the theoretical (infinite-resample) bootstrap of the mean; your Monte Carlo bootstrap at r=10,000 will be close but not identical, because of ordinary Monte Carlo noise on top of the exact plug-in relation — both sources of variation exist simultaneously and shouldn't be conflated (a preview of PS3.6's theme).
+**Discussion note:** (folded guidance; no solution code) A correct implementation should show the CLEC bootstrap distribution is much wider than ILEC's — driven almost entirely by the ~72× difference in sample size, not by a difference in how skewed the two underlying populations are. A common error is calling a library bootstrap function instead of writing the resample loop — this technically produces a similar-looking number but doesn't exercise Goal 3.2's "implement." Another common miss: forgetting that the percentile CI is read directly off the bootstrap distribution's quantiles, not computed from a formula. On the narrowness check: this factor is *exact* for the theoretical (infinite-resample) bootstrap of the mean; your Monte Carlo bootstrap at r=10,000 will be close but not identical, because of ordinary Monte Carlo noise on top of the exact plug-in relation — both sources of variation exist simultaneously and shouldn't be conflated (a preview of PS3.6's theme).
 
 ---
 
 ### PS3.2 — Parametric vs. nonparametric bootstrap
-**Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 2
+**Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 3.2
 **Prerequisites:** None (independent of PS3.1, though it reuses the resampling-loop skill)
 
 **Statement:**
@@ -68,7 +68,7 @@ Compare the two SEs, and compare each to what theory says it should be (see Veri
 ---
 
 ### PS3.3 — The accuracy hierarchy, made visible: a coverage experiment
-**Type:** V | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 75 min | **Goals:** 2, 3
+**Type:** V | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 75 min | **Goals:** 3.2, 3.3
 **Prerequisites:** the resampling-loop skill from PS3.1 (no code reuse required, just familiarity)
 
 **Statement:**
@@ -114,7 +114,7 @@ Write 3–5 sentences describing the pattern you see — where does BC$_a$ sit r
 ---
 
 ### PS3.4 — When the bootstrap can't help: an infinite-variance failure
-**Type:** D | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 4
+**Type:** D | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 3.4
 **Prerequisites:** the resampling-loop skill from PS3.1
 
 **Statement:**
@@ -141,7 +141,7 @@ Diagnose, in 3–5 sentences: what does it mean for a statistic's bootstrap dist
 ---
 
 ### PS3.5 — Bootstrapping dependent data: the moving blocks bootstrap
-**Type:** I/V | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 5
+**Type:** I/V | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 3.5
 **Prerequisites:** the resampling-loop skill from PS3.1
 
 **Statement:**
@@ -166,12 +166,12 @@ Write 3–5 sentences on why the naive bootstrap understates the true uncertaint
 - **Primary check (Tier 3, the actual point of the problem):** both $\text{MBB-}L{=}5\ /\ \text{naive}$ and $\text{MBB-}L{=}20\ /\ \text{naive}$ **width ratios should be at least 1.4** — i.e., both blocked variants should produce a CI at least 40% wider than the naive one.
 - Rough absolute bands (Tier 3): naive width $\in [0.30, 0.45]$; MBB-5 width $\in [0.50, 0.85]$; MBB-20 width $\in [0.45, 1.10]$ (wider band — block-length-20 resamples carry more single-realization Monte Carlo variability at this series length).
 
-**Discussion note:** (folded guidance; no solution code) The naive bootstrap's percentile CI is too narrow because resampling individual points with replacement destroys the positive autocorrelation — a naive resample looks like an *iid* series with the same marginal variance, understating how much the actual dependent series can wander. The moving blocks bootstrap preserves short-range dependence *within* each block (of length $L$) but breaks it *across* block boundaries — so it works best when $L$ is long enough to capture most of the autocorrelation (roughly, several multiples of $1/(1-\phi)$) but still short enough that many distinct blocks are available to resample from; choosing $L$ is a real bias-variance tradeoff the problem does not ask students to fully resolve, only to observe. Do not expect $L=20$ to reliably beat $L=5$ at recovering the *exact* AR(1)-aware theoretical SE at this single sample realization — both reliably beat naive, which is what Goal 5 asks for ("what each modification corrects for and what residual limitations remain").
+**Discussion note:** (folded guidance; no solution code) The naive bootstrap's percentile CI is too narrow because resampling individual points with replacement destroys the positive autocorrelation — a naive resample looks like an *iid* series with the same marginal variance, understating how much the actual dependent series can wander. The moving blocks bootstrap preserves short-range dependence *within* each block (of length $L$) but breaks it *across* block boundaries — so it works best when $L$ is long enough to capture most of the autocorrelation (roughly, several multiples of $1/(1-\phi)$) but still short enough that many distinct blocks are available to resample from; choosing $L$ is a real bias-variance tradeoff the problem does not ask students to fully resolve, only to observe. Do not expect $L=20$ to reliably beat $L=5$ at recovering the *exact* AR(1)-aware theoretical SE at this single sample realization — both reliably beat naive, which is what Goal 3.5 asks for ("what each modification corrects for and what residual limitations remain").
 
 ---
 
 ### PS3.6 — The bootstrap has its own Monte Carlo error
-**Type:** C | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 6
+**Type:** C | **Tier:** 1+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 3.6
 **Prerequisites:** the PS3.1 CLEC-mirror dataset (reuse the same 23 values) and resampling-loop code
 
 **Statement:**
@@ -195,7 +195,7 @@ Write 3–5 sentences connecting this to Module 1/2's error-budget reasoning: wh
 ---
 
 ### PS3.7 (Optional) — The bootstrap median's discreteness problem
-**Type:** D | **Tier:** 1+3 | **Core/Optional:** Optional | **Time:** 35 min (uncounted) | **Goals:** 4
+**Type:** D | **Tier:** 1+3 | **Core/Optional:** Optional | **Time:** 35 min (uncounted) | **Goals:** 3.4
 **Prerequisites:** the resampling-loop skill from PS3.1
 
 **Statement:**

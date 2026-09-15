@@ -67,7 +67,7 @@ The program has an architecture. The modules are not a collection of independent
 
 The program has a spine: Modules 1–2 (simulation foundations) → Module 6 (Markov chain theory) → Modules 7–8 (MCMC methods and diagnostics). These modules form a conceptual chain where each builds directly on the previous one. If you shortchange any of them, the later modules lose their explanatory foundation and become recipes instead of understood methods.
 
-The most important single structural decision in the program is the placement of Module 6 immediately before MCMC. The UNAM program on which part of this program is based treats Markov chains as a prerequisite fact. This program treats them as a subject. That one decision is what separates a student who can run a sampler from a student who can reason about why it worked.
+The most important single structural decision in the program is the placement of Module 6 immediately before MCMC. This program treats Markov chains as a subject. That one decision is what separates a student who can run a sampler from a student who can reason about why it worked.
 
 ---
 
@@ -85,10 +85,32 @@ In addition to the spine, the program has three thematic arcs that run across mo
 
 ## A Note on Engagement
 
-The module reading guides contain focus notes, forward pointers, and conceptual questions. The focus notes tell you what to attend to and what to move past in each reading. The forward pointers tell you where each reading is building toward. The conceptual questions are the most important part: they are calibrated to distinguish between having read something and having understood it.
+Beyond this note, the program gives you two further program-level documents. The Goals Reference states, module by module, exactly what each module aims to teach you — it is the specification the rest of the program is built against. The Bibliography lists every reading, with the role each one plays. Both are referenced by name throughout what follows, and you will return to them often.
+
+Each module's reading guide contains focus notes, forward pointers, a Quick Checklist, and conceptual questions. The focus notes tell you what to attend to and what to move past in each reading. The forward pointers tell you where each reading is building toward. The Quick Checklist is not a second statement of that module's goals: it takes each goal already set out in the Goals Reference and turns it into a question you can put to yourself — a fast, module-local check on your own understanding, not a substitute for the goals themselves. The conceptual questions go further. They are calibrated to distinguish between having read something and having understood it.
 
 A student who can answer the conceptual questions for each module has genuinely internalized the material. A student who can reproduce the reading's content without being able to answer them has not. The questions are not hard in a mathematical sense — they require explanation, connection, and reasoning, not calculation. But they do require that the reading was engaged with rather than processed.
 
-Each module also carries a problem set — a third instrument, and a different one. Where the checklist and conceptual questions test whether the material was understood, the problem sets test whether that understanding survives implementation: whether it produces working code, the right diagnostic when something goes wrong, and estimates that meet a stated verification target rather than merely a plausible-looking one.
+Every module except Module 10 also carries a problem set, testing something the checklist and conceptual questions cannot: whether your understanding survives implementation. Where those two test whether the material was understood, the problem set tests whether it produces working code, the right diagnostic when something goes wrong, and estimates that meet a stated verification target rather than merely a plausible-looking one.
 
 *Read actively. The program rewards it.*
+
+## Reading a Problem's Header
+
+Every problem in every problem set — Module 0 through Module 9 — opens with a short header carrying a **Type** and a **Tier**. This section tells you what they mean; the same explanation appears again at the top of each problem file, so you never have to leave it to look this up.
+
+**Type** says what kind of work the problem asks for:
+- **I — Implementation.** Build the named algorithm from scratch against a known-answer target.
+- **V — Verification.** Study an already-implemented algorithm's quantitative behavior: convergence, variance, coverage, efficiency.
+- **D — Diagnosis.** Given or constructed, a failing case: detect and explain the failure from its computational symptoms.
+- **C — Connection.** A short problem that operationalizes a link to another module in code.
+
+A problem's Type may combine more than one code, joined by a slash — `I/V`, for instance. That means the problem is all of them at once, and each definition applies to it in full.
+
+**Tier** says how the problem's verification target was established. It is not a difficulty rating.
+- **1** — checked against a specific worked answer.
+- **2** — checked against an exact fact you can derive or cite: a closed form, a known distributional result.
+- **3** — checked against a range established by actually running the method many times. Not an exact-match target.
+- **self-audit** — no external numeric target; check yourself against a checklist instead.
+
+A problem's Tier may also combine more than one value. Joined by a plus sign, the verification has more than one part, each checked at the tier named — for instance, `2 (estimand) + 3 (rate-plot slope)` means one part is checked against an exact fact, labeled "estimand," and another against an executed range, labeled "rate-plot slope"; each parenthetical label matches the line it belongs to in that problem's Verification section. `self-audit` written in parentheses after a numeric tier, as in `2+3 (self-audit)`, means a self-audit checklist supplements those checks — covering something the numeric checks alone can't, usually the quality of your reasoning. A slash between two tier numbers, as in `1/2`, means that part's check sits between the two and isn't a clean fit for either; the Verification section says why.

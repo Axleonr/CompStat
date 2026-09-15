@@ -3,7 +3,7 @@
 ## Module 1 — Random Number Generation & Simulation
 
 ### PS1.1 — Building and testing a linear congruential generator
-**Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 1, 2
+**Type:** I | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 40 min | **Goals:** 1.1, 1.2
 
 **Prerequisites:** None
 
@@ -20,7 +20,7 @@ Generate $n = 10{,}000$ draws $U_1, \dots, U_{10{,}000}$. Subject the sequence t
 
 1. **Binned chi-square goodness-of-fit test.** Partition $[0,1)$ into $k=10$ equal-width bins, count how many draws fall in each, and compute
 $$\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}, \quad E_i = n/k.$$
-Under the null hypothesis of uniformity, $\chi^2$ follows a chi-square distribution with $k-1$ degrees of freedom (a standard result of goodness-of-fit theory — available in any statistics reference and computable via your language's chi-square library functions, which you may use for this comparison only, per R1.4/R4).
+Under the null hypothesis of uniformity, $\chi^2$ follows a chi-square distribution with $k-1$ degrees of freedom (a standard result of goodness-of-fit theory — available in any statistics reference and computable via your language's chi-square library functions, which you may use for this comparison only).
 
 2. **Lag-1 serial correlation test.** Compute the sample correlation $r_1$ between the pairs $(U_i, U_{i+1})$ for $i = 1, \dots, n-1$. Under the null hypothesis that the sequence is i.i.d., the sampling variance of $r_1$ is approximately $1/n$ for large $n$ (Bartlett's formula for the null variance of a serial correlation coefficient — again a standard textbook fact, not something to look up numerically). Form $z = r_1 \sqrt{n}$ and compare to the standard normal distribution.
 
@@ -38,7 +38,7 @@ Finally, write a brief note (3–5 sentences) on **period and seed dependence**:
 ---
 
 ### PS1.2 — Inverse transform: closed-form and numerical
-**Type:** I | **Tier:** 1/2 + 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 3
+**Type:** I | **Tier:** 1/2 + 3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 1.3
 **Prerequisites:** None (library uniform RNG only — the from-scratch requirement here is the transform, not the generator; generator-primitives are PS1.1's job)
 **Statement:**
 
@@ -56,7 +56,7 @@ Finally, write a brief note (3–5 sentences) on **period and seed dependence**:
 ---
 
 ### PS1.3 — Acceptance-rejection: two proposals for a normal target
-**Type:** I/V | **Tier:** 1+2+3 | **Core/Optional:** Core | **Time:** 50 min | **Goals:** 4
+**Type:** I/V | **Tier:** 1+2+3 | **Core/Optional:** Core | **Time:** 50 min | **Goals:** 1.4
 **Prerequisites:** None
 **Statement:**
 
@@ -79,7 +79,7 @@ For each proposal: implement the accept-reject loop from scratch (you may draw t
 ---
 
 ### PS1.4 — Tracing the generative chain: PRNG state to a normal draw
-**Type:** C | **Tier:** 3 | **Core/Optional:** Core | **Time:** 30 min | **Goals:** 5
+**Type:** C | **Tier:** 3 | **Core/Optional:** Core | **Time:** 30 min | **Goals:** 1.5
 **Prerequisites:** Requires your PS1.1 LCG (same recurrence and parameters: $m=2^{31}-1$, $a=16{,}807$, $c=0$)
 **Statement:**
 
@@ -94,7 +94,7 @@ Using your PS1.1 LCG, seeded at $X_0 = 777$, produce **one** draw from $N(0,1)$ 
 
 Write this up as a **commented trace**: for every LCG state produced, show the state's integer value, the uniform derived from it, what it was used for (candidate generation, accept/reject test, or sign), and — for each accept/reject attempt — whether it was accepted or rejected and why (the numeric comparison). The narrative should read as a single continuous chain: PRNG state → uniform → transform → (possibly repeated) test → accepted draw.
 
-**Deliverable:** the full commented trace under seed $X_0=777$ (every LCG state, every derived uniform, every accept/reject decision, the final sign decision, and the resulting $Z$); a 2–3 sentence summary connecting this to Goal 5 — i.e., stating explicitly which raw PRNG outputs your final $Z$ value is actually "made of."
+**Deliverable:** the full commented trace under seed $X_0=777$ (every LCG state, every derived uniform, every accept/reject decision, the final sign decision, and the resulting $Z$); a 2–3 sentence summary connecting this to Goal 1.5 — i.e., stating explicitly which raw PRNG outputs your final $Z$ value is actually "made of."
 
 **Verification:** [Tier 3]
 Because every step of this chain derives from the same deterministic LCG (no library randomness anywhere in this problem), the entire trace is exactly reproducible given the seed. Under $X_0 = 777$, a correct implementation must reproduce: attempt 1 rejected (LCG state 13,059,039 → $U_a=0.006081$ → $Y=5.102572$; LCG state 439,936,479 → $U_b=0.204861$ vs. accept-ratio 0.000221 → reject); attempt 2 accepted (LCG state 226,205,932 → $U_a=0.105335$ → $Y=2.250606$; LCG state 797,043,934 → $U_b=0.371153$ vs. accept-ratio 0.457486 → accept); sign-flip (LCG state 2,061,892,399 → $U_c=0.960143 \Rightarrow$ sign $+$); **final $Z = +2.250606$**, using 5 total LCG steps. Match all logged states/uniforms to at least 6 decimal places and the final $Z$ to at least 6 decimal places.
@@ -103,7 +103,7 @@ Because every step of this chain derives from the same deterministic LCG (no lib
 ---
 
 ### PS1.5 — RANDU's hyperplane defect, and a seed-misuse failure
-**Type:** D | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 6
+**Type:** D | **Tier:** 2+3 | **Core/Optional:** Core | **Time:** 45 min | **Goals:** 1.6
 **Prerequisites:** Requires your PS1.1 LCG (reused for the seed-misuse half only; the RANDU generator is separately specified below)
 
 **Statement:**
@@ -127,7 +127,7 @@ Tier 3, Part 1:* under $X_0=1$, $n=5{,}000$, the identity should hold with **zer
 ---
 
 ### PS1.6 — Optional: sampling deep in a tail, the naive way and a better way
-**Type:** V/D | **Tier:** 2+3 | **Core/Optional:** Optional | **Time:** 35 min | **Goals:** 4, 6
+**Type:** V/D | **Tier:** 2+3 | **Core/Optional:** Optional | **Time:** 35 min | **Goals:** 1.4, 1.6
 **Prerequisites:** None
 **Statement:**
 
