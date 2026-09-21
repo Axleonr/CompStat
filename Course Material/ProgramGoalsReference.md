@@ -1,12 +1,16 @@
-# Computational Statistics — Goals Reference
+# Goals Reference
 
-*Goals are meant to be assessable: a student completing the module should be able to demonstrate each one.*
+Per-module goals the program was built upon; these are meant to be assessable: a student completing the module should be able to demonstrate each one.
+
+Throughout the program, goals are cited as `Goal M.g`, with `M: Module#`, and `g: goal#`, so a text citing Goal 3.2 is referring to Goal #2 of Module 3.
 
 ---
 
-## Module 0 — Computational Thinking & Statistical Algorithms
+### Module 0 — Computational Thinking & Statistical Algorithms
 
-**High-level goal:** Reframe statistical procedures as algorithms acting on data, and establish the computational vocabulary that organizes the rest of the program.
+Reframe statistical procedures as algorithms acting on data, and establish the computational vocabulary that organizes the rest of the program.
+
+#### Specific Goals
 
 1. Reframe statistical procedures as algorithms: inputs, outputs, and the computational process connecting them
 2. Distinguish between *deriving* a statistical result analytically and *computing* one algorithmically — and articulate why that distinction matters
@@ -16,9 +20,11 @@
 
 ---
 
-## Module 1 — Random Number Generation & Simulation
+### Module 1 — Random Number Generation & Simulation
 
-**High-level goal:** Understand how randomness is constructed computationally, and build the simulation primitives that all subsequent methods depend on.
+Understand how randomness is constructed computationally, and build the simulation primitives that all subsequent methods depend on.
+
+#### Specific Goals
 
 1. Explain why computers cannot produce true randomness and how pseudorandom number generators construct sequences that behave statistically as if random
 2. Describe the key structural properties of a good uniform PRNG — period length, seed dependence, and the statistical tests used to evaluate generator quality
@@ -29,9 +35,11 @@
 
 ---
 
-## Module 2 — Monte Carlo Estimation & Variance Reduction
+### Module 2 — Monte Carlo Estimation & Variance Reduction
 
-**High-level goal:** Understand Monte Carlo as a principled estimation strategy, characterize its error, and learn to reduce that error — through importance sampling, stratification, and other variance reduction techniques — without simply adding more samples.
+Understand Monte Carlo as a principled estimation strategy, characterize its error, and learn to reduce that error (through importance sampling, stratification, and other variance reduction techniques), without simply adding more samples.
+
+#### Specific Goals
 
 1. Derive the Monte Carlo estimator from first principles and characterize its error — establishing why the method works and what governs the rate at which accuracy improves with sample size
 2. Explain the role of variance in Monte Carlo error and articulate why reducing variance is equivalent to getting more information from the same computational budget
@@ -40,13 +48,15 @@
 5. Recognize antithetic variates, control variates, stratification, and importance sampling as mechanistically distinct interventions in the same underlying error quantity — each reducing variance by a different structural means, none changing the fundamental $n^{-1/2}$ convergence rate
 6. Recognize importance sampling as a reweighting idea with scope beyond variance reduction — specifically, that resampling from importance weights produces an approximate sample from the target, laying the groundwork for SIR in Module 7
 
-> *Note: Stratified sampling is covered at the conceptual level within this goal. Unlike antithetic variates, control variates, and importance sampling, it does not carry a standalone implementation requirement.*
+    > ***Note**: Stratified sampling is covered at the conceptual level within this goal. It does not carry a standalone implementation requirement.*
 
 ---
 
-## Module 3 — Bootstrap & Resampling
+### Module 3 — Bootstrap & Resampling
 
-**High-level goal:** Perform inference through data-driven simulation, understand the theoretical basis for its validity, and recognize the conditions under which it breaks down.
+Perform inference through data-driven simulation, understand the theoretical basis for its validity, and recognize the conditions under which it breaks down.
+
+#### Specific Goals
 
 1. Derive the nonparametric bootstrap from first principles — articulating what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires
 2. Implement parametric and nonparametric bootstrap and construct confidence intervals through multiple methods, including bootstrap-t, percentile, and BCa approaches; explain the accuracy hierarchy among these methods — distinguishing first-order from second-order accuracy — and identify which methods are transformation-respecting and why that property matters.
@@ -57,9 +67,11 @@
 
 ---
 
-## Module 4 — Optimization: Gradient Methods, Metaheuristics & EM
+### Module 4 — Optimization: Gradient Methods, Metaheuristics & EM
 
-**High-level goal:** Compute estimators via optimization, understand the structural differences between gradient, metaheuristic, and EM approaches, and know which problem features determine which method is appropriate.
+Compute estimators via optimization, understand the structural differences between gradient, metaheuristic, and EM approaches, and know which problem features determine which method is appropriate.
+
+#### Specific Goals
 
 1. Formulate common statistical estimators as solutions to optimization problems, and identify the objective function features that determine which algorithmic family is appropriate
 2. Implement and explain Newton's and quasi-Newton methods, including the role of the Hessian and the practical significance of numerical stability and step selection
@@ -69,9 +81,11 @@
 
 ---
 
-## Module 5 — Bayesian Modeling Framework
+### Module 5 — Bayesian Modeling Framework
 
-**High-level goal:** Construct and reason about Bayesian models as structured computational objects, independent of the sampling algorithms used to fit them.
+Construct and reason about Bayesian models as structured computational objects, independent of the sampling algorithms used to fit them.
+
+#### Specific Goals
 
 1. Specify a Bayesian model as a computational object — joint distribution, likelihood, prior, and posterior — and articulate what each component commits you to
 2. Reason about prior selection as a modeling choice with verifiable consequences, not a subjective input to be chosen arbitrarily or defensively
@@ -81,9 +95,11 @@
 
 ---
 
-## Module 6 — Markov Chains as Computational Objects
+### Module 6 — Markov Chains as Computational Objects
 
-**High-level goal:** Understand Markov chains as dynamical systems whose convergence properties govern the quality of MCMC samplers, building the theoretical vocabulary needed to reason about sampler behavior.
+Understand Markov chains as dynamical systems whose convergence properties govern the quality of MCMC samplers, building the theoretical vocabulary needed to reason about sampler behavior.
+
+#### Specific Goals
 
 1. Observe a concrete Markov chain running on a simple target — identifying mixing, stationarity, and failure to converge as empirical phenomena before formalizing them theoretically
 2. Define the essential structural properties of a Markov chain — irreducibility, aperiodicity, and stationarity — and explain what each guarantees about long-run behavior
@@ -93,9 +109,11 @@
 
 ---
 
-## Module 7 — MCMC Methods
+### Module 7 — MCMC Methods
 
-**High-level goal:** Implement and understand the core approximate sampling algorithms — SIR, Metropolis-Hastings, Gibbs, and Metropolis-within-Gibbs — as a related family of design choices whose behavior follows from the theory in Module 6.
+Implement and understand the core approximate sampling algorithms — SIR, Metropolis-Hastings, Gibbs, and Metropolis-within-Gibbs — as a related family of design choices whose behavior follows from the theory in Module 6.
+
+#### Specific Goals
 
 1. Explain Sampling Importance Resampling (SIR) as a bridge from importance sampling to approximate sampling — connecting back to Module 2 and framing the central challenge that MCMC addresses
 2. Derive the Metropolis-Hastings algorithm from the detailed balance condition, and explain how the acceptance ratio enforces the correct stationary distribution
@@ -107,9 +125,11 @@
 
 ---
 
-## Module 8 — MCMC Diagnostics & Reliability
+### Module 8 — MCMC Diagnostics & Reliability
 
-**High-level goal:** Evaluate MCMC output critically using principled diagnostics, understand what convergence does and does not guarantee, and develop a reliable workflow for determining when sampler output can be trusted.
+Evaluate MCMC output critically using principled diagnostics, understand what convergence does and does not guarantee, and develop a reliable workflow for determining when sampler output can be trusted.
+
+#### Specific Goals
 
 1. Explain effective sample size as the central measure of MCMC output quality — distinguishing it from raw sample count and connecting it to the autocorrelation structure of the chain
 2. Compute and interpret autocorrelation function estimates from MCMC output, and explain what high autocorrelation implies for the reliability of downstream estimates
@@ -120,9 +140,11 @@
 
 ---
 
-## Module 9 — Density Estimation
+### Module 9 — Density Estimation
 
-**High-level goal:** Estimate distributions nonparametrically from data and from MCMC output, understand the bias-variance tradeoffs governing each method, and apply density estimation as a practical tool for interpreting posterior and predictive distributions.
+Estimate distributions nonparametrically from data and from MCMC output, understand the bias-variance tradeoffs governing each method, and apply density estimation as a practical tool for interpreting posterior and predictive distributions.
+
+#### Specific Goals
 
 1. Articulate the density estimation problem — what it means to estimate a distribution nonparametrically, and why point estimates and parametric models are sometimes insufficient
 2. Implement kernel density estimation, explain the role of the kernel and bandwidth, and characterize the bias-variance tradeoff that bandwidth selection governs
@@ -133,9 +155,13 @@
 
 ---
 
-## Module 10 — Applied Cases
+### Module 10 — Applied Cases
 
-**High-level goal:** Integrate the program's methods into coherent, reproducible analyses of realistic problems, developing the workflow judgment that distinguishes competent method application from genuine computational statistical practice.
+> **Note:** This module is incomplete, there are assigned readings, but no suggested workflow, problem statments, or guidance in selecting the applied cases.
+
+Integrate the program's methods into coherent, reproducible analyses of realistic problems, developing the workflow judgment that distinguishes competent method application from genuine computational statistical practice.
+
+#### Specific Goals
 
 1. Select and justify appropriate methods for each component of a multi-part applied problem, recognizing when a problem's structure calls for a specific tool and when alternatives would be equally valid
 2. Construct, fit, and diagnose a Bayesian model end-to-end — from prior specification through MCMC sampling, diagnostic evaluation, and interpretation of posterior output
