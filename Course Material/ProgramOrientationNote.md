@@ -1,6 +1,7 @@
 # Program Orientation Note
 
 ***Start by reading this note***
+
 Presently, this note is sort-of an hybrid between the original note and a syllabus. Some reference material temporarily lives here.
 
 ## What This Program Is
