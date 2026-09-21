@@ -390,12 +390,14 @@ All readings come from *Gelman et al. (BDA)*. The module is self-contained withi
 1. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
 
 	***Ch 1: Probability and inference***
+
 	Read in full
 
 	- **Focus**: Establish the Bayesian model structure: the joint distribution, likelihood, prior, and posterior, and what each component commits you to. This chapter's probability framework is used throughout the program — make sure the notation and the interpretive conventions are solid before proceeding.
 	- **Builds toward**: This chapter's framework is what Module 7 will use when constructing a posterior to sample from.
 
 	***Ch 2: Single-parameter models***
+	
 	Read in full
 
 	- **Focus**: Use single-parameter models to develop the intuition for prior-to-posterior updating, conjugacy, and what prior choice implies for the posterior. The arithmetic here is simple enough that you can trace every step; the conceptual content is what matters. 
@@ -403,6 +405,7 @@ All readings come from *Gelman et al. (BDA)*. The module is self-contained withi
 	- **Builds toward**: The prior sensitivity reasoning developed here in Secs 2.8–2.9 is revisited and extended in Ch 5, Sec 5.7, where the same questions are posed for hierarchical variance parameters.
 
 	***Ch 3: Multiparameter models***
+
 	Read selectively for structural patterns, do not read for derivation detail. 
 
 	- **Focus**: **Sec 3.1**: read in full — this is the chapter's most direct material for Goal 3: it establishes why marginalization is necessary and what the joint-posterior-to-marginal-posterior route looks like in general. 
@@ -414,7 +417,7 @@ All readings come from *Gelman et al. (BDA)*. The module is self-contained withi
 
 	***Ch 5 (selected sections): Hierarchical models***
 
-	- **Focus**: Focus on the conceptual argument: why hierarchical structure arises from modeling multiple exchangeable groups, what partial pooling means, and what the computational cost is. 
+	- **Focus**: The conceptual argument: why hierarchical structure arises from modeling multiple exchangeable groups, what partial pooling means, and what the computational cost is. 
 	**Secs 5.1–5.2** (constructing a hierarchical prior, exchangeability) and **Sec 5.5** (the eight-schools example) carry this argument most directly and should be read closely. 
 	**Secs 5.3–5.4** contain the computational machinery for conjugate hierarchical models — read these for what they illustrate about the structure of the problem (why the marginal posterior of the hyperparameters has the form it does, why complete pooling and no pooling are special cases of the same model) rather than working through the integration and simulation steps in detail; that level of computational engagement is outside this module's scope by design. 
 	**Sec 5.7** (weakly informative priors for variance parameters) is required: it is the chapter's most direct demonstration of prior sensitivity in a hierarchical setting and is the primary source for Goal 4 in this module.
