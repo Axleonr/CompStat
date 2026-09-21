@@ -1,16 +1,8 @@
 # Module Reading Guides
 
 ## Module 0 — Computational Thinking & Statistical Algorithms
-**High-level goal**: Reframe statistical procedures as algorithms acting on data, and establish the computational vocabulary that organizes the rest of the program.
 
-**Introduction**
-
-### Module Goals
-1. Reframe statistical procedures as algorithms: inputs, outputs, and the computational process connecting them
-2. Distinguish between *deriving* a statistical result analytically and *computing* one algorithmically — and articulate why that distinction matters
-3. Identify the questions that the computational framing opens up: convergence, sensitivity, efficiency, failure conditions
-4. Situate the program's core methods (simulation, resampling, optimization, MCMC) within a unified algorithmic view of statistics
-5. Read Tukey (1962) as a disciplinary argument — identify its central claim and assess its relevance to contemporary computational practice
+*\<Introduction block\>*
 
 ### Reading Sequence
 Read in the order given.
@@ -40,17 +32,8 @@ After finishing the reading, can you:
 4.	Efron & Hastie describe a shift in statistical practice as computation became cheap. What was that shift, and what did it make possible that was not possible before? (Goal 0.4)
 
 ## Module 1 — Random Number Generation & Simulation
-**High-level goal**: Understand how randomness is constructed computationally, and build the simulation primitives that all subsequent methods depend on.
 
-**Introduction**
-
-### Module Goals
-1. Explain why computers cannot produce true randomness and how pseudorandom number generators construct sequences that behave statistically as if random
-2. Describe the key structural properties of a good uniform PRNG — period length, seed dependence, and the statistical tests used to evaluate generator quality
-3. Implement the inverse transform method for generating non-uniform random variates, and explain the conditions under which it is applicable
-4. Implement the acceptance-rejection method, explain where its efficiency comes from, and identify the factors that make a proposal distribution better or worse
-5. Trace a sample from an arbitrary distribution back to its uniform foundation — articulating the full generative chain from PRNG output to non-uniform draw
-6. Recognize the practical consequences of poor RNG choices: reproducibility failures, period exhaustion, and correlation artifacts in simulation output
+*\<Introduction block\>*
 
 ### Reading Sequence
 The module has a natural two-stage structure: uniform generation first, then non-uniform. Read in the order given. Owen and L'Ecuyer cover the uniform layer in parallel — read them together before moving to the non-uniform material.
@@ -97,17 +80,8 @@ After finishing the reading, can you:
 5.	Module 2 builds Monte Carlo estimation on top of the simulation primitives from this module. What specific properties of your RNG output does the validity of a Monte Carlo estimate depend on? (Goal 1.6)
 
 ## Module 2 — Monte Carlo Estimation & Variance Reduction
-**High-level goal**: Understand Monte Carlo as a principled estimation strategy, characterize its error, and learn to reduce that error — through importance sampling, stratification, and other variance reduction techniques — without simply adding more samples.
 
-**Introduction**
-
-### Module Goals
-1. Derive the Monte Carlo estimator from first principles and characterize its error — establishing why the method works and what governs the rate at which accuracy improves with sample size
-2. Explain the role of variance in Monte Carlo error and articulate why reducing variance is equivalent to getting more information from the same computational budget
-3. Implement and explain antithetic variates and control variates as principled modifications to the basic estimator, identifying the structural conditions that make each effective
-4. Implement importance sampling, explain the reweighting mechanism, and identify the conditions under which importance weights become pathological
-5. Recognize antithetic variates, control variates, stratification, and importance sampling as mechanistically distinct interventions in the same underlying error quantity — each reducing variance by a different structural means, none changing the fundamental $n^{-1/2}$ convergence rate
-6. Recognize importance sampling as a reweighting idea with scope beyond variance reduction — specifically, that resampling from importance weights produces an approximate sample from the target, laying the groundwork for SIR in Module 7
+*\<Introduction block\>*
 
 ### Reading Sequence
 This module has a deliberate two-stage structure. Stage 1 (error theory) must precede Stage 2 (variance reduction). Owen's variance reduction chapters assume the estimator framework and the role of variance as the controlling quantity — concepts that are built in R&C Ch 3. Do not read Owen Chs 8–9 before completing Stage 1.
@@ -158,17 +132,8 @@ After finishing the reading, can you:
 4.	Importance sampling reweights draws from a proposal to estimate an expectation under a different target. What makes this idea useful beyond variance reduction? What problem does it solve that ordinary Monte Carlo cannot? (Goal 2.6)
 
 ## Module 3 — Bootstrap & Resampling
-**High-level goal**: Perform inference through data-driven simulation, understand the theoretical basis for its validity, and recognize the conditions under which it breaks down.
 
-**Introduction**
-
-### Module Goals
-1. Derive the nonparametric bootstrap from first principles — articulating what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires
-2. Implement parametric and nonparametric bootstrap and construct confidence intervals through multiple methods, including bootstrap-t, percentile, and BCa approaches; explain the accuracy hierarchy among these methods — distinguishing first-order from second-order accuracy — and identify which methods are transformation-respecting and why that property matters.
-3. Explain the theoretical conditions under which bootstrap confidence intervals are valid, and distinguish between the bootstrap's consistency and its accuracy in finite samples
-4. Identify and diagnose the conditions under which naive bootstrap fails: heavy-tailed distributions, extreme statistics, small samples, and dependent or clustered data
-5. Apply modified resampling strategies — including the moving blocks bootstrap — for dependent and structured data, and explain what each modification corrects for and what residual limitations remain
-6. Relate the bootstrap to the simulation primitives from Module 1 — the bootstrap is a resampling algorithm, and its behavior is as amenable to computational analysis as any other
+*\<Introduction block\>*
 
 ### Reading Sequence
 Read Efron (1979) first — it is short and establishes the founding argument. Efron & Tibshirani then develops the method systematically across several stages; the readings are given in the order they should be read, not by chapter sequence alone. Davison & Hinkley is secondary but not supplemental — the failure modes material is part of what it means to understand the bootstrap.
@@ -278,16 +243,8 @@ After finishing the reading, can you:
 6.	The moving blocks bootstrap corrects for temporal dependence by resampling overlapping blocks of consecutive observations rather than individual draws. What property of the data is being preserved, and what does naive resampling destroy? What role does block length play in the bias-variance tradeoff of the procedure? (Goal 3.5)
 
 ## Module 4 — Optimization: Gradient Methods, Metaheuristics & EM
-**High-level goal**: Compute estimators via optimization, understand the structural differences between gradient, metaheuristic, and EM approaches, and know which problem features determine which method is appropriate.
 
-**Introduction**
-
-### Module Goals
-1. Formulate common statistical estimators as solutions to optimization problems, and identify the objective function features that determine which algorithmic family is appropriate
-2. Implement and explain Newton's and quasi-Newton methods, including the role of the Hessian and the practical significance of numerical stability and step selection
-3. Explain the statistical logic of EM — missing data, latent variables, lower-bound ascent — and derive the E and M steps from that framework
-4. Explain why EM guarantees monotone likelihood increase, why this does not guarantee a global maximum, and what Wu (1983) establishes over Dempster et al. (1977)
-5. Recognize when metaheuristic approaches are warranted over gradient or EM methods, and understand their basic operating principles without requiring deep implementation
+*\<Introduction block\>*
 
 ### Reading Sequence
 The module has three tracks corresponding to three algorithmic families. Tracks A and B should be read in order — EM builds on the optimization theory foundation Track A establishes. Track C is short and can be read at any point after Track A, but reading it last, with the full module in view, makes the structural contrast between the three families clearest.
@@ -373,16 +330,8 @@ After finishing the reading, can you:
 5. Simulated annealing accepts worse solutions with some probability. Gradient methods always move in an improving direction. What problem does that probabilistic acceptance solve, and why does gradient descent not solve it? (Goal 4.5)
 
 ## Module 5 — Bayesian Modeling Framework
-**High-level goal**: Construct and reason about Bayesian models as structured computational objects, independent of the sampling algorithms used to fit them.
 
-**Introduction**
-
-### Module Goals
-1. Specify a Bayesian model as a computational object — joint distribution, likelihood, prior, and posterior — and articulate what each component commits you to
-2. Reason about prior selection as a modeling choice with verifiable consequences, not a subjective input to be chosen arbitrarily or defensively
-3. Identify the structural patterns that arise in multiparameter and hierarchical models, and explain what hierarchical structure implies computationally
-4. Criticize and revise a Bayesian model by interrogating its assumptions — prior sensitivity, likelihood misspecification, and predictive adequacy — independently of how it will be fit
-5. Maintain a clear separation between the modeling layer and the computational layer: understand what questions belong to model construction and what questions belong to the sampler
+*\<Introduction block\>*
 
 ### Reading Sequence
 All readings come from *Gelman et al. (BDA)*. The module is self-contained within that text. Read in order — earlier chapters build the modeling vocabulary that later chapters require.
@@ -441,16 +390,8 @@ After finishing the reading, can you:
 *Note: This question deliberately asks you to reason about a chapter you have not yet read. You are not expected to know what BDA Ch 11 contains — you are expected to reason from what Module 5 does cover: what modeling questions it settles, and what questions it leaves open. The answer you construct here will be tested against the actual Ch 11 content when you reach Module 7.*
 
 ## Module 6 — Markov Chains as Computational Objects
-**High-level goal**: Understand Markov chains as dynamical systems whose convergence properties govern the quality of MCMC samplers, building the theoretical vocabulary needed to reason about sampler behavior.
 
-**Introduction**
-
-### Module Goals
-1. Observe a concrete Markov chain running on a simple target — identifying mixing, stationarity, and failure to converge as empirical phenomena before formalizing them theoretically
-2. Define the essential structural properties of a Markov chain — irreducibility, aperiodicity, and stationarity — and explain what each guarantees about long-run behavior
-3. Explain detailed balance as a sufficient condition for stationarity, and identify why it is the condition that MCMC algorithms are designed to satisfy
-4. Characterize mixing time and the spectral gap as measures of convergence speed, and develop geometric intuition for why some chains mix slowly
-5. Connect poor mixing directly to downstream consequences — explain what slow mixing implies for the quality of estimates derived from sampler output
+*\<Introduction block\>*
 
 ### Reading Sequence
 Begin with the concrete example (LPW Ch 3) before formalizing anything. The module is designed to move from observation to theory: watch a chain run on a simple target, then read the formal properties as an explanation of what you observed.
@@ -503,18 +444,8 @@ After finishing the reading, can you:
 6.	Theorem 12.21 shows that the number of MCMC samples needed to estimate a posterior expectation to a given accuracy scales with the inverse of the spectral gap. What does this mean in practical terms for a chain that mixes slowly, and why isn't the number of raw samples alone an adequate measure of how much information you have? (Goal 6.5)
 
 ## Module 7 — MCMC Methods
-**High-level goal**: Implement and understand the core approximate sampling algorithms — SIR, Metropolis-Hastings, Gibbs, and Metropolis-within-Gibbs — as a related family of design choices whose behavior follows from the theory in Module 6.
 
-**Introduction**
-
-### Module Goals
-1. Explain Sampling Importance Resampling (SIR) as a bridge from importance sampling to approximate sampling — connecting back to Module 2 and framing the central challenge that MCMC addresses
-2. Derive the Metropolis-Hastings algorithm from the detailed balance condition, and explain how the acceptance ratio enforces the correct stationary distribution
-3. Implement Metropolis-Hastings and characterize how proposal distribution choice governs the tradeoff between acceptance rate and autocorrelation
-4. Derive Gibbs sampling from the structure of full conditional distributions, and explain why acceptance is guaranteed at every step
-5. Distinguish random-scan from deterministic-scan Gibbs — including why the deterministic-scan version does not satisfy detailed balance in general — and explain when each framing is appropriate
-6. Implement Metropolis-within-Gibbs for models where full conditionals are not available in closed form, and identify when this hybrid is warranted
-7. Recognize SIR, MH, and Gibbs as members of a common family of approximate sampling strategies — each solving the same core problem by different design choices
+*\<Introduction block\>*
 
 ### Reading Sequence
 Begin with SIR as a conceptual bridge from Module 2's importance sampling to the MCMC setting. Then develop MH and Gibbs as principled solutions to the sampling problem SIR leaves open. The reference sources (Roberts & Rosenthal; VanDerwerken) should be consulted for specific goals, not read in sequence.
@@ -577,17 +508,8 @@ After finishing the reading, can you:
 5.	Metropolis-within-Gibbs combines MH steps for some parameters with Gibbs steps for others. When is this warranted, and what does it require about the model structure? (Goal 7.6)
 
 ## Module 8 — MCMC Diagnostics & Reliability
-**High-level goal**: Evaluate MCMC output critically using principled diagnostics, understand what convergence does and does not guarantee, and develop a reliable workflow for determining when sampler output can be trusted.
 
-**Introduction**
-
-### Module Goals
-1. Explain effective sample size as the central measure of MCMC output quality — distinguishing it from raw sample count and connecting it to the autocorrelation structure of the chain
-2. Compute and interpret autocorrelation function estimates from MCMC output, and explain what high autocorrelation implies for the reliability of downstream estimates
-3. Apply trace plots, R-hat, and ESS as principled convergence diagnostics — understanding what each measures and what it can and cannot detect
-4. Explain warm-up and its role in allowing the chain to reach the typical set, and distinguish between samples that should and should not be retained
-5. Explain why thinning does not improve statistical efficiency, and identify the narrow circumstances where it may be practically justified
-6. Develop a reliable iterative workflow for running a sampler, evaluating its output, and deciding whether to trust results or return to the sampler
+*\<Introduction block\>*
 
 ### Reading Sequence
 *Geyer (1992)* and *BDA* Ch 11 are the two primary sources and should be read in tandem — Geyer provides the theoretical grounding for ESS and autocorrelation, BDA provides the applied diagnostic workflow. Stan Reference Manual is the practical reference throughout. Secondary sources (Flegal et al., Cowles & Carlin, Link & Eaton) are targeted — consult them for specific goals.
@@ -654,17 +576,8 @@ After finishing the reading, can you:
 5.	Warm-up samples are discarded. What is the conceptual justification? What determines how many warm-up samples to discard, and what happens if you discard too few? (Goal 8.4)
 
 ## Module 9 — Density Estimation
-**High-level goal**: Estimate distributions nonparametrically from data and from MCMC output, understand the bias-variance tradeoffs governing each method, and apply density estimation as a practical tool for interpreting posterior and predictive distributions.
 
-**Introduction**
-
-### Module Goals
-1. Articulate the density estimation problem — what it means to estimate a distribution nonparametrically, and why point estimates and parametric models are sometimes insufficient
-2. Implement kernel density estimation, explain the role of the kernel and bandwidth, and characterize the bias-variance tradeoff that bandwidth selection governs
-3. Apply principled bandwidth selection methods and explain the consequences of under- and over-smoothing for the resulting estimate
-4. Explain the Rao-Blackwell estimator as a variance-reduction strategy for density estimation, and identify why it is particularly well-suited to MCMC settings where conditional distributions are already available
-5. Implement nearest-neighbor density estimation and contrast its bias-variance characteristics with those of kernel methods
-6. Interpret density estimates critically — recognizing what each method implicitly assumes and how those assumptions affect the estimate — rather than treating output as an objective description of the data
+*\<Introduction block\>*
 
 ### Reading Sequence
 *Silverman* is the primary text for Chs 2, 3, and 5 (Sec 5.2). The two items from *Givens & Hoeting* are targeted and should be consulted for the specific goals they address. Read Silverman Chs 2 and 3 first before consulting any secondary source. Note that Silverman Ch 3 covers both the kernel estimator and bandwidth selection in the same chapter (Secs 3.2–3.4) — items 2 and 3 below both draw from Ch 3.
@@ -721,17 +634,8 @@ After finishing the reading, can you:
 6.	Nearest-neighbor estimation uses a local bandwidth — the bandwidth at each point is determined by the local data density. What is the consequence in sparse regions? In dense regions? How does this compare to the behavior of a fixed-bandwidth kernel estimator in the same regions? (Goal 9.5)
 
 ## Module 10 — Applied Cases
-**High-level goal**: Integrate the program's methods into coherent, reproducible analyses of realistic problems, developing the workflow judgment that distinguishes competent method application from genuine computational statistical practice.
 
-**Introduction**
-
-### Module Goals
-1. Select and justify appropriate methods for each component of a multi-part applied problem, recognizing when a problem's structure calls for a specific tool and when alternatives would be equally valid
-2. Construct, fit, and diagnose a Bayesian model end-to-end — from prior specification through MCMC sampling, diagnostic evaluation, and interpretation of posterior output
-3. Apply bootstrap inference as a validation or subsidiary analysis tool within a larger workflow, and recognize when its assumptions are being stressed by the data
-4. Demonstrate a posterior predictive check as a model criticism tool — understanding what it tests, what a failure implies, and what it cannot detect
-5. Produce a complete analysis that is reproducible, honestly reported, and explicit about the assumptions and limitations of every methodological choice made
-6. Read Efron & Hastie (Epilogue) and Gelman & Vehtari (2021) as disciplinary retrospectives — situating the program's methods within the broader arc of modern statistical practice, and closing the frame opened by Tukey (1962) in Module 0
+*\<Introduction block\>*
 
 ### Reading Sequence
 Module 10 is primarily a doing module rather than a reading module. The readings below are short synthesis pieces and a targeted BDA section. They should be read alongside applied work, not in a single sitting before starting.
