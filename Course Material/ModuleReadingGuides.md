@@ -353,7 +353,7 @@ Introduction, Newton's Method and Root Finding, Newton's Method and Optimization
 9. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.* [Reference]
 **Ch 3: Sec 3.3 (Simulated annealing); Sec 3.4 (Genetic algorithms)**
 	- **Focus**: Read for orientation and conceptual understanding, not implementation depth. The goal is to understand when metaheuristic approaches are warranted — discontinuous objectives, multimodal landscapes, discrete or combinatorial search spaces — and what each method does at the level of operating principles.
-	> **Forward pointer**: Simulated annealing accepts worse solutions with a probability controlled by a temperature schedule. This is structurally parallel to the Metropolis-Hastings acceptance step in Module 7 — both use a ratio-based acceptance criterion to explore a target landscape. Noticing that parallel before reaching Module 7 makes the MH acceptance ratio feel less arbitrary when you derive it from detailed balance.
+		> **Forward pointer**: Simulated annealing accepts worse solutions with a probability controlled by a temperature schedule. This is structurally parallel to the Metropolis-Hastings acceptance step in Module 7 — both use a ratio-based acceptance criterion to explore a target landscape. Noticing that parallel before reaching Module 7 makes the MH acceptance ratio feel less arbitrary when you derive it from detailed balance.
 
 ### Self-Assessment
 
@@ -387,25 +387,38 @@ After finishing the reading, can you:
 ### Reading Sequence
 All readings come from *Gelman et al. (BDA)*. The module is self-contained within that text. Read in order — earlier chapters build the modeling vocabulary that later chapters require.
 
-
 1. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
-**Ch 1: Probability and inference**
+
+	***Ch 1: Probability and inference***
+	Read in full
+
 	- **Focus**: Establish the Bayesian model structure: the joint distribution, likelihood, prior, and posterior, and what each component commits you to. This chapter's probability framework is used throughout the program — make sure the notation and the interpretive conventions are solid before proceeding.
 	- **Builds toward**: This chapter's framework is what Module 7 will use when constructing a posterior to sample from.
-2. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
-**Ch 2: Single-parameter models**
-	- **Focus**: Use single-parameter models to develop the intuition for prior-to-posterior updating, conjugacy, and what prior choice implies for the posterior. The arithmetic here is simple enough that you can trace every step; the conceptual content is what matters. **Sec 2.8 (Noninformative prior distributions)** and **Sec 2.9 (Weakly informative prior distributions)** are the chapter's most direct material for Goal 2: read them as a treatment of prior selection as a modeling choice with traceable consequences, not as an aside on a special case. The same sections are the primary basis for Goal 4's prior-sensitivity component — Sec 2.8 in particular makes explicit how disputing a posterior conclusion amounts to a claim about missing prior or likelihood information.
+
+	***Ch 2: Single-parameter models***
+	Read in full
+
+	- **Focus**: Use single-parameter models to develop the intuition for prior-to-posterior updating, conjugacy, and what prior choice implies for the posterior. The arithmetic here is simple enough that you can trace every step; the conceptual content is what matters. 
+	**Sec 2.8** and **Sec 2.9** are the chapter's most direct material for Goal 5.2: read them as a treatment of prior selection as a modeling choice with traceable consequences, not as an aside on a special case. The same sections are the primary basis for Goal 5.4's prior-sensitivity component — Sec 2.8 in particular makes explicit how disputing a posterior conclusion amounts to a claim about missing prior or likelihood information.
 	- **Builds toward**: The prior sensitivity reasoning developed here in Secs 2.8–2.9 is revisited and extended in Ch 5, Sec 5.7, where the same questions are posed for hierarchical variance parameters.
-3. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
-**Ch 3: Multiparameter models (read selectively for structural patterns)**
-	- **Focus**: Do not read for derivation detail. Read **Sec 3.1 (Averaging over nuisance parameters)** in full — this is the chapter's most direct material for Goal 3: it establishes why marginalization is necessary and what the joint-posterior-to-marginal-posterior route looks like in general. Read the opening of **Sec 3.2** (through the statement of the joint posterior for the normal model) for a concrete instance of that structure. Treat **Sec 3.4** (multinomial) and **Secs 3.5–3.6** (multivariate normal) as reference rather than required reading — skim them for the pattern (multiple parameters, an intractable-by-hand joint posterior), not for the algebra; their value for this module is illustrating that multiparameter posteriors resist closed-form summary.
-		> **Sec 3.7 (bioassay example)** is optional and may be skimmed for how grid-based numerical computation handles a nonconjugate case.
+
+	***Ch 3: Multiparameter models***
+	Read selectively for structural patterns, do not read for derivation detail. 
+
+	- **Focus**: **Sec 3.1**: read in full — this is the chapter's most direct material for Goal 3: it establishes why marginalization is necessary and what the joint-posterior-to-marginal-posterior route looks like in general. 
+	**Sec 3.2**: Read the opening (through the statement of the joint posterior for the normal model) for a concrete instance of that structure. 
+		>Treat **Secs 3.4–3.6** as reference — skim them for the pattern (multiple parameters, an intractable-by-hand joint posterior), not for the algebra; their value for this module is illustrating that multiparameter posteriors resist closed-form summary.
+	**Sec 3.7** is optional and may be skimmed for how grid-based numerical computation handles a nonconjugate case.
+
 	- **Builds toward**: Multiparameter posterior structure is what makes closed-form computation impossible in general — motivating the need for the sampling methods in Modules 7–8.
-4. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
-**Ch 5 (selected): Hierarchical models — why they arise, what they require computationally**
-	- **Focus**: Focus on the conceptual argument: why hierarchical structure arises from modeling multiple exchangeable groups, what partial pooling means, and what the computational cost is. **Secs 5.1–5.2** (constructing a hierarchical prior, exchangeability) and **Sec 5.5** (the eight-schools example) carry this argument most directly and should be read closely. **Secs 5.3–5.4** contain the computational machinery for conjugate hierarchical models — read these for what they illustrate about the structure of the problem (why the marginal posterior of the hyperparameters has the form it does, why complete pooling and no pooling are special cases of the same model) rather than working through the integration and simulation steps in detail; that level of computational engagement is outside this module's scope by design. **Sec 5.7** (weakly informative priors for variance parameters) is required: it is the chapter's most direct demonstration of prior sensitivity in a hierarchical setting and is the primary source for Goal 4 in this module.
+
+	***Ch 5 (selected sections): Hierarchical models***
+
+	- **Focus**: Focus on the conceptual argument: why hierarchical structure arises from modeling multiple exchangeable groups, what partial pooling means, and what the computational cost is. 
+	**Secs 5.1–5.2** (constructing a hierarchical prior, exchangeability) and **Sec 5.5** (the eight-schools example) carry this argument most directly and should be read closely. 
+	**Secs 5.3–5.4** contain the computational machinery for conjugate hierarchical models — read these for what they illustrate about the structure of the problem (why the marginal posterior of the hyperparameters has the form it does, why complete pooling and no pooling are special cases of the same model) rather than working through the integration and simulation steps in detail; that level of computational engagement is outside this module's scope by design. 
+	**Sec 5.7** (weakly informative priors for variance parameters) is required: it is the chapter's most direct demonstration of prior sensitivity in a hierarchical setting and is the primary source for Goal 4 in this module.
 	- **Builds toward**: Hierarchical models are the canonical setting where MCMC becomes necessary, making this reading a bridge to Module 7.
-		> Note: **BDA Ch 11** (Basics of Markov chain simulation) is intentionally deferred to Module 7. Do not read it here. The goal of this module is to build the modeling layer independently of the computational layer — understanding what you are trying to sample before you learn how to sample it.
 
 ### Self-Assessment
 #### Quick Checklist
@@ -421,7 +434,7 @@ After finishing the reading, can you:
 2.	Prior sensitivity analysis tests whether the posterior changes substantially when the prior changes. What would a large change in the posterior imply about your model? What would a small change imply? When is sensitivity analysis required and when can it be skipped? (Goal 5.4)
 3.	Hierarchical models pool information across groups. What is the computational cost of that pooling? Why does it make closed-form posterior computation generally impossible? (Goal 5.3)
 4.	This module deliberately separates modeling from computation. Why is that separation useful? What goes wrong if you think about the two together? (Goal 5.5)
-5.	BDA Ch 11 (Basics of Markov chain simulation) is deferred to Module 7. What question does that chapter answer that this module does not? What does Module 5 equip you to do that you could not do after only reading about MCMC methods? (Goal 5.5)
+5.	*BDA Ch 11 (Basics of Markov chain simulation)* is the conceptual follow-up to this module, and is assigned in Module 7. What question would you expect that chapter to answer that this module does not? (Goal 5.5)
 *Note: This question deliberately asks you to reason about a chapter you have not yet read. You are not expected to know what BDA Ch 11 contains — you are expected to reason from what Module 5 does cover: what modeling questions it settles, and what questions it leaves open. The answer you construct here will be tested against the actual Ch 11 content when you reach Module 7.*
 
 ## Module 6 — Markov Chains as Computational Objects
