@@ -1,10 +1,7 @@
-# Program Orientation
+# Program Orientation Note
 
----
-
-*Read before Module 0.*
-
----
+***Start by reading this note***
+Presently, this note is sort-of an hybrid between the original note and a syllabus. Some reference material temporarily lives here.
 
 ## What This Program Is
 
@@ -67,7 +64,7 @@ The program has an architecture. The modules are not a collection of independent
 
 The program has a spine: Modules 1–2 (simulation foundations) → Module 6 (Markov chain theory) → Modules 7–8 (MCMC methods and diagnostics). These modules form a conceptual chain where each builds directly on the previous one. If you shortchange any of them, the later modules lose their explanatory foundation and become recipes instead of understood methods.
 
-The most important single structural decision in the program is the placement of Module 6 immediately before MCMC. This program treats Markov chains as a subject. That one decision is what separates a student who can run a sampler from a student who can reason about why it worked.
+This program treats Markov chains as a subject, it dedicates an entire module to it before delving into MCMC; that one decision is what separates a student who can run a sampler from a student who can reason about why it worked.
 
 ---
 

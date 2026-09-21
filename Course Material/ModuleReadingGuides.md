@@ -1,7 +1,4 @@
-# Computational Statistics Program — Module Reading Guides
-
-*Internal version 1.5.*
-
+# Module Reading Guides
 
 ## Module 0 — Computational Thinking & Statistical Algorithms
 **High-level goal**: Reframe statistical procedures as algorithms acting on data, and establish the computational vocabulary that organizes the rest of the program.
