@@ -2,7 +2,7 @@
 
 A self-learning Computational Statistics course, made with LLM assistance.
 
-The course material is divided across 11 modules, and has both a theory and practice component. Because AI was used in this project, all theory is presented in the form of assigned readings from published or widely available publications, and reviewed manually; as a result, there should be no inaccuracies in the course material caused by unverified AI claims. Please note that bias from the model in the readings selection is unaccounted for.
+The course material is divided across 11 modules, and has both a theory and practice component. Because AI was used in this project, all theory is presented in the form of assigned readings from published material, or widely available, verifiable sources, and has been manually reviewed; as a result, there should be no inaccuracies in the course material caused by unverified AI claims. Please note that bias from the model in the readings selection, and especially in the reading directions, is unaccounted for.
 
 The practice section is a series of Problem Sets, one for each of modules 0 through 9. The problems were machine drafted from verifiable sources and carry a verification protocol in the Instructor section, again, to minimize risk of misinformation.
 
@@ -19,5 +19,3 @@ Everything you need as a student can be found in `\Course Material`. Begin by re
 ## Problem Set Verification
 
 Section TBA - See `\Instructor Material`
-
-
