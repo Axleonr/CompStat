@@ -41,7 +41,7 @@ The module has a natural two-stage structure: uniform generation first, then non
 ***
 
 5. *L'Ecuyer (1999), "Good Parameters and Implementations for Combined Multiple Recursive Random Number Generators"*, Operations Research 47(1). \
-**[Optional]**
+**[Optional]**\
 	For students who want to see the technical construction of combined generators in detail. Not required for any Goal.
 
 > **Synthesis note:** After finishing all four readings, pause before beginning the self-assessment. Try to state in one paragraph the complete generative chain — from PRNG seed through uniform output through non-uniform transformation to a final sample from an arbitrary target distribution. Each link in that chain is covered in the readings, but no single source assembles all of them. Constructing that narrative yourself is what Goal 5 asks for.
