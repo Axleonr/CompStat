@@ -5,12 +5,11 @@ Statistics has traditionally been taught as a collection of formulas and decisio
 
 This module establishes the vocabulary and mental habits that the rest of the program depends on. You will not write complex code here, but you will leave with a clearer picture of what it means to *compute* a statistical answer and why that question is different from simply *deriving* one.
 
-#### Module Goal 
+#### Module Goal
 *Reframe statistical procedures as algorithms acting on data, and establish the computational vocabulary that organizes the rest of the program.*
 
-#### Specific Goals
-
-These will be cited as `Goal M.g` throughout the program.
+#### Specific Goals[^1]
+[^1]:Specific goals will be cited as `Goal M.g` throughout the program. See `ProgramGoalsReference.md`
 
 1. Reframe statistical procedures as algorithms: inputs, outputs, and the computational process connecting them.
 2. Distinguish between *deriving* a statistical result analytically and *computing* one algorithmically — and articulate why that distinction matters.
