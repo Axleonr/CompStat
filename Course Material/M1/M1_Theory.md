@@ -1,6 +1,5 @@
 # Module 1
 ## Random Number Generation & Simulation
-***
 
 Every method in this program ultimately depends on the ability to generate random numbers. This module examines where those numbers come from. Computers are deterministic machines, so randomness must be constructed — through algorithms that produce **sequences with the right statistical properties**, even though they are entirely determined by an initial seed. Understanding this is not merely a technical curiosity: it shapes how you think about reproducibility, about the limits of simulation, and about what it means to say a result is "random."
 
@@ -39,16 +38,13 @@ The module has a natural two-stage structure: uniform generation first, then non
 *Read after Owen Ch 4, not in parallel.*
 	- **Focus**:  Devroye's value is not coverage, but rigor and algorithmic design perspective. For the inversion method, note Devroye's Example 2.4 — the claim that inversion is "the only truly universal method" is the cleanest statement of when and why it applies. For acceptance-rejection, §3.2 is the essential section for this module: it works through the optimization of the proposal distribution explicitly, showing how to minimize the rejection constant $c$ by choosing the best $g$ within a parametric family. This is the formal treatment of what makes a proposal better or worse. Students pressed for time may treat §3.3 (generalizations) as a reference rather than a read-through.
 	- **Builds toward**: Devroye's proposal optimization framework (§3.2) connects directly to Module 7's discussion of proposal distribution choice in Metropolis-Hastings.
-	***
+***
 
 5. *L'Ecuyer (1999), "Good Parameters and Implementations for Combined Multiple Recursive Random Number Generators"*, Operations Research 47(1). 
 **[Optional]**
 	For students who want to see the technical construction of combined generators in detail. Not required for any Goal.
 
 > **Synthesis note:** After finishing all four readings, pause before beginning the self-assessment. Try to state in one paragraph the complete generative chain — from PRNG seed through uniform output through non-uniform transformation to a final sample from an arbitrary target distribution. Each link in that chain is covered in the readings, but no single source assembles all of them. Constructing that narrative yourself is what Goal 5 asks for.
-
-
-***
 
 ### Self-Assessment
 #### Quick Checklist

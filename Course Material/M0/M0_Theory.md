@@ -1,6 +1,5 @@
 # Module 0
 ## Computational Thinking & Statistical Algorithms
-***
 
 Statistics has traditionally been taught as a collection of formulas and decision rules. This module reframes the discipline from the ground up: statistical procedures are algorithms that take data as input and produce estimates, intervals, or decisions as output. That reframing has consequences. It means we can ask how fast an algorithm converges, how sensitive it is to its inputs, whether it can be made more efficient, and under what conditions it breaks.
 
