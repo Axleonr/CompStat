@@ -40,7 +40,7 @@ The module has a natural two-stage structure: uniform generation first, then non
 	- **Builds toward**: Devroye's proposal optimization framework (§3.2) connects directly to Module 7's discussion of proposal distribution choice in Metropolis-Hastings.
 ***
 
-5. *L'Ecuyer (1999), "Good Parameters and Implementations for Combined Multiple Recursive Random Number Generators"*, Operations Research 47(1). 
+5. *L'Ecuyer (1999), "Good Parameters and Implementations for Combined Multiple Recursive Random Number Generators"*, Operations Research 47(1). \
 **[Optional]**
 	For students who want to see the technical construction of combined generators in detail. Not required for any Goal.
 
