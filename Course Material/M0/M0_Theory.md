@@ -5,6 +5,21 @@ Statistics has traditionally been taught as a collection of formulas and decisio
 
 This module establishes the vocabulary and mental habits that the rest of the program depends on. You will not write complex code here, but you will leave with a clearer picture of what it means to *compute* a statistical answer and why that question is different from simply *deriving* one.
 
+#### Module Goal 
+*Reframe statistical procedures as algorithms acting on data, and establish the computational vocabulary that organizes the rest of the program.*
+
+#### Specific Goals
+
+These will be cited as `Goal M.g` throughout the program.
+
+1. Reframe statistical procedures as algorithms: inputs, outputs, and the computational process connecting them.
+2. Distinguish between *deriving* a statistical result analytically and *computing* one algorithmically — and articulate why that distinction matters.
+3. Identify the questions that the computational framing opens up: convergence, sensitivity, efficiency, failure conditions.
+4. Situate the program's core methods (simulation, resampling, optimization, MCMC) within a unified algorithmic view of statistics.
+5. Read Tukey (1962) as a disciplinary argument — identify its central claim and assess its relevance to contemporary computational practice.
+
+---
+
 ### Reading Guide
 Read in the order given.
 
@@ -19,7 +34,11 @@ Read in the order given.
 	- **Builds toward**: This chapter's framing of statistics as a computational discipline is the lens through which every subsequent module should be read.
 
 ### Self-Assessment
+*\<Introductory text for the assessment\>*
+
 #### Quick Checklist
+*\<Introductory text for the checklist\>*
+
 After finishing the reading, can you:
 - Describe a familiar statistical procedure (e.g., least squares, MLE) as an algorithm — specifying its inputs, the computational process, and its outputs? (Goal 0.1)
 - Articulate the difference between deriving a statistical result analytically and computing one algorithmically, and explain why that distinction matters for how we evaluate methods? (Goal 0.2)
@@ -28,7 +47,9 @@ After finishing the reading, can you:
 - State Tukey's central argument in one or two sentences and assess whether it has aged well? (Goal 0.5)
 
 #### Conceptual Questions
-1.	Tukey writes that “data analysis” is not the same as mathematical statistics. What is the substance of that distinction, and what does it imply about how statistical methods should be evaluated? (Goal 0.5)
-2.	What does Efron & Hastie mean by an “algorithm” in the context of statistical inference? How is this different from a formula or a theorem? (Goal 0.2)
-3.	The computational framing of statistics asks: how fast does this converge, how sensitive is it to its inputs, under what conditions does it fail? Pick one of these questions and explain why it could not be asked — or was much harder to answer — in a purely analytical framework. (Goal 0.3)
-4.	Efron & Hastie describe a shift in statistical practice as computation became cheap. What was that shift, and what did it make possible that was not possible before? (Goal 0.4)
+
+*\<Introductory text for the section\>*
+1.	Tukey writes that “data analysis” is not the same as mathematical statistics. What is the substance of that distinction, and what does it imply about how statistical methods should be evaluated?
+2.	What does Efron & Hastie mean by an “algorithm” in the context of statistical inference? How is this different from a formula or a theorem?
+3.	The computational framing of statistics asks: how fast does this converge, how sensitive is it to its inputs, under what conditions does it fail? Pick one of these questions and explain why it could not be asked — or was much harder to answer — in a purely analytical framework.
+4.	Efron & Hastie describe a shift in statistical practice as computation became cheap. What was that shift, and what did it make possible that was not possible before?
