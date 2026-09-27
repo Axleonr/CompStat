@@ -11,7 +11,7 @@ This module has a deliberate two-stage structure. Stage 1 (error theory) must pr
 
 #### Stage 1 — Error Theory Foundation
 
-1. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*
+1. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
 **Ch 3, §3.1–§3.2: The CLT-based estimator framework, variance as the controlling quantity, confidence interval construction**
 	- **Focus**: This is the conceptual architecture for the entire module. Focus on the argument: why the sample mean converges (the strong law), what the CLT gives you (the error distribution), and how variance determines error. The proofs are worth reading once; the estimator intuition is what carries forward. Do not try to absorb all of Ch 3 now — the deferred R&C material returns at the end of Stage 2.
 	- **Builds toward**: Every variance reduction technique in Stage 2 should be understood as a structured intervention in the error quantity defined here.
@@ -21,13 +21,13 @@ This module has a deliberate two-stage structure. Stage 1 (error theory) must pr
 
 #### Stage 2 — Variance Reduction
 
-2. *Owen (2013) — Monte Carlo Theory, Methods and Examples*
+2. *Owen (2013) — Monte Carlo Theory, Methods and Examples*\
 **Ch 8: Variance reduction (antithetic variates, control variates, stratification)**;
 **Ch 9: Importance sampling**
 	- **Focus**: For each technique, focus on three things: the mechanism (how does it reduce variance?), the structural condition that makes it effective (what property of the problem does it exploit?), and its limitation (when does it not help, or hurt?). Keep the Stage 1 framing explicit: each technique is a reduction in the $n^{-1/2}$ error's leading constant, not a change in the fundamental convergence rate.
 	- **Builds toward**: Importance sampling reappears in Module 7 as the conceptual foundation for SIR — the extension from computing a single estimate to producing an approximate sample from a target distribution.
 
-3. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*
+3. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
 **Ch 3, §3.3.1 (Principles through Example 3.11, pp. 90–94); §3.3.2 (the variance condition and Theorem 3.12 through the defensive mixture discussion, pp. 94–96)**
 	- **Focus**: Return now to R&C Ch 3, picking up where Stage 1 left off. This scoped reading treats importance sampling as a principled estimator construction — the conditions for variance reduction, the formal weight characterization, and the defensive mixture as a robustness response to weight pathology. Read Problem 3.18 as a conceptual exercise for Goal 2.6: it tests whether you can connect the weight behavior to estimation failure.
 Exclude: Examples 3.13–3.15, §3.3.3 (AR recycling), §3.4 (Laplace approximation), and §3.6 Notes. These extend beyond the module's scope; the assigned six pages close the R&C Ch 3 loop without expanding into territory that belongs elsewhere in the program.
@@ -61,7 +61,7 @@ After finishing the reading, can you:
 ### Reading Sequence
 Read Efron (1979) first — it is short and establishes the founding argument. Efron & Tibshirani then develops the method systematically across several stages; the readings are given in the order they should be read, not by chapter sequence alone. Davison & Hinkley is secondary but not supplemental — the failure modes material is part of what it means to understand the bootstrap.
 
-1. *Efron (1979) — Bootstrap Methods: Another Look at the Jackknife*
+1. *Efron (1979) — Bootstrap Methods: Another Look at the Jackknife*\
 **Annals of Statistics 7(1) — read in full**
 	- **Focus**: Read for the founding argument: what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires. Do not read for technical completeness — subsequent readings will fill that in. Read it the way you read Tukey (1962) in Module 0: for the idea and its justification.
 	- **Builds toward**: The empirical distribution concept introduced here is the conceptual foundation for everything in Efron & Tibshirani that follows.
@@ -132,13 +132,13 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 
 		- **Builds toward**: Module 10, where bootstrap inference is deployed within an applied workflow and the choice of confidence interval method requires judgment about which assumptions are being stressed.
 
-3. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*
+3. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*\
 **§2.6 (selected subsections)**
 	- **Focus**: **§2.6.1 (consistency and asymptotic accuracy)** carries the formal theoretical content for Goal 3.3 — read it as the primary source for the conditions under which bootstrap confidence intervals are valid and for the pivotal/non-pivotal accuracy comparison. This subsection is not failure-mode material; it is the theoretical backstop that distinguishes what the bootstrap guarantees from what it merely approximates. **§2.6.2 (rough statistics)** and **§2.6.4 (when might the bootstrap fail?)** are the failure-mode content for Goal 3.4 — for each failure case, ask: what assumption does it violate, and what symptom would alert you in practice?
 		> **§2.6.3 (conditional properties)** is outside the module's scope; skip it. For the remediation methods that address the dependence failure mode identified in §2.6.4, see Efron & Tibshirani Ch 8 (Stage 1b above).
 	- **Builds toward**: The failure modes identified here reappear in Module 10, where the bootstrap is deployed as a subsidiary inference tool and its assumptions need to be evaluated in context.
 
-4. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*
+4. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*\
 **§3.8 (Hierarchical Data)**
 	- **Focus**: Diagnostic/conceptual only — there is no implementation requirement attached to this reading. §3.8 identifies why within-cluster correlation violates the i.i.d. resampling assumption behind the ordinary nonparametric bootstrap: observations drawn from the same cluster are not exchangeable with observations from a different cluster, so resampling individual observations as if they were i.i.d. misrepresents the data-generating process. **Keep this mechanism distinct from the serial-dependence failure mechanism** covered via §2.6.4 above and Efron & Tibshirani Ch 8 (Stage 1b) — serial dependence is a temporal-correlation failure; clustering is a grouping/exchangeability failure. The two failure modes share a family resemblance (both violate the i.i.d. assumption naive resampling requires) but are not the same mechanism and should not be conflated. This section's remediation content (cluster-aware resampling schemes) is **not assigned** and is out of scope for this module, consistent with the standing Goal 3.5 boundary — Goal 3.5's implementation requirement remains scoped to the moving blocks bootstrap only.
 	- **Builds toward**: Nothing further in this module; the clustering failure mode is exercised at the conceptual/diagnostic level only (see the Self-Assessment checklist below).
@@ -174,13 +174,13 @@ The module has three tracks corresponding to three algorithmic families. Tracks 
 
 #### Track A — Gradient Methods
 
-1. *Lange (2010) — Numerical Analysis for Statisticians, 2nd ed.*
+1. *Lange (2010) — Numerical Analysis for Statisticians, 2nd ed.*\
 **Ch 11, §11.1–§11.2: Introduction and Unconstrained Optimization**
 	- **Focus**: Read **§11.1** as orientation, then work through **§11.2** carefully. The central results are Fermat's necessary condition (vanishing gradient at a local minimum), the second-order sufficient condition (positive definite Hessian at a stationary point), and what coerciveness guarantees about the existence of a minimum. These are the theoretical foundations on which all iteration schemes in this chapter rest. The examples in §11.2 are worth following through; they show what analytical solvability looks like and why it is exceptional.
 		> **Exclude**: **§11.3–§11.4** (Optimization with Equality and Inequality Constraints, Lagrange multipliers, KKT conditions). These are important for constrained optimization but are not load-bearing for any goal in this module. **§11.5 (Convexity)** and **§11.6 (Block Relaxation)** are also excluded — convexity is used implicitly throughout the module but not developed here at the required depth, and block relaxation is a topic for the MM framework in Ch 12.
 	- **Builds toward**: The stationarity and Hessian results from §11.2 are the theoretical underpinning for Newton's method in Ch 14 — you are establishing the optimality conditions that Newton's method is designed to find.
 
-2. *Lange (2010) — Numerical Analysis for Statisticians, 2nd ed*.
+2. *Lange (2010) — Numerical Analysis for Statisticians, 2nd ed*.\
 **Ch 14, §14.1–§14.4**:
 Introduction, Newton's Method and Root Finding, Newton's Method and Optimization, Ad Hoc Approximations of Hessians
 	- **Focus**: **§14.1** is short — read it to see how Lange situates Newton's method relative to MM and EM. **§14.2** establishes the root-finding form of Newton's method (which most students will have seen in one dimension); **§14.3** applies it to optimization of a loglikelihood, introducing the score and observed information. This is where Ch 11's Hessian theory becomes a practical computation. **§14.4 (Ad Hoc Hessian Approximations)** is important for Goal 4.2: it explains why positive definite Hessian approximations are sought and introduces the outer-product approximation and the idea of replacing second-order terms that are small on average. Read §14.4 for the conceptual logic rather than for technical exhaustiveness.
@@ -188,17 +188,17 @@ Introduction, Newton's Method and Root Finding, Newton's Method and Optimization
 	
 	- **Builds toward**: §14.1–§14.4 deliver Goal 4.2 directly. §14.9 (quasi-Newton) follows below.
 
-3. *Nocedal & Wright (2006) — Numerical Optimization, 2nd ed.*
+3. *Nocedal & Wright (2006) — Numerical Optimization, 2nd ed.*\
 **§3.1: Wolfe conditions and step-length selection**
 	- **Focus**: Read as the formal backstory to the step-selection concern raised in Lange Ch 14. The sufficient decrease condition (Armijo) and curvature condition together constitute the Wolfe conditions; understand why both are needed and what each one prevents. This section is self-contained and short.
 	- **Builds toward**: Step-length selection is what keeps Newton-type methods from overshooting or cycling far from the solution — this is the practical stability concern Goal 4.2 asks you to explain.
 
-4. *Lange (2010) — Numerical Analysis for Statisticians, 2nd ed.*
+4. *Lange (2010) — Numerical Analysis for Statisticians, 2nd ed.*\
 **Ch 14, §14.9: Quasi-Newton Methods**
 	- **Focus**: Read after §14.1–§14.4 and the Wolfe conditions material. §14.9 introduces the secant condition and Davidon's rank-one update, followed by the DFP and BFGS rank-two updates. Focus on the conceptual logic: quasi-Newton methods avoid the cost of computing the Hessian exactly by building an approximation iteratively from gradient information. The self-correcting properties of BFGS (mentioned in Ch 14 and developed more fully in N&W §6.1) are the reason BFGS dominates in practice.
 	- **Builds toward**: Goal 4.2 requires understanding quasi-Newton methods, not just Newton's method. §14.9 is the primary source; N&W below provides the convergence and practical detail.
 
-5. *Nocedal & Wright (2006) — Numerical Optimization, 2nd ed.*
+5. *Nocedal & Wright (2006) — Numerical Optimization, 2nd ed.*\
 **§6.1: BFGS method and convergence; §7.2: L-BFGS**
 	- **Focus**: Use as targeted depth after Lange §14.9. §6.1 works through the BFGS update formula, convergence properties, and the self-correcting behavior in detail. §7.2 covers L-BFGS (limited-memory BFGS) for large-scale problems where storing the full approximate Hessian is infeasible. For §7.2, the goal is understanding what problem L-BFGS solves and how the two-loop recursion replaces explicit Hessian storage — implementation detail is not required.
 		> [Optional] Nocedal & Wright Appendix A (conditioning and numerical stability). Provides the formal definitions of conditioning and stability and their relationship to convergence. Read if the conditioning material in Lange Ch 14 feels underspecified; treat as a reference rather than a read-through.
@@ -206,12 +206,12 @@ Introduction, Newton's Method and Root Finding, Newton's Method and Optimization
 
 #### Track B — EM Algorithm
 
-6. *Dempster, Laird & Rubin (1977) — Maximum Likelihood from Incomplete Data via the EM Algorithm*
+6. *Dempster, Laird & Rubin (1977) — Maximum Likelihood from Incomplete Data via the EM Algorithm*\
 **JRSS-B 39(1) — read in full**
 	- **Focus**: Read for the founding argument: the missing data framing, the construction of the E and M steps, and the monotone likelihood claim. Do not read for technical completeness — Lange Ch 13 and Wu (1983) fill that in. Read DLR the way you read Tukey (1962) in Module 0: for the idea and its justification.
 	- **Builds toward**: The missing data framing here is the conceptual key to Goal 4.3. Understanding EM as a statistical algorithm — not just a numerical procedure — depends on seeing what problem it is designed to solve.
 
-7. *Lange (2010) — Numerical Analysis for Statisticians, 2nd ed.*
+7. *Lange (2010) — Numerical Analysis for Statisticians, 2nd ed.*\
 **Ch 13, §13.1–13.4: Introduction, General Definition, Ascent Property, Missing Data in the Ordinary Sense**
 	- **Focus**: Read after DLR. §13.1–§13.2 restate the EM definition formally; §13.3 (Ascent Property) is the most important section in the chapter — it proves monotone likelihood increase via Jensen's inequality. Work through this proof carefully: understanding why the ascent property holds, not just that it does, is what Goal 4.4 requires. §13.4 shows EM applied to exponential families with missing data, which is the most common practical setting and the clearest illustration of how the E step fills in a sufficient statistic.
 	> **Note on §13.3**: Lange's introduction to Ch 13 warns that the proof involves measure theory and that some readers may want to take the result on faith. Do not do this. The proof in §13.3 is the Jensen's inequality argument — it is accessible and is the conceptual heart of Goal 4.4. Read it.
@@ -223,14 +223,14 @@ Introduction, Newton's Method and Root Finding, Newton's Method and Optimization
 
 	- **Builds toward**: §13.1–§13.4 deliver Goals 3 and 4 directly.
 
-8. *Wu (1983) — On the Convergence Properties of the EM Algorithm*
+8. *Wu (1983) — On the Convergence Properties of the EM Algorithm*\
 **Annals of Statistics 11(1) — read for the main result and its significance**
 	- **Focus**: Read for what Wu establishes over DLR: the stationary point characterization, and why monotone increase does not imply convergence to the global maximum — or even to a local maximum, in the absence of additional conditions. You do not need to work through every proof; the conceptual contribution and its relationship to DLR's original claim is the target. Goal 4.4 asks you to articulate this relationship precisely.
 	- **Builds toward**: This is the sole source for the DLR-versus-Wu distinction that Goal 4.4 requires.
 
 #### Track C — Metaheuristics
 
-9. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.* [Reference]
+9. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.* [Reference]\
 **Ch 3: §3.3 (Simulated annealing); §3.4 (Genetic algorithms)**
 	- **Focus**: Read for orientation and conceptual understanding, not implementation depth. The goal is to understand when metaheuristic approaches are warranted — discontinuous objectives, multimodal landscapes, discrete or combinatorial search spaces — and what each method does at the level of operating principles.
 		> **Forward pointer**: Simulated annealing accepts worse solutions with a probability controlled by a temperature schedule. This is structurally parallel to the Metropolis-Hastings acceptance step in Module 7 — both use a ratio-based acceptance criterion to explore a target landscape. Noticing that parallel before reaching Module 7 makes the MH acceptance ratio feel less arbitrary when you derive it from detailed balance.
@@ -315,14 +315,14 @@ After finishing the reading, can you:
 ### Reading Sequence
 Begin with the concrete example (LPW Ch 3) before formalizing anything. The module is designed to move from observation to theory: watch a chain run on a simple target, then read the formal properties as an explanation of what you observed.
 
-1. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times*
+1. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times*\
 **Ch 3: Metropolis and Glauber chains** — read as a concrete entry point before the formal theory
 	- **Focus**: Before reading any formal definitions, observe what a Markov chain on a simple target actually does. Ch 3 gives you a concrete example. Watch the chain mix (or fail to). Identify mixing and stationarity as empirical phenomena. Then proceed to the formal theory with those observations in mind.
 		> **Note**: Ch 3 introduces some formal notation and terminology (transition kernels, stationarity conditions) before those concepts are developed in Ch 1 — hold them lightly on first pass and let Ch 1 supply the grounding retroactively. The Ising model figure (Figure 3.2, low/critical/high temperature configurations) is the clearest observational content in the chapter — give it close attention even as you move more quickly through the surrounding derivations.
 		
 	- **Builds toward**: The empirical phenomena you observe here are exactly what Goal 6.1 asks you to identify before formalizing — and they are what the formal theory in Ch 1 explains.
 
-2. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times*
+2. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times*\
 **Ch 1: Secs
 1.1 (Markov chains),
 1.3 (irreducibility and aperiodicity),
@@ -332,12 +332,12 @@ Begin with the concrete example (LPW Ch 3) before formalizing anything. The modu
 	- **Focus**: This is the core formal theory. For each property (irreducibility, aperiodicity, stationarity, detailed balance), connect it back to what you observed in Ch 3: what does this property guarantee about long-run behavior, and what failure does its absence produce? Detailed balance is the most important concept here — it is the condition that MCMC algorithms are designed to satisfy.
 	- **Builds toward**: Detailed balance from this chapter is the condition that Module 7 will use to derive the Metropolis-Hastings acceptance ratio.
 
-3. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times*
+3. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times*\
 **Ch 4: Introduction to Markov Chain Mixing — total variation distance, convergence theorem, mixing time**
 	- **Focus**: Focus on mixing time as an operational concept: how many steps does it take for the chain to be close to stationarity, and what determines that number? Total variation distance is the measure — understand what it is measuring and why it is the right quantity. The coupling characterization of total variation distance (Proposition 4.7, Figure 4.2) is worth sitting with: it gives a second, more intuitive way to see what the distance is measuring beyond the formal definition.
 	- **Builds toward**: Mixing time is the bridge from formal theory to practical consequences: a chain with slow mixing produces correlated output, which is what Module 8's ESS diagnostic measures.
 
-4. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times*
+4. *Levin, Peres & Wilmer (2009) — Markov Chains and Mixing Times*\
 **Ch 12: §12.1–12.2 (spectral representation, relaxation time, spectral gap);
 §12.3.1 (the n-cycle example only);
 §12.7 (Time Averages)**
@@ -369,23 +369,23 @@ After finishing the reading, can you:
 ### Reading Sequence
 Begin with SIR as a conceptual bridge from Module 2's importance sampling to the MCMC setting. Then develop MH and Gibbs as principled solutions to the sampling problem SIR leaves open. The reference sources (Roberts & Rosenthal; VanDerwerken) should be consulted for specific goals, not read in sequence.
 
-1. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed*.
+1. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed*.\
 **Ch 6, §6.3.1: Sampling Importance Resampling (SIR) Algorithm**
 	- **Focus**: Read this as the bridge from Module 2. SIR extends the importance sampling idea from computing a single estimate to producing an approximate sample from a target distribution by resampling proportionally to importance weights. Identify exactly where it connects back to Module 2 (Goal 2.6), and why it still requires a good proposal.
 	- **Builds toward**: SIR frames the core challenge that motivates MCMC: producing an approximate sample from a complex target when direct sampling is impossible.
 	
-2. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.* [Reference]
+2. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.* [Reference]\
 **Ch 10, §10.4: Importance sampling as background context for SIR**
 	> [Optional]
 	- **Focus**: If the connection between importance sampling and SIR is not clear after Givens & Hoeting, this section provides additional framing from a Bayesian computation perspective. Not required if Givens & Hoeting was sufficient.
 	- **Builds toward**: This reading reinforces the Module 2 connection and situates SIR within the Bayesian computation workflow.
 	
-3. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*
+3. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
 **Ch 7: Metropolis-Hastings — derivation, variants, practical choices**
 	- **Focus**: Focus on the derivation from detailed balance: understand why the acceptance ratio takes the form it does, and what happens to the chain's stationary distribution if you change it. Then focus on the proposal distribution problem: how does proposal width affect acceptance rate and autocorrelation, and why is there a tradeoff?
 	- **Builds toward**: The acceptance ratio derivation here connects directly back to Module 6's detailed balance condition — MH is the algorithm designed to satisfy that condition for an arbitrary target.
 	
-4. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
+4. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*\
 **Ch 11: Basics of Markov chain simulation (now introduced with full context)**
 	- **Focus**: Read this after R&C Ch 7. BDA Ch 11 provides the Bayesian practitioner's perspective on the same methods — the emphasis is on how to think about the sampler as a tool for posterior inference rather than as a generic algorithm. Focus on **§11.1–§11.3**, which connect the sampling algorithms to the Bayesian modeling framework built in Module 5. In particular, §11.3 ("Using Gibbs and Metropolis as building blocks") is the primary source for Goal 7.6: it introduces Metropolis-within-Gibbs as the answer to the question that R&C Chs 9–10 leave open — what do you do when a full conditional is not tractable?
 	  > **Read §11.3 after finishing R&C Chs 9–10, not before**.
@@ -393,17 +393,17 @@ Begin with SIR as a conceptual bridge from Module 2's importance sampling to the
 	  > **§11.4–§11.5** (convergence monitoring and ESS) can be read for orientation here, but will be revisited as primary content in Module 8 alongside Geyer (1992), where they belong in the diagnostic workflow. Deep engagement with those sections should wait.
 	- **Builds toward**: BDA Ch 11 connects the algorithmic machinery to the Bayesian modeling framework from Module 5 — this is where the two threads meet.
 	
-5. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*
+5. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
 **Chs 9–10: The Two-Stage and Multi-Stage Gibbs Sampler — structure, conditional specification, blocking**
 	- **Focus**: Focus on why full conditional distributions guarantee acceptance at every step (the derivation from detailed balance), and on the distinction between random-scan and deterministic-scan Gibbs. The blocking discussion is practically important — understand how block structure affects mixing.
 	- **Builds toward**: The deterministic-scan Gibbs subtlety addressed in VanDerwerken (below) is the most common conceptual confusion about Gibbs samplers — keep it in mind while reading R&C's treatment. Also note: because Gibbs sampling produces full conditional distributions as a byproduct at every step, it creates an opportunity for variance-reduced density estimation that other samplers do not; this is the basis for the Rao-Blackwellization technique covered in Module 9.
 	
-6. *Roberts & Rosenthal (2001) — Optimal Scaling for Various Metropolis-Hastings Algorithms* [Reference]
+6. *Roberts & Rosenthal (2001) — Optimal Scaling for Various Metropolis-Hastings Algorithms* [Reference]\
 **Statistical Science 16(4) — targeted reading for Goal 7.3**
 	- **Focus**: Read for the acceptance rate target result: the theoretical result that optimal Metropolis-Hastings performance (in certain settings) corresponds to an acceptance rate of approximately 0.234 for random walk proposals in high dimensions. Understand what this result gives you and what it does not: it is a guideline, not a formula.
 	- **Builds toward**: The proposal scaling result provides a theoretical anchor for the practical advice — “tune your acceptance rate” — that Module 8 will revisit in the diagnostic workflow.
 	
-7. *VanDerwerken (2017) — Not Every Gibbs Sampler is a Special Case of the MH Algorithm* [Reference]
+7. *VanDerwerken (2017) — Not Every Gibbs Sampler is a Special Case of the MH Algorithm* [Reference]\
 **Communications in Statistics — Theory and Methods 46(20) — targeted reading for 7.5**
 	- **Focus**: Short paper. Read for the single result: deterministic-scan Gibbs does not satisfy detailed balance in general, and therefore cannot be understood as a special case of MH. The random-scan version can. Understand why this distinction matters for how you reason about the chain's stationary distribution.
 	- **Builds toward**: This result is what Goal 7.5 asks you to articulate. Without it, the deterministic-scan / random-scan distinction seems like a technical footnote; with it, it is a conceptual clarification about what the algorithm is actually doing.
@@ -433,34 +433,34 @@ After finishing the reading, can you:
 ### Reading Sequence
 *Geyer (1992)* and *BDA* Ch 11 are the two primary sources and should be read in tandem — Geyer provides the theoretical grounding for ESS and autocorrelation, BDA provides the applied diagnostic workflow. Stan Reference Manual is the practical reference throughout. Secondary sources (Flegal et al., Cowles & Carlin, Link & Eaton) are targeted — consult them for specific goals.
 
-1. *Geyer (1992) — Practical Markov Chain Monte Carlo*
+1. *Geyer (1992) — Practical Markov Chain Monte Carlo*\
 **Statistical Science 7(4) — read in full**
 	> **Note**: The published version of this paper appeared in Statistical Science 7(4), which included discussion and commentary pieces by other authors. Read only Geyer's article (pp. 473–483); the additional comments in the document are from other contributors and are not assigned.
 	- **Focus**: This is the foundational treatment of ESS, autocorrelation, and the ergodic theorem for MCMC. Focus on why effective sample size is different from the raw number of iterations, how autocorrelation determines the size of that difference, and what the ergodic theorem actually guarantees about the validity of MCMC time averages. Read alongside the Module 6 ergodic theorem material (LPW Ch 12, §12.7).
 	- **Builds toward**: Geyer's ESS definition is what Goal 8.1 asks you to explain; his autocorrelation treatment is what Goal 8.2 requires.
 	
-2. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
+2. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*\
 **Ch 11: Basics of Markov chain simulation — convergence diagnostics, R-hat, trace plots, warm-up, and ESS**
 	- **Focus**: Read alongside Geyer. Focus on **§11.4–§11.5**. §11.4 translates the theoretical concepts into an applied diagnostic workflow: how to use trace plots to identify mixing problems, how R-hat diagnoses between-chain versus within-chain variance, and what warm-up is doing. §11.5 develops the effective number of simulation draws (n_eff) — the ESS formula, the variogram-based autocorrelation estimator used to compute it, and the stopping rules (R-hat < 1.1 and n_eff ≥ 5m). Both sections are required; §11.5 is what 8.1 and the stopping-rule component of Goal 8.6 depend on. This is the chapter to return to when running a sampler in practice.
 
 	- **Builds toward**: Goal 8.1 (ESS formula and computation), and the diagnostic workflow that Goal 8.6 asks you to internalize as a reliable iterative practice, not a one-time checklist.
 	
-3. *Stan Development Team — Stan Reference Manual* [Reference]
+3. *Stan Development Team — Stan Reference Manual* [Reference]\
 **Section on ESS, R-hat, and warm-up**; https://mc-stan.org/docs/reference-manual
 	- **Focus**: Consult as a practical reference throughout. Stan's documentation is the authoritative source for how R-hat and ESS are implemented in practice. Pay particular attention to the bulk ESS / tail ESS distinction and the updated R-hat definition, which correct known issues with older implementations.
 	- **Builds toward**: When you deploy a sampler in Module 10 or in practice, this is the reference you will use to interpret the output.
 	
-4. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.* [Reference]
+4. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.* [Reference]\
 **Ch 11: Basics of Markov chain simulation — revisit targeted sections**
 	- **Focus**: Return to Ch 11 if needed for clarification on how MCMC output is used for posterior inference. This is supplementary to the Ch 11 convergence diagnostics material covered as primary reading, not an additional assignment. Note: BDA Ch 11 was primary reading in Module 7, where it introduced simulation-based inference with full context. No new reading is expected here — this entry is a pointer back, not an additional assignment.
 	- **Builds toward**: Reinforces the connection between the diagnostic questions (is the chain mixing?) and the inferential question (can I trust this posterior summary?).
 	
-5. *Flegal, Haran & Jones (2008) — Markov Chain Monte Carlo: Can We Trust the Third Significant Figure?*
+5. *Flegal, Haran & Jones (2008) — Markov Chain Monte Carlo: Can We Trust the Third Significant Figure?*\
 **Statistical Science 23(2) — targeted reading for Goals 2 and 6**
 	- **Focus**: Read for the Monte Carlo standard error framework for dependent samples and its relationship to ESS. This extends Geyer's ESS concept by providing a concrete method for quantifying the uncertainty in a posterior summary that accounts for autocorrelation. Note that the fixed-width stopping rule in Section 4 — the comparison between consistent batch means (CBM) and the Gelman-Rubin diagnostic (GRD) for deciding when to stop a chain — is a direct and distinctive contribution to 8.6's iterative workflow; the paper shows concretely when GRD terminates too early. Sections 4.2 and 5 are illustrative rather than technically required, but they make the workflow argument concrete. Short and focused.
 	- **Builds toward**: Provides the formal machinery for constructing reliable uncertainty estimates from MCMC output — a practical extension of Goal 8.1's ESS framing, with direct relevance to the iterative workflow of Goal 8.6.
 	
-6. *Cowles & Carlin (1996)* — MCMC Convergence Diagnostics: A Comparative Review
+6. *Cowles & Carlin (1996)* — MCMC Convergence Diagnostics: A Comparative Review\
 **JASA 91(434) — targeted reading; read critically**
 	- **Focus**: Read as a survey of the diagnostic landscape as of 1996, not as a recipe. The paper compares multiple convergence diagnostics and finds none definitively superior. The takeaway is not a recommended diagnostic but an understanding of what different diagnostics are measuring and where each can be fooled.
 	**Prioritize**: **§2.1** (Gelman-Rubin) and **§2.3** (Geweke) are the diagnostics with ongoing practical relevance; read these in detail.
@@ -469,7 +469,7 @@ After finishing the reading, can you:
 	  **Section 5** is the practical conclusion; read in full. Note that Section 5's recommendation — use a combination of strategies rather than any single diagnostic — remains the correct modern position and anticipates the Stan/BDA workflow.
 	- **Builds toward**: Reading critically means asking: what failure mode does each diagnostic detect, and what failure mode does it miss? This is the right question to bring to any convergence diagnostic.
 	
-7. *Link & Eaton (2012) — On Thinning of Chains in MCMC*
+7. *Link & Eaton (2012) — On Thinning of Chains in MCMC*\
 **Methods in Ecology and Evolution 3(1) — short paper, read in full**
 	- **Focus**: Read for the single result: thinning MCMC chains (keeping every kth sample) does not improve statistical efficiency relative to keeping all samples. Keeping all samples always produces higher or equal ESS for the same computational cost. Thinning may be justified on storage grounds but not on inferential ones. Note that Geyer (1992), §3.6, Theorem 3.3 proves the same fundamental result analytically: for a reversible irreducible Markov chain, any subsampling strictly inflates variance. Link & Eaton restates this for a practitioner audience and quantifies it concretely for the two-state case. Reading both together reinforces Goal 8.5 from complementary angles.
 	- **Builds toward**: Goal 8.5 asks you to explain this result and identify the narrow circumstances where thinning may be practically justified. This paper is the sole source for that goal.
@@ -501,35 +501,35 @@ After finishing the reading, can you:
 ### Reading Sequence
 *Silverman* is the primary text for Chs 2, 3, and 5 (§5.2). The two items from *Givens & Hoeting* are targeted and should be consulted for the specific goals they address. Read Silverman Chs 2 and 3 first before consulting any secondary source. Note that Silverman Ch 3 covers both the kernel estimator and bandwidth selection in the same chapter (§3.2–§3.4) — items 2 and 3 below both draw from Ch 3.
 
-1. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*
+1. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*\
 **Ch 2: Histograms and naive estimators (context for the density estimation problem)**
 	- **Focus**: Use Ch 2 to establish the density estimation problem from first principles: what does it mean to estimate a density, why parametric models are sometimes insufficient, and how the naive estimator fails. The histogram discussion is not an aside — it makes the bias-variance tradeoff concrete before the kernel estimator appears.
 	- **Builds toward**: The histogram's limitation — sensitivity to bin placement and width — is precisely the problem the kernel estimator addresses.
 
-2. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*
+2. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*\
 **Ch 3, §3.2–§3.3: The kernel estimator and bias-variance analysis**
 	- **Focus**: This is the conceptual core of the module. Focus on what the kernel does (smooth the contribution of each observation to the density estimate), what the bandwidth does (control the degree of smoothing), and how the choice of kernel matters far less than the choice of bandwidth. The Gaussian kernel is conventional; the bandwidth is where most practical decisions happen. §3.2 and §3.3 develop the full MISE analysis and the bias-variance decomposition — read these carefully, as they provide the theoretical grounding for the bandwidth selection rules in §3.4 (item 3 below).
 		> Note: Ch 4 covers the kernel method for multivariate data and is outside this module's scope.
 	- **Builds toward**: The bias-variance framework developed here in §3.2–§3.3 is the foundation for the principled bandwidth selection rules developed in §3.4 (item 3).
 	
-3. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*
+3. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*\
 **Ch 3, §3.4: Bandwidth selection**
 	- **Focus**: Continue within Ch 3 from items 1–2. §3.4 is the full bandwidth selection treatment: subjective choice, reference to a standard distribution (the rule-of-thumb), least-squares cross-validation, and likelihood cross-validation. Focus on why bandwidth selection is a bias-variance problem: small bandwidth → low bias, high variance; large bandwidth → high bias, low variance. For each selector in §3.4, ask what assumptions it makes and when it would fail. The rule-of-thumb is fast but assumes approximately Gaussian data; cross-validation selectors are more adaptive but more variable in finite samples.
 	- **Builds toward**: Principled bandwidth selection is what distinguishes a reliable density estimate from an arbitrary one — this material is what Goal 9.3 requires.
 	
-4. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.*
+4. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.*\
 **Ch 6, §6.4.4: Rao-Blackwellization for density estimation in MCMC settings**
 	- **Focus**: G&H §6.4.4 develops the general principle — that conditioning on available structure reduces variance without changing what you are estimating (Eq. 6.81 via the conditional variance formula) — and then applies it in a Monte Carlo estimation context. The connection to density estimation specifically runs through the following link: Gibbs samplers produce full conditional distributions as a byproduct at every step, and averaging over those conditionals to estimate a posterior density yields a lower-variance estimate than using the marginal samples alone. Keep that density-estimation application explicitly in view while reading the general variance-reduction derivation in §6.4.4. Goal 9.4 asks why this strategy is particularly well-suited to MCMC settings where conditional distributions are already available.
 	- **Builds toward**: This reading connects forward to Module 10's posterior predictive check workflow.
 	
-5. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*
+5. *Silverman (1986) — Density Estimation for Statistics and Data Analysis*\
 **Ch 5, §5.2: The nearest-neighbour estimator**
 	- **Focus**: §5.1 frames the chapter — read it as a brief introduction situating nearest-neighbour and adaptive methods as responses to the kernel estimator's limitations in sparse regions. §5.2 is the core: the definition of the nearest-neighbour estimator (Eq. 5.1), the formal bias-variance expressions (Eqs. 5.4–5.5), and the explicit comparison with the kernel estimator at the same point (Eq. 5.6). Focus on the bias-variance contrast that Goal 9.5 specifically asks for: in nearest-neighbour estimation, the local bandwidth adapts to data density, giving different behavior in sparse and dense regions than a fixed-bandwidth kernel. The comparison in §5.2 shows where nearest-neighbour overcorrects.
 		> **§5.3 (adaptive kernel estimates)** is optional depth — read if you want to see how the chapter's logic leads to a hybrid approach that blends kernel and nearest-neighbour ideas.
 		> **§5.4 (maximum penalized likelihood)** is outside this module's scope.
 	- **Builds toward**: The local vs. global bandwidth distinction is a principled algorithmic choice with predictable consequences — understanding it completes the module's coverage of the density estimation design space.
 
-6. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.*
+6. *Givens & Hoeting (2013) — Computational Statistics, 2nd ed.*\
 **Ch 10, §10.4.3.1: Nearest-neighbour density estimation**
 	- **Focus**: Read after Silverman §5.2 as confirmatory depth. G&H provides a more applied treatment of the same nearest-neighbour material with worked examples and practical guidance. Goal 9.5 is met by Silverman; G&H reinforces it.
 	- **Builds toward**: Together with Silverman §5.2, this reading ensures both the formal bias-variance analysis and the practical implementation perspective are covered for Goal 9.5.
@@ -559,15 +559,15 @@ After finishing the reading, can you:
 ### Reading Sequence
 Module 10 is primarily a doing module rather than a reading module. The readings below are short synthesis pieces and a targeted BDA section. They should be read alongside applied work, not in a single sitting before starting.
 
-1. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
+1. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*\
 **Ch 6: Model checking — prior predictive, posterior predictive, and graphical checks**
 	- **Focus**: This chapter introduces the posterior predictive check as a principled model criticism tool. Focus on what a posterior predictive check tests (whether the model can reproduce features of the observed data) and what a failure implies (the model is misspecified in some detectable way). Also important: what a passing check does not imply.
 	- **Builds toward**: Goal 10.4 asks you to demonstrate a posterior predictive check — this chapter is the source. Return to it when you conduct one in an applied case.
-2. *Efron & Hastie (2016) — Computer Age Statistical Inference*
+2. *Efron & Hastie (2016) — Computer Age Statistical Inference*\
 **Epilogue: A short timeline from 1900 to 2016 tracing statistical progress**
 	- **Focus**: Read as a disciplinary retrospective, not for new technical content. The Epilogue traces the movement of statistical progress between Applications, Mathematics, and Computation across the twentieth century. It closes the frame opened by Tukey (1962) in Module 0. Note: the Epilogue is short and is the correct synthesis reading — Chs 16–18 cover Lasso and neural networks and are not retrospectives.
 	- **Builds toward**: Goal 10.6 asks you to situate the program's methods within the broader arc of modern statistical practice. This reading, paired with Gelman & Vehtari (2021), is what makes that situating possible.
-3. *Gelman & Vehtari (2021)* — What Are the Most Important Statistical Ideas of the Past 50 Years?
+3. *Gelman & Vehtari (2021)* — What Are the Most Important Statistical Ideas of the Past 50 Years?\
 **JASA 116(536) — read in full**
 	- **Focus**: Read as a second disciplinary retrospective, paired with the Efron & Hastie Epilogue. Gelman & Vehtari cover ideas rather than history — their list includes counterfactual causal inference, regularization, Bayesian computation, and multilevel modeling. Assess which of these ideas you have encountered in the program and which remain outside it.
 	- **Builds toward**: This reading closes the frame opened by Tukey (1962) in Module 0 — ask yourself whether Tukey's call for a reformation of statistics has been answered, and if so, by what.
