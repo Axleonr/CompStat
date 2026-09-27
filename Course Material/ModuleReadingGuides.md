@@ -264,8 +264,6 @@ All readings come from *Gelman et al. (BDA)*. The module is self-contained withi
 
 	***Ch 1: Probability and inference***
 
-	
-
 	- **Focus**: Establish the Bayesian model structure: the joint distribution, likelihood, prior, and posterior, and what each component commits you to. This chapter's probability framework is used throughout the program — make sure the notation and the interpretive conventions are solid before proceeding.
 	- **Builds toward**: This chapter's framework is what Module 7 will use when constructing a posterior to sample from.
 
@@ -275,22 +273,20 @@ All readings come from *Gelman et al. (BDA)*. The module is self-contained withi
 	**§2.8** and **§2.9** are the chapter's most direct material for Goal 5.2: read them as a treatment of prior selection as a modeling choice with traceable consequences, not as an aside on a special case. The same sections are the primary basis for Goal 5.4's prior-sensitivity component — §2.8 in particular makes explicit how disputing a posterior conclusion amounts to a claim about missing prior or likelihood information.
 	- **Builds toward**: The prior sensitivity reasoning developed here is revisited and extended in Ch 5, where the same questions are posed for hierarchical variance parameters.
 
-3. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
+2. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*\
 ***Ch 3 (Selected sections): Multiparameter models***\
 **§3.1** and the opening of **§3.2** (through the statement of the joint posterior) are the required reading.\
 **§3.3–§3.8** are reference — skim for the structural pattern, not the algebra.\
 **§3.9** can be skipped.
 
 	- **Focus:** The chapter's central lesson for this module is that marginalization is the general operation for moving from a joint posterior to inference about a single parameter, and that this operation resists closed-form solution as soon as the model leaves the conjugate family.\
-	**§3.1** establishes why marginalization is necessary.\
-	**§3.2**'s opening shows what the joint posterior looks like in a concrete case.\
-	The conjugate examples that follow (§3.3 onward) are additional instances of the same pattern — glance at them to confirm the pattern holds, but do not work through the derivations. The bioassay example in §3.7 is the chapter's clearest illustration of the nonconjugate case, where even a simple two-parameter model requires numerical methods; it's worth a skim if the motivation for computational methods feels abstract.
+	**§3.1** establishes why marginalization is necessary. **§3.2**'s opening shows what the joint posterior looks like in a concrete case. The conjugate examples that follow (§3.3 onward) are additional instances of the same pattern — glance at them to confirm the pattern holds, but do not work through the derivations. The bioassay example in §3.7 is the chapter's clearest illustration of the nonconjugate case, where even a simple two-parameter model requires numerical methods; it's worth a skim if the motivation for computational methods feels abstract.
 
 	- **Builds toward**: Multiparameter posterior structure is what makes closed-form computation impossible in general — motivating the need for the sampling methods in Modules 7–8.
 
-4. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*
+3. *Gelman et al. (2013) — Bayesian Data Analysis, 3rd ed.*\
 	***Ch 5 (selected sections): Hierarchical models***\
-**§5.1–§5.2**, **§5.5** and **§5.7** are required. **§5.3–§5.4** are reference — read for what they illustrate about the problem's structure, not for the computational machinery. **§5.6** can be skipped.
+	**§5.1–§5.2**, **§5.5** and **§5.7** are required. **§5.3–§5.4** are reference — read for what they illustrate about the problem's structure, not for the computational machinery. **§5.6** can be skipped.
 
 	- **Focus**: The chapter's central argument for this module runs through three steps: exchangeability as the modeling assumption that makes hierarchical structure the natural choice (§5.1–§5.2); partial pooling as the consequence of that structure, and what it implies about information flow across groups (§5.5, eight-schools example); and prior sensitivity on the variance parameters as the place where the modeling layer's choices have the most visible consequences (§5.7). §5.3–§5.4 work out the conjugate hierarchical case in detail — they are worth reading to see why the marginal posterior of the hyperparameters has the form it does, and why complete pooling and no pooling are limiting cases of the same model, but the integration and simulation steps they develop are outside this module's scope by design.
 	- **Builds toward**: Hierarchical models are the canonical setting where MCMC becomes necessary, making this reading a bridge to Module 7.
