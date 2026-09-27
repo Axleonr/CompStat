@@ -22,12 +22,12 @@ This module establishes the vocabulary and mental habits that the rest of the pr
 ### Reading Guide
 Read in the order given.
 
-1. *Tukey (1962) — The Future of Data Analysis*
+1. *Tukey (1962) — The Future of Data Analysis*\
 **Read in full (~40 pages)**
 	- **Focus**: Read as a disciplinary argument, not as historical background. Identify Tukey's central claim about the relationship between statistics and data analysis, and note where his critique is directed. The argument is short enough that every section earns attention; resist the urge to skim.
 	- **Builds toward**: Efron & Hastie Ch 1 picks up directly from Tukey's framing — reading them together makes the progression from Tukey's critique to modern computational practice explicit.
 
-2. *Efron & Hastie (2016) — Computer Age Statistical Inference*
+2. *Efron & Hastie (2016) — Computer Age Statistical Inference*\
 **Ch 1: Algorithms and Inference**
 	- **Focus**: Focus on the conceptual argument about what changed when computation entered statistical practice — what questions became askable, what the relationship between algorithms and inference looks like. Ch 2 (Frequentist Inference) is listed as optional orientation context; read it if you want a compact framing of classical inference as the foil for everything that follows, but it is not required.
 	- **Builds toward**: This chapter's framing of statistics as a computational discipline is the lens through which every subsequent module should be read.
