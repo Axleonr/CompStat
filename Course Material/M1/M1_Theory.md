@@ -27,7 +27,7 @@ The module has a natural two-stage structure: uniform generation first, then non
 
 3. *Owen (2013) — Monte Carlo Theory, Methods and Examples*\
 **Ch 4: Non-uniform random numbers**\
-Chapter 4 covers both the required inversion and acceptance-rejection material for the module, and material that, while useful to know, sits slightly out of scope of our goals. We have classified its sections as *Required*, *Optional*, and *Not-assigned*. Optional sections are still high-value, but not essential for the course.\
+Chapter 4 covers the required inversion and acceptance-rejection material for the module, but it also covers material that, while useful to know, sits slightly out of scope of our goals. We have classified its sections as *Required*, *Optional*, and *Not-assigned*. Optional sections are still high-value, but not essential for the course.\
 **Required:** §4.1, §4.2, §4.4, §4.7\
 **Optional:** §4.3, §4.5, §4.8\
 **Not assigned**: §4.6, §4.9
@@ -46,7 +46,7 @@ Chapter 4 covers both the required inversion and acceptance-rejection material f
 
 4. *Devroye (1986) — Non-Uniform Random Variate Generation*\
 **Ch II (Selected sections): General Principles in RV Generation**\
-*Read after Owen Ch 4, not in parallel.*
+*Read after Owen Ch 4, not in parallel.*\
 **§2.1–§2.3 (inversion method)**; **§3.1–§3.3 (rejection method)**
 	- **Focus**: Devroye's value is not coverage, but rigor and algorithmic design perspective. For the inversion method, note Devroye's Example 2.4 — the claim that inversion is "the only truly universal method" is the cleanest statement of when and why it applies. For acceptance-rejection, §3.2 is the essential section for this module: it works through the optimization of the proposal distribution explicitly, showing how to minimize the rejection constant $c$ by choosing the best $g$ within a parametric family. This is the formal treatment of what makes a proposal better or worse. Students pressed for time may treat §3.3 (generalizations) as a reference rather than a read-through.
 	- **Builds toward**: Devroye's proposal optimization framework (§3.2) connects directly to Module 7's discussion of proposal distribution choice in Metropolis-Hastings.
