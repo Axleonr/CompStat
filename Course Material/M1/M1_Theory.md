@@ -27,19 +27,21 @@ The module has a natural two-stage structure: uniform generation first, then non
 
 3. *Owen (2013) — Monte Carlo Theory, Methods and Examples*\
 **Ch 4: Non-uniform random numbers**\
-Chapter 4 is a resource that covers both the required inversion and acceptance-rejection material for the module, and material that, while useful to know, sits slightly out of scope of our goals. We have classified its sections as *Required*, *Optional*, and *Not-assigned*. Optional sections are still high-value, but not essential for the course.
+Chapter 4 covers both the required inversion and acceptance-rejection material for the module, and material that, while useful to know, sits slightly out of scope of our goals. We have classified its sections as *Required*, *Optional*, and *Not-assigned*. Optional sections are still high-value, but not essential for the course.\
 **Required:** §4.1, §4.2, §4.4, §4.7\
-**Optional:** §4.3, §4.5, §4.8
+**Optional:** §4.3, §4.5, §4.8\
 **Not assigned**: §4.6, §4.9
 	- **Focus**: **§4.1** and **§4.2** together establish the inverse transform method: §4.1 for the principle and proof, §4.2 for the worked examples that make it concrete.\
-**§4.4** extends the method to discrete distributions; it is short and follows directly from §4.2.\
-**§4.7** is the acceptance-rejection section and the most important in the chapter — read it carefully. Pay attention to where efficiency comes from (the acceptance probability is $\frac{1}{c}$; smaller $c$ is better) and what the proposal distribution $g$ must satisfy relative to the target $f$. Keep the connection back to Ch 3 explicit throughout: both methods take $U(0,1)$ draws as their input, and those draws come from the PRNG you just read about.\
-		>**On the other, non-required sections:**\
-**§4.3** is worth a skim for the feasibility point (numerical inversion of the normal CDF is possible). The implementation detail is reference material.\
-**§4.5** covers numerical search strategies when $F$ is available but $F^{-1}$ is not — supporting context for the conditions under which inversion is hard.\
-**§4.6** covers a range of transformation methods that are not load-bearing for this module. The exception is the order statistics material (Maxima, minima and order statistics, *pp. 16–17*), which illustrates the inversion principle in a non-obvious setting and is worth reading if you want a richer picture of Goal 3.\
-**§4.8** illustrates acceptance-rejection proposal design for the gamma distribution in a realistic setting.\
-**§4.9** is out of scope for this module.
+	**§4.4** extends the method to discrete distributions; it is short and follows directly from §4.2.\
+	**§4.7** is the acceptance-rejection section and the most important in the chapter — read it carefully. Pay attention to where efficiency comes from (the acceptance probability is $\frac{1}{c}$; smaller $c$ is better) and what the proposal distribution $g$ must satisfy relative to the target $f$. Keep the connection back to Ch 3 explicit throughout: both methods take $U(0,1)$ draws as their input, and those draws come from the PRNG you just read about.
+
+		>**On the non-required material:**\
+	**§4.3** is worth a skim for the feasibility point (numerical inversion of the normal CDF is possible). The implementation detail is reference material.\
+	**§4.5** covers numerical search strategies when $F$ is available but $F^{-1}$ is not — supporting context for the conditions under which inversion is hard.\
+	**§4.6** covers a range of transformation methods that are not load-bearing for this module. The exception is the order statistics material (Maxima, minima and order statistics, *pp. 16–17*), which illustrates the inversion principle in a non-obvious setting and is worth reading if you want a richer picture of Goal 3.\
+	**§4.8** illustrates acceptance-rejection proposal design for the gamma distribution in a realistic setting.\
+	**§4.9** is out of scope for this module.
+
 	- **Builds toward**: These two methods are the building blocks for every more complex sampling algorithm in the program; they reappear in Module 2 (importance sampling) and Module 7 (MCMC proposal design).
 
 4. *Devroye (1986) — Non-Uniform Random Variate Generation*\
