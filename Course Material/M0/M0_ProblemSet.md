@@ -1,6 +1,8 @@
 # Module 0 — Problem Set
 ## Computational Thinking & Statistical Algorithms
 
+*\<Problem Set introduction block\>*
+
 ### PS0.1 — An estimator as an algorithm
 
 **Core/Optional:** Optional | **Time:** 35 min | **Goals:** 0.1, 0.2, 0.3

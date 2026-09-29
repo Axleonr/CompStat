@@ -45,7 +45,9 @@ Finally, write a brief note (3–5 sentences) on **period and seed dependence**:
 
 ### PS1.2 — Inverse transform: closed-form and numerical
 **Core/Optional:** Core | **Time:** 45 min | **Goals:** 1.3
+
 **Prerequisites:** None
+
 **Statement:**
 
 **(a) Closed-form CDF case — the Pareto distribution.** The Pareto distribution with scale $x_m$ and shape $\alpha$ has CDF $F(x) = 1 - (x_m/x)^\alpha$ for $x \geq x_m$. Derive the inverse-transform sampler: show that if $U \sim \text{Unif}(0,1)$, then $X = x_m U^{-1/\alpha}$ is Pareto-distributed with parameters $(x_m, \alpha)$ (using $U$ in place of $1-U$ is valid since both are $\text{Unif}(0,1)$). Implement this power-transform sampler using $x_m = 1$, $\alpha = 6$, drawing $U$ from your language's library uniform generator with $n = 5{,}000$ draws. Overlay a histogram of your draws against the true Pareto density.
@@ -63,16 +65,20 @@ Finally, write a brief note (3–5 sentences) on **period and seed dependence**:
 
 ### PS1.3 — Acceptance-rejection: two proposals for a normal target
 **Core/Optional:** Core | **Time:** 50 min | **Goals:** 1.4
+
 **Prerequisites:** None
+
 **Statement:**
 
-Target: the standard normal density $f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}$. You will sample from $f$ using acceptance-rejection under two different proposal distributions $g$, each requiring a bound $M$ such that $f(x) \leq M g(x)$ for all $x$. Recall the accept-reject algorithm: draw $Y \sim g$, draw $U \sim \text{Unif}(0,1)$, accept $Y$ as a draw from $f$ if $U \leq f(Y)/(Mg(Y))$, otherwise reject and repeat. The acceptance probability of this procedure is exactly $1/M$ (a standard, provable fact of the accept-reject method — see also R&C, *Introducing Monte Carlo Methods with R*, Ex. 2.5).
+Target: the standard normal density $f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}$. You will sample from $f$ using acceptance-rejection under two different proposal distributions $g$, each requiring a bound $M$ such that $f(x) \leq M g(x)$ for all $x$. Recall the accept-reject algorithm: draw $Y \sim g$, draw $U \sim \text{Unif}(0,1)$, accept $Y$ as a draw from $f$ if $U \leq f(Y)/(Mg(Y))$, otherwise reject and repeat. The acceptance probability of this procedure is exactly $1/M$[^3].
+
+ [^3]: Provisional citation: a standard, provable fact of the accept-reject method — see also R&C, *Introducing Monte Carlo Methods with R*, Ex. 2.5
 
 **Proposal 1 — standard Laplace (double exponential):** $g_1(x) = \frac{1}{2} e^{-|x|}$. Derive the optimal bound $M_1 = \sup_x f(x)/g_1(x)$ (hint: maximize over $|x|$; the maximum occurs at $|x|=1$) and hence the theoretical acceptance rate $1/M_1$.
 
 **Proposal 2 — standard Cauchy:** $g_2(x) = \frac{1}{\pi(1+x^2)}$. Derive the optimal bound $M_2 = \sup_x f(x)/g_2(x)$ (the maximum again occurs at $|x|=1$ once you differentiate $(1+x^2)e^{-x^2/2}$) and the theoretical acceptance rate $1/M_2$.
 
-For each proposal: implement the accept-reject loop from scratch (you may draw the proposal variates $Y$ using your language's library sampler for the Laplace or Cauchy distribution, or your own inverse-transform construction from PS1.2 — the algorithm under test is the accept-reject loop itself, not the proposal-sampling mechanism). Run $20{,}000$ proposal attempts per proposal, seeded at $31415$; record the number accepted and the empirical acceptance rate. Compare each empirical rate to its theoretical $1/M$. Rank the two proposals by acceptance rate and explain, in 3–5 sentences, what structural feature of a proposal distribution (relative to the target) drives a higher or lower acceptance rate.
+For each proposal: implement the accept-reject loop from scratch (you may draw the proposal variates $Y$ using your language's library sampler for the Laplace or Cauchy distribution, or your own inverse-transform construction from PS1.2 — the algorithm under test is the accept-reject loop itself, not the proposal-sampling mechanism). Run $20{,}000$ proposal attempts per proposal, **seeded at $31415$**; record the number accepted and the empirical acceptance rate. Compare each empirical rate to its theoretical $1/M$. Rank the two proposals by acceptance rate and explain, in 3–5 sentences, what structural feature of a proposal distribution (relative to the target) drives a higher or lower acceptance rate.
 
 **Deliverable:** both derivations ($M_1$, $M_2$, with the maximization shown); the accept-reject implementation for each proposal; empirical acceptance counts/rates for each under the stated seed; the ranking and explanation.
 
@@ -87,7 +93,9 @@ For each proposal: implement the accept-reject loop from scratch (you may draw t
 
 ### PS1.4 — Tracing the generative chain: PRNG state to a normal draw
 **Core/Optional:** Core | **Time:** 30 min | **Goals:** 1.5
+
 **Prerequisites:** Requires your PS1.1 LCG (same recurrence and parameters: $m=2^{31}-1$, $a=16{,}807$, $c=0$)
+
 **Statement:**
 
 Every non-uniform random draw your code has produced in this module ultimately traces back to a sequence of raw PRNG states. This problem asks you to make that chain visible, end to end, for a single draw.
@@ -112,11 +120,12 @@ Because every step of this chain derives from the same deterministic LCG (no lib
 
 ### PS1.5 — RANDU's hyperplane defect, and a seed-misuse failure
 **Core/Optional:** Core | **Time:** 45 min | **Goals:** 1.6
+
 **Prerequisites:** Requires your PS1.1 LCG (reused for the seed-misuse half only; the RANDU generator is separately specified below)
 
 **Statement:**
 
-**Part 1 — RANDU.** RANDU is a linear congruential generator historically notorious for producing badly structured output. *(Its specific identification with the production generator once shipped by IBM under this name is not independently re-confirmed within this session — see the discussion note. The recurrence below is the one under study regardless.)* Implement it:
+**Part 1 — RANDU.** RANDU is a linear congruential generator historically notorious for producing badly structured output. Implement it:
 $$X_{n+1} = 65{,}539 \, X_n \bmod 2^{31}, \qquad U_n = X_n / 2^{31}.$$
 Seed with $X_0 = 1$ (RANDU's period behavior depends on the seed being odd; a seed of 0 is degenerate for the same reason PS1.1's LCG was). Generate $n = 5{,}000$ draws and form every consecutive triple $(U_i, U_{i+1}, U_{i+2})$.
 
@@ -137,7 +146,9 @@ Tier 3, Part 1:* under $X_0=1$, $n=5{,}000$, the identity should hold with **zer
 
 ### PS1.6 — Optional: sampling deep in a tail, the naive way and a better way
 **Core/Optional:** Optional | **Time:** 35 min | **Goals:** 1.4, 1.6
+
 **Prerequisites:** None
+
 **Statement:**
 
 Target: the standard normal distribution truncated to $[4, \infty)$ — a deep right tail (only about 1 in 30,000 standard normal draws land here). This problem is a trimmed version of R&C Ex. 2.22's fuller multi-part treatment of truncated-normal generation (naive rejection, its tail inefficiency, and improved proposals); only the naive-vs-one-improved-proposal comparison is covered here.
@@ -157,5 +168,3 @@ Compare the two empirical rates (as a ratio) and comment, in 2–3 sentences, on
 - *Tier 3:* under a stated seed, at $20{,}000{,}000$ naive attempts your empirical rate should fall within **3.167×10⁻⁵ ± 3.78×10⁻⁶**; at $20{,}000$ improved-method attempts your empirical rate should fall within **0.9466 ± 0.0048**. The ratio of improved to naive acceptance rate should be on the order of $10^4$ (We observed 23,000×–32,000× across five independent trials).
 
 **Discussion note:** *(folded)* The naive method isn't wrong, exactly — it's just spending nearly all of its 20 million draws generating values the problem doesn't want, and only accidentally landing in the target region about 1 time in 30,000. The improved proposal is shaped to put almost all of its mass exactly where the target's mass is (in the tail beyond $a$), so it wastes far less effort — this is the general lesson of good proposal design (echoing PS1.3's ranking discussion): match the proposal's shape to the target's shape *where the target actually has mass*, which for a deep tail means matching the tail's local behavior, not the distribution's overall shape. If your naive empirical rate is off by an order of magnitude, check you used a large enough attempt count — this is a rare-event probability, and both very small and very large empirical deviations are possible with insufficient attempts.
-
----
