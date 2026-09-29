@@ -17,7 +17,8 @@ The module has a natural two-stage structure: uniform generation first, then non
 
 2. *L'Ecuyer (1998) — Random Number Generation*\
 **In *J. Banks (Ed.), Handbook of Simulation***
-	- **Focus**: Focus on the internal mechanics of PRNG construction: LCGs, combined generators, period length, and what it means for a deterministic sequence to pass randomness tests. *Owen covers what properties are required; L'Ecuyer explains how they are achieved. Read these together, they address the same topic from complementary angles*. §4.3.5 through §4.4 (lacunary indices, matrix generators, LFSRs, nonlinear methods) go beyond what this module requires; read for awareness and move on.
+	- **Focus**: Focus on the internal mechanics of PRNG construction: LCGs, combined generators, period length, and what it means for a deterministic sequence to pass randomness tests. *Owen covers what properties are required; L'Ecuyer explains how they are achieved. Read these together, they address the same topic from complementary angles*.\
+	§4.3.5 through §4.4 (lacunary indices, matrix generators, LFSRs, nonlinear methods) go beyond what this module requires; read for awareness and move on.
 	- **Builds toward**: Understanding generator mechanics is prerequisite to understanding reproducibility, period exhaustion, and the correlation artifacts that matter in Goal 1.6.
 
 ***
@@ -25,22 +26,32 @@ The module has a natural two-stage structure: uniform generation first, then non
 #### Non-uniform RN Generation
 
 3. *Owen (2013) — Monte Carlo Theory, Methods and Examples*\
-**Ch 4: Non-uniform random numbers**
-	- **Focus**: Read both **§4.1–4.2** (inversion principle and worked examples) and **§4.7** (acceptance-rejection) carefully. The intervening sections can be read selectively: 
-		- **§4.3** introduces the practical challenge of inverting the normal CDF — the key point is that numerical inversion is feasible, not the implementation details of specific algorithms. 
-		- **§4.6** (Box-Muller and other transformations) is interesting background but is not load-bearing for this module's goals; students pressed for time may treat it as optional. 
-		- **§4.8** (gamma generators) illustrates acceptance-rejection proposal design in a realistic setting and is worth skimming; 
-		- **§4.9** (automatic generators) is optional. Keep the connection back to Ch 3 explicit throughout: inversion and acceptance-rejection both take $U(0,1)$ draws as their input, and those draws come from the PRNG you just read about.
+**Ch 4: Non-uniform random numbers**\
+Chapter 4 is a resource that covers both the required inversion and acceptance-rejection material for the module, and material that, while useful to know, sits slightly out of scope of our goals. We have classified its sections as *Required*, *Optional*, and *Not-assigned*. Optional sections are still high-value, but not essential for the course.
+**Required:** §4.1, §4.2, §4.4, §4.7\
+**Optional:** §4.3, §4.5, §4.8
+**Not assigned**: §4.6, §4.9
+	- **Focus**: **§4.1** and **§4.2** together establish the inverse transform method: §4.1 for the principle and proof, §4.2 for the worked examples that make it concrete.\
+**§4.4** extends the method to discrete distributions; it is short and follows directly from §4.2.\
+**§4.7** is the acceptance-rejection section and the most important in the chapter — read it carefully. Pay attention to where efficiency comes from (the acceptance probability is $\frac{1}{c}$; smaller $c$ is better) and what the proposal distribution $g$ must satisfy relative to the target $f$. Keep the connection back to Ch 3 explicit throughout: both methods take $U(0,1)$ draws as their input, and those draws come from the PRNG you just read about.\
+		>**On the other, non-required sections:**\
+**§4.3** is worth a skim for the feasibility point (numerical inversion of the normal CDF is possible). The implementation detail is reference material.\
+**§4.5** covers numerical search strategies when $F$ is available but $F^{-1}$ is not — supporting context for the conditions under which inversion is hard.\
+**§4.6** covers a range of transformation methods that are not load-bearing for this module. The exception is the order statistics material (Maxima, minima and order statistics, *pp. 16–17*), which illustrates the inversion principle in a non-obvious setting and is worth reading if you want a richer picture of Goal 3.\
+**§4.8** illustrates acceptance-rejection proposal design for the gamma distribution in a realistic setting.\
+**§4.9** is out of scope for this module.
 	- **Builds toward**: These two methods are the building blocks for every more complex sampling algorithm in the program; they reappear in Module 2 (importance sampling) and Module 7 (MCMC proposal design).
 
 4. *Devroye (1986) — Non-Uniform Random Variate Generation*\
-**Ch II: §2.1–2.3 (inversion method); §3.1–3.3 (rejection method)**\
-Read after Owen Ch 4, not in parallel.
-	- **Focus**:  Devroye's value is not coverage, but rigor and algorithmic design perspective. For the inversion method, note Devroye's Example 2.4 — the claim that inversion is "the only truly universal method" is the cleanest statement of when and why it applies. For acceptance-rejection, §3.2 is the essential section for this module: it works through the optimization of the proposal distribution explicitly, showing how to minimize the rejection constant $c$ by choosing the best $g$ within a parametric family. This is the formal treatment of what makes a proposal better or worse. Students pressed for time may treat §3.3 (generalizations) as a reference rather than a read-through.
+**Ch II (Selected sections): General Principles in RV Generation**\
+*Read after Owen Ch 4, not in parallel.*
+**§2.1–§2.3 (inversion method)**; **§3.1–§3.3 (rejection method)**
+	- **Focus**: Devroye's value is not coverage, but rigor and algorithmic design perspective. For the inversion method, note Devroye's Example 2.4 — the claim that inversion is "the only truly universal method" is the cleanest statement of when and why it applies. For acceptance-rejection, §3.2 is the essential section for this module: it works through the optimization of the proposal distribution explicitly, showing how to minimize the rejection constant $c$ by choosing the best $g$ within a parametric family. This is the formal treatment of what makes a proposal better or worse. Students pressed for time may treat §3.3 (generalizations) as a reference rather than a read-through.
 	- **Builds toward**: Devroye's proposal optimization framework (§3.2) connects directly to Module 7's discussion of proposal distribution choice in Metropolis-Hastings.
 ***
 
-5. *L'Ecuyer (1999), "Good Parameters and Implementations for Combined Multiple Recursive Random Number Generators"*, Operations Research 47(1). **[Optional]**\
+5. *L'Ecuyer (1999), "Good Parameters and Implementations for Combined Multiple Recursive Random Number Generators"*, Operations Research 47(1).\
+**[Optional]**\
 	For students who want to see the technical construction of combined generators in detail. Not required for any Goal.
 
 > **Synthesis note:** After finishing all readings, pause before beginning the self-assessment. Try to state in one paragraph the complete generative chain — from PRNG seed through uniform output through non-uniform transformation to a final sample from an arbitrary target distribution. Each link in that chain is covered in the readings, but no single source assembles all of them.
