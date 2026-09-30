@@ -35,7 +35,7 @@ Both Stage 1 readings cover the same material: R&C Ch 3 is required, Glasserman 
 1. *Glasserman (2003), Monte Carlo Methods in Financial Engineering*; **[Optional]**\
 **Ch 1 (scoped): Foundations, §1.1.1–§1.1.3**\
 **Appendix A**
-Glasserman is a less theoretical entry point to the material covered by R&C: we recommend you check this first, then, if you find yourself itching to skip ahead, move on.
+Glasserman is a less theoretical treatment to the material covered by R&C; if you prefer a more applied entry point, read it first as a full alternative introduction to the Stage 1 material, then proceed to R&C.
 
 2. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
 **Ch 3 (scoped): Monte Carlo Integration, §3.1–§3.2**
@@ -51,15 +51,22 @@ Glasserman is a less theoretical entry point to the material covered by R&C: we 
 **Ch 8: Variance reduction**\
 **Ch 9: Importance sampling**
 	- **Focus**: For each technique, focus on three things: the mechanism (how does it reduce variance?), the structural condition that makes it effective (what property of the problem does it exploit?), and its limitation (when does it not help, or hurt?). Keep the Stage 1 framing explicit: each technique is a reduction in the $n^{-1/2}$ error's leading constant, not a change in the fundamental convergence rate.
-	- **Builds toward**: Importance sampling reappears in Module 7 as the conceptual foundation for SIR — the extension from computing a single estimate to producing an approximate sample from a target distribution.
+	- **Builds toward**: The importance sampling idea is extended in Module 7 into SIR, going from computing a single estimate to producing an approximate sample from a target distribution.
 
 4. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
 **Ch 3 (revisited): Monte Carlo Integration, §3.3 (scoped)**\
 *We return now to Ch 3, picking up where Stage 1 left off.*\
-Read **§3.3** (importance sampling) all the way through the variance condition, Theorem 3.12 and the defensive mixture discussion in §3.3.2; exclude Example 3.13 and all subsequent material, they extend beyond this module's scope.
-	- **Focus**: This scoped reading treats importance sampling as a principled estimator construction — the conditions for variance reduction, the formal weight characterization, and the defensive mixture as a robustness response to weight pathology. Read Problem 3.18 as a conceptual exercise for Goal 2.6: it tests whether you can connect the weight behavior to estimation failure.
-		
-	- **Builds toward**: The weight variance and defensive mixture material here is the formal underpinning for the pathological weight discussion in Owen Ch 9, reading them in this order lets R&C supply the theory and Owen supply the intuition.
+Read **§3.3** (importance sampling) through the variance condition, Theorem 3.12 and the defensive mixture discussion in §3.3.2, then stop when you get to Example 3.13. 
+	> Examples 3.13, 3.14 and 3.15 are thorough and instructive, but they are coverage of IS applications, not additional conceptual architecture; they are not assigned: you may treat them as optional, but keep in mind that they substantially increase the reading load of what is already a heavy module. All subsequent material is outside this module's scope (with a small exception for Problem 3.18 in §3.5).
+	
+	After stopping at Example 3.13, read Problem 3.18 in §3.5 as a conceptual demonstration for Goal 2.6.
+	
+	- **Focus**: This scoped reading treats importance sampling as a principled estimator construction — the fundamental identity, the conditions under which the variance of the IS estimator is finite, the formal characterization of the optimal instrumental distribution (Theorem 3.12), and the defensive mixture as a practical robustness response to weight pathology.\
+	**Problem 3.18** defines normalized importance weights and shows that resampling from them produces a sample asymptotically equivalent to the IS estimator — this is the IS-to-approximate-sampling bridge that Module 7 builds on. It is **not a problem to solve**; read it as a worked conceptual argument.\
+	The material here serves as the formal underpinning for the pathological weight discussion in Owen Ch 9; reading them in this order lets R&C supply the theory after Owen has established the intuition.
+			
+	- **Builds toward**: The weight variance condition and its consequences developed here are the formal basis for understanding SIR weight degeneracy in Module 7 — specifically, why importance weights collapse in high dimensions and what that implies for the reliability of SIR as an approximate sampler.
+
 
 5. *Owen (2013) — Monte Carlo Theory, Methods and Examples*; **[Optional]**\
 **Ch 10: Advanced variance reduction**\
