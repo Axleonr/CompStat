@@ -33,11 +33,12 @@ This module has a deliberate two-stage structure: Owen's variance reduction chap
 Both Stage 1 readings cover the same material: R&C Ch 3 is required, Glasserman is an optional entry point for students with a more applied mindset.
 
 1. *Glasserman (2003), Monte Carlo Methods in Financial Engineering*; **[Optional]**\
-**§1.1.1–§1.1.3; Appendix A**\
+**Ch 1 (scoped): Foundations, §1.1.1–§1.1.3**\
+**Appendix A**
 Glasserman is a less theoretical entry point to the material covered by R&C: we recommend you check this first, then, if you find yourself itching to skip ahead, move on.
 
 2. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
-**Ch 3 (scoped): Monte Carlo Integration; §3.1–§3.2**
+**Ch 3 (scoped): Monte Carlo Integration, §3.1–§3.2**
 	> If you find R&C's register demanding, read Glasserman first as a more applied entry point to the same material, then return to R&C for the formal development.
 	- **Focus**: This is the conceptual architecture for the entire module. Focus on the argument: why the sample mean converges (the strong law), what the CLT gives you (the error distribution), and how variance determines error. The proofs are worth reading once; the estimator intuition is what carries forward. Do not try to absorb all of Ch 3 now — the deferred R&C material returns at the end of Stage 2.
 	- **Builds toward**: Every variance reduction technique in Stage 2 should be understood as a structured intervention in the error quantity defined here.
@@ -53,19 +54,15 @@ Glasserman is a less theoretical entry point to the material covered by R&C: we 
 	- **Builds toward**: Importance sampling reappears in Module 7 as the conceptual foundation for SIR — the extension from computing a single estimate to producing an approximate sample from a target distribution.
 
 4. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
-**Ch 3 (revisited): Monte Carlo Integration**\
-We return now to Ch 3, picking up where Stage 1 left off.\
-**Assigned:**\
-§3.3.1 (Principles through Example 3.11);\
-§3.3.2 (the variance condition and Theorem 3.12 through the defensive mixture discussion).\
-**Exclude**:\
-Examples 3.13–3.15, §3.3.3 (AR recycling), §3.4 (Laplace approximation), and §3.6 Notes. These extend beyond the module's scope.
+**Ch 3 (revisited): Monte Carlo Integration, §3.3 (scoped)**\
+*We return now to Ch 3, picking up where Stage 1 left off.*\
+Read **§3.3** (importance sampling) all the way through the variance condition, Theorem 3.12 and the defensive mixture discussion in §3.3.2; exclude Example 3.13 and all subsequent material, they extend beyond this module's scope.
 	- **Focus**: This scoped reading treats importance sampling as a principled estimator construction — the conditions for variance reduction, the formal weight characterization, and the defensive mixture as a robustness response to weight pathology. Read Problem 3.18 as a conceptual exercise for Goal 2.6: it tests whether you can connect the weight behavior to estimation failure.
 		
 	- **Builds toward**: The weight variance and defensive mixture material here is the formal underpinning for the pathological weight discussion in Owen Ch 9, reading them in this order lets R&C supply the theory and Owen supply the intuition.
 
 5. *Owen (2013) — Monte Carlo Theory, Methods and Examples*; **[Optional]**\
-**Ch 10 (Advanced variance reduction)**\
+**Ch 10: Advanced variance reduction**\
 Chapter 10 covers stratification theory, Latin hypercube sampling, and their theoretical properties in more depth. Not required for any Goal; suitable for students wanting a more thorough treatment of stratification.
 
 **A note on Rao-Blackwellization**:
