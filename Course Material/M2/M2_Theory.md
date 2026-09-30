@@ -54,10 +54,10 @@ Glasserman is a less theoretical entry point to the material covered by R&C: we 
 
 4. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
 **Ch 3 (revisited): Monte Carlo Integration**\
-We return now to Ch 3, picking up where Stage 1 left off.
+We return now to Ch 3, picking up where Stage 1 left off.\
 **Assigned:**\
 §3.3.1 (Principles through Example 3.11);\
-§3.3.2 (the variance condition and Theorem 3.12 through the defensive mixture discussion).
+§3.3.2 (the variance condition and Theorem 3.12 through the defensive mixture discussion).\
 **Exclude**:\
 Examples 3.13–3.15, §3.3.3 (AR recycling), §3.4 (Laplace approximation), and §3.6 Notes. These extend beyond the module's scope.
 	- **Focus**: This scoped reading treats importance sampling as a principled estimator construction — the conditions for variance reduction, the formal weight characterization, and the defensive mixture as a robustness response to weight pathology. Read Problem 3.18 as a conceptual exercise for Goal 2.6: it tests whether you can connect the weight behavior to estimation failure.
