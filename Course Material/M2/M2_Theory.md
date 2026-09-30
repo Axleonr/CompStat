@@ -34,7 +34,7 @@ Both Stage 1 readings cover the same material: R&C Ch 3 is required, Glasserman 
 
 1. *Glasserman (2003), Monte Carlo Methods in Financial Engineering*; **[Optional]**\
 **Ch 1 (scoped): Foundations, §1.1.1–§1.1.3**\
-**Appendix A**
+**Appendix A**\
 Glasserman is a less theoretical treatment to the material covered by R&C; if you prefer a more applied entry point, read it first as a full alternative introduction to the Stage 1 material, then proceed to R&C.
 
 2. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
