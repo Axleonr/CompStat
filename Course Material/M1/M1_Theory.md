@@ -1,12 +1,12 @@
 # Module 1
 ## Random Number Generation & Simulation
 
-Every method in this program ultimately depends on the ability to generate random numbers. This module examines where those numbers come from. Computers are deterministic machines, so randomness must be constructed — through algorithms that produce **sequences with the right statistical properties**, even though they are entirely determined by an initial seed. Understanding this is not merely a technical curiosity: it shapes how you think about reproducibility, about the limits of simulation, and about what it means to say a result is "random."
+Every method in this program ultimately depends on the ability to generate random numbers. This module examines where those numbers come from. Computers are deterministic machines, so **randomness must be constructed through algorithms that produce sequences with the right statistical properties**, even though they are entirely determined by an initial seed. Understanding this is not merely a technical curiosity: it shapes how you think about reproducibility, about the limits of simulation, and about what it means to say a result is "random."
 
 From this foundation the module moves to basic stochastic simulation — turning uniform random numbers into samples from arbitrary distributions — which is the primitive operation on which Monte Carlo and MCMC are built.
 
 ### Reading Guide
-The module has a natural two-stage structure: uniform generation first, then non-uniform. Read in the order given. Owen and L'Ecuyer cover the uniform layer in parallel — **read them together** before moving to the non-uniform material.
+The module has a natural two-stage structure: uniform generation first, then non-uniform. **Read Owen and L'Ecuyer together**, they cover the uniform layer in parallel; only after completing the uniform section move on to the non-uniform material.
 
 ***
 #### Uniform PRNGs
@@ -56,7 +56,7 @@ Chapter 4 covers the required inversion and acceptance-rejection material for th
 **[Optional]**\
 	For students who want to see the technical construction of combined generators in detail. Not required for any Goal.
 
-> **Synthesis note:** After finishing all readings, pause before beginning the self-assessment. Try to state in one paragraph the complete generative chain — from PRNG seed through uniform output through non-uniform transformation to a final sample from an arbitrary target distribution. Each link in that chain is covered in the readings, but no single source assembles all of them.
+**Synthesis note:** After finishing all readings, pause before beginning the self-assessment. Try to state in one paragraph the complete generative chain — from PRNG seed through uniform output through non-uniform transformation to a final sample from an arbitrary target distribution. Each link in that chain is covered in the readings, but no single source assembles all of them.
 
 ### Self-Assessment
 #### Quick Checklist
@@ -72,5 +72,5 @@ After finishing the reading, can you:
 1.	A pseudorandom number generator is entirely deterministic — given the same seed, it produces the exact same sequence every time. In what sense, then, can its output be called "random"? What does randomness mean here, and how is that meaning established?
 2.	The inverse transform and acceptance-rejection methods both produce draws from a target distribution, but they work in fundamentally different ways. What does each method require, and what does each assume about the target? When would you prefer one over the other?
 3.	Period exhaustion is rarely discussed in practice. Why does it matter, and under what conditions could it become a real problem rather than a theoretical concern?
-4.	Devroye treats the uniform generation problem as already solved and takes U(0,1) draws as given. Why is this a sensible division of labor? What would break if the uniform draws were not actually independent?
+4.	Devroye treats the uniform generation problem as already solved and takes $U(0,1)$ draws as given. Why is this a sensible division of labor? What would break if the uniform draws were not actually independent?
 5.	Module 2 builds Monte Carlo estimation on top of the simulation primitives from this module. What specific properties of your RNG output does the validity of a Monte Carlo estimate depend on?
