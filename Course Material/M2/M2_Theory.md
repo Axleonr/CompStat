@@ -1,6 +1,5 @@
 # Module 2
 ## Monte Carlo Estimation & Variance Reduction
-
 Monte Carlo methods use random simulation to solve problems that are analytically intractable — computing integrals, approximating expectations, and propagating uncertainty through complex models. This module develops the theoretical basis for Monte Carlo estimation: why it works, how its error behaves, and what controls the rate at which it improves with more computation.
 
 The second half of the module addresses variance reduction — a family of techniques for getting more accurate estimates from the same computational budget. Importance sampling, antithetic variates, control variates, and stratified sampling are covered not as tricks but as principled modifications to the basic estimator, each with a clear explanation of where the efficiency gain comes from.
@@ -12,7 +11,6 @@ Importance sampling deserves particular attention: it reweights draws from a tra
 
 #### Specific Goals[^1]
 [^1]:Specific goals will be cited as `Goal M.g` throughout the program. See `ProgramGoalsReference.md`
-
 1. Derive the Monte Carlo estimator from first principles and characterize its error — establishing why the method works and what governs the rate at which accuracy improves with sample size
 2. Explain the role of variance in Monte Carlo error and articulate why reducing variance is equivalent to getting more information from the same computational budget
 3. Implement and explain antithetic variates and control variates as principled modifications to the basic estimator, identifying the structural conditions that make each effective
@@ -21,7 +19,6 @@ Importance sampling deserves particular attention: it reweights draws from a tra
 6. Recognize importance sampling as a reweighting idea with scope beyond variance reduction — specifically, that resampling from importance weights produces an approximate sample from the target, laying the groundwork for SIR in Module 7
 
 ---
-
 
 ### Reading Guide
 This module has a deliberate two-stage structure: Owen's variance reduction chapters assume the estimator framework and the role of variance as the controlling quantity — concepts that are built in Stage 1. Pay close attention to the scope of each stage and avoid reading ahead.
@@ -32,7 +29,7 @@ This module has a deliberate two-stage structure: Owen's variance reduction chap
 
 Both Stage 1 readings cover the same material: R&C Ch 3 is required, Glasserman is an optional entry point for students with a more applied mindset.
 
-1. *Glasserman (2003), Monte Carlo Methods in Financial Engineering*; **[Optional]**\
+1. *Glasserman (2003) — Monte Carlo Methods in Financial Engineering*; **[Optional]**\
 **Ch 1 (scoped): Foundations, §1.1.1–§1.1.3** & **Appendix A**\
 Glasserman is a less theoretical treatment to the material covered by R&C; if you prefer a more applied entry point, read it first as a full alternative introduction to the Stage 1 material, then proceed to R&C.
 
@@ -52,15 +49,13 @@ Glasserman is a less theoretical treatment to the material covered by R&C; if yo
 	- **Builds toward**: The importance sampling idea is extended in Module 7 into SIR, going from computing a single estimate to producing an approximate sample from a target distribution.
 
 4. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
-**Ch 3 (revisited): Monte Carlo Integration, §3.3 (scoped)**\
-*We return now to Ch 3, picking up where Stage 1 left off.*\
-Read **§3.3** (importance sampling) through the variance condition, Theorem 3.12 and the defensive mixture discussion in §3.3.2, then stop when you get to Example 3.13. 
+**Ch 3 (revisited): §3.3 (scoped)**\
+	Read **§3.3** (importance sampling) through the variance condition, Theorem 3.12 and the defensive mixture discussion in §3.3.2. 
 	> Examples 3.13, 3.14 and 3.15 are thorough and instructive, but they are coverage of IS applications, not additional conceptual architecture; they are not assigned: you may treat them as optional, but keep in mind that they substantially increase the reading load of what is already a heavy module. All subsequent material is outside this module's scope (with a small exception for Problem 3.18 in §3.5).
 	
 	After stopping at Example 3.13, read Problem 3.18 in §3.5 as a conceptual demonstration for Goal 2.6.
 	
-	- **Focus**: This scoped reading treats importance sampling as a principled estimator construction — the fundamental identity, the conditions under which the variance of the IS estimator is finite, the formal characterization of the optimal instrumental distribution (Theorem 3.12), and the defensive mixture as a practical robustness response to weight pathology.\
-	**Problem 3.18** defines normalized importance weights and shows that resampling from them produces a sample asymptotically equivalent to the IS estimator — this is the IS-to-approximate-sampling bridge that Module 7 builds on. It is **not a problem to solve**; read it as a worked conceptual argument.\
+	- **Focus**: **Problem 3.18** defines normalized importance weights and shows that resampling from them produces a sample asymptotically equivalent to the IS estimator — this is the IS-to-approximate-sampling bridge that Module 7 builds on. It **is not a problem to solve**; read it as a worked conceptual argument.\
 	The material here serves as the formal underpinning for the pathological weight discussion in Owen Ch 9; reading them in this order lets R&C supply the theory after Owen has established the intuition.
 			
 	- **Builds toward**: The weight variance condition and its consequences developed here are the formal basis for understanding SIR weight degeneracy in Module 7 — specifically, why importance weights collapse in high dimensions and what that implies for the reliability of SIR as an approximate sampler.
@@ -68,10 +63,10 @@ Read **§3.3** (importance sampling) through the variance condition, Theorem 3.1
 
 5. *Owen (2013) — Monte Carlo Theory, Methods and Examples*; **[Optional]**\
 **Ch 10: Advanced variance reduction**\
-Chapter 10 covers stratification theory, Latin hypercube sampling, and their theoretical properties in more depth. Not required for any Goal; suitable for students wanting a more thorough treatment of stratification.
+Chapter 10 covers stratification theory, Latin hypercube sampling, and their theoretical properties in more depth; suitable for students wanting a more thorough treatment of stratification.
 
 **A note on Rao-Blackwellization**:
-The Rao-Blackwell principle — that conditioning on available structure reduces variance without changing what you are estimating — is a natural extension of the variance reduction ideas in this module. It is introduced here by name, but it is not assigned as a reading in Module 2. Its primary payoff in this program comes in Module 9, where it is developed and applied concretely to density estimation from MCMC output. Encountering it first in that context, where the relevant sampler structure is in hand, makes the principle a usable technique rather than an abstract theorem.
+The Rao-Blackwell principle — that conditioning on available structure reduces variance without changing what you are estimating — is a natural extension of the variance reduction ideas in this module. It is introduced here by name, but it is not assigned as a reading in Module 2. Its primary payoff in this program comes in Module 9, where it is developed and applied concretely to density estimation from MCMC output.
 
 ### Self-Assessment
 #### Quick Checklist

@@ -1,17 +1,14 @@
 # Module 3
 ## Bootstrap & Resampling
-
 The bootstrap is one of the most conceptually elegant ideas in statistics: use the data itself as a model of the population, and simulate the sampling process by drawing from that model repeatedly. This module develops both parametric and nonparametric bootstrap from first principles, derives confidence intervals through multiple approaches, and examines the theoretical conditions under which the bootstrap provides valid inference.
 
 Equally important is understanding when the bootstrap fails. Heavy-tailed distributions, extreme statistics, small samples, and dependent data all create situations where naive resampling breaks down. A practitioner who knows only that the bootstrap works is less useful than one who also knows where it stops working.
 
 #### Module Goal
-
-Perform inference through data-driven simulation, understand the theoretical basis for its validity, and recognize the conditions under which it breaks down.
+*Perform inference through data-driven simulation, understand the theoretical basis for its validity, and recognize the conditions under which it breaks down.*
 
 #### Specific Goals[^1]
 [^1]:Specific goals will be cited as `Goal M.g` throughout the program. See `ProgramGoalsReference.md`
-
 1. Derive the nonparametric bootstrap from first principles — articulating what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires
 2. Implement parametric and nonparametric bootstrap and construct confidence intervals through multiple methods, including bootstrap-t, percentile, and BCa approaches; explain the accuracy hierarchy among these methods — distinguishing first-order from second-order accuracy — and identify which methods are transformation-respecting and why that property matters.
 3. Explain the theoretical conditions under which bootstrap confidence intervals are valid, and distinguish between the bootstrap's consistency and its accuracy in finite samples
@@ -24,13 +21,16 @@ Perform inference through data-driven simulation, understand the theoretical bas
 ### Reading Guide
 Read Efron (1979) first — it is short and establishes the founding argument. Efron & Tibshirani then develops the method systematically across several stages. Davison & Hinkley is secondary but not supplemental — the failure modes material is part of what it means to understand the bootstrap.
 
-**Foundations**
+***
+
+#### Motivations
 
 1. *Efron (1979) — Bootstrap Methods: Another Look at the Jackknife*, from *Annals of Statistics Vol. 7 #1*\
 	Read for the founding argument: what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires. Do not read for technical completeness — subsequent readings will fill that in. 
 
+***
 
-**Stage 1: Bootstrap foundations and standard errors**
+#### Stage 1: Bootstrap foundations and standard errors
 
 2. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*\
 	**Chapters 1, 2 & 4**
@@ -54,6 +54,8 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	**Chapter 10: Estimates of bias [Optional]**\
 	Covers bootstrap and jackknife bias estimation. Not required, but it is useful as background before Ch 11 if the jackknife's bias treatment feels unmotivated on first reading.
 
+***
+
 **Stage 2: Jackknife [Optional]**
 
 3. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*\
@@ -63,6 +65,8 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	- **Focus**:  §11.6 is important: it illustrates that method failure is diagnosable, not merely possible.
 
 	- **Builds toward**: The failure modes discussion in Davison & Hinkley, where the bootstrap itself encounters analogous limits.
+
+***
 
 **Stage 3: Confidence intervals**
 
@@ -102,7 +106,6 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 **Section 3.8: Hierarchical Data**\
 Read §3.8 as a source for clustered data as a bootstrap failure mode. The cluster-aware resampling schemes it describes are not assigned.
 	- **Focus**: Keep this failure distinct from the serial dependence covered in §2.6.4 above and in Efron & Tibshirani Ch 8. Serial dependence is a temporal-correlation failure; clustering is a grouping/exchangeability failure (within-cluster correlation). Both break the i.i.d. assumption naive resampling needs, but they are different mechanisms and should not be conflated. As you read, ask what symptom in a dataset would tell you clustering applies.
-
 
 ### Self-Assessment
 #### Quick Checklist

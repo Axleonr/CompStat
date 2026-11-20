@@ -1,9 +1,16 @@
 # Module 1
 ## Random Number Generation & Simulation
-
 Every method in this program ultimately depends on the ability to generate random numbers. This module examines where those numbers come from. Computers are deterministic machines, so **randomness must be constructed through algorithms that produce sequences with the right statistical properties**, even though they are entirely determined by an initial seed. Understanding this is not merely a technical curiosity: it shapes how you think about reproducibility, about the limits of simulation, and about what it means to say a result is "random."
 
 From this foundation the module moves to basic stochastic simulation — turning uniform random numbers into samples from arbitrary distributions — which is the primitive operation on which Monte Carlo and MCMC are built.
+
+#### Module Goal
+*\<Module Goal block\>*
+
+#### Specific Goals[^1]
+[^1]:Specific goals will be cited as `Goal M.g` throughout the program. See `ProgramGoalsReference.md`
+
+*\<Specific Goals block\>*
 
 ### Reading Guide
 The module has a natural two-stage structure: uniform generation first, then non-uniform. **Read Owen and L'Ecuyer together**, they cover the uniform layer in parallel; only after completing the uniform section move on to the non-uniform material.
