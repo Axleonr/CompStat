@@ -26,7 +26,7 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 
 **Foundations**
 
-1. *Efron (1979) — Bootstrap Methods: Another Look at the Jackknife*, from *Annals of Statistics Vol. 7 #1*
+1. *Efron (1979) — Bootstrap Methods: Another Look at the Jackknife*, from *Annals of Statistics Vol. 7 #1*\
 	Read for the founding argument: what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires. Do not read for technical completeness — subsequent readings will fill that in. 
 
 
@@ -44,7 +44,7 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	**Chapter 6**\
 	This is the formal definition of the bootstrap standard error estimate, the resampling algorithm, and the parametric bootstrap. 
 
-	- **Focus**: Make sure you understand the plug-in logic connecting Ch 4 to the bootstrap: *what is the bootstrap standard error?*. Also note §6.5 (parametric bootstrap) serves the implementation requirements of Goal 3.2
+	- **Focus**: Make sure you understand the plug-in logic connecting Ch 4 to the bootstrap: *what is the bootstrap standard error?* Also note §6.5 (parametric bootstrap) serves the implementation requirements of Goal 3.2
 
 	**Chapter 8**\
 	This chapter extends the basic bootstrap to more complicated data structures, including serially dependent data, and is the module's source for the moving blocks bootstrap.
@@ -85,7 +85,8 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	
 	- **Focus**: Focus on what BCa achieves that neither Ch 12 nor Ch 13 achieves alone. The accuracy hierarchy is the conceptual payoff of the entire confidence interval sequence.
 
-	> §14.4 (ABC method) is secondary depth — read if you want to understand how BCa endpoints can be approximated analytically without Monte Carlo. §14.5 (tooth data example) is optional depth; the authors flag it as more advanced and skippable on first reading.
+	> §14.4 (ABC method) is secondary depth — read if you want to understand how BCa endpoints can be approximated analytically without Monte Carlo. 
+	>§14.5 (tooth data example) is optional depth; the authors flag it as more advanced and skippable on first reading.
 
 5. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*\
 	**Section 2.6 (selected subsections)**\
