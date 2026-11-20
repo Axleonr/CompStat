@@ -27,16 +27,13 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 **Foundations**
 
 1. *Efron (1979) — Bootstrap Methods: Another Look at the Jackknife*, from *Annals of Statistics Vol. 7 #1*
-	- **Focus**: Read for the founding argument: what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires. Do not read for technical completeness — subsequent readings will fill that in.
-	- **Builds toward**: The empirical distribution concept introduced here is the conceptual foundation for everything in Efron & Tibshirani that follows.
+	Read for the founding argument: what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires. Do not read for technical completeness — subsequent readings will fill that in. 
+
 
 **Stage 1: Bootstrap foundations and standard errors**
 
 2. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*\
-	**Chapters 1, 2 & 4**\
-	**Ch 1** establishes the bootstrap as a computer-based simulation method for inference.\
-	**Ch 2** demonstrates bootstrap standard error estimation on the simplest possible estimator; it previews the resampling algorithm before the formal definition.\
-	**Ch 4** defines the empirical distribution and the plug-in principle.
+	**Chapters 1, 2 & 4**
 
 	- **Focus:** The empirical distribution and the plug-in principle from Ch 4 is the conceptual foundation for why the bootstrap substitution works.
 	
@@ -47,29 +44,23 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	**Chapter 6**\
 	This is the formal definition of the bootstrap standard error estimate, the resampling algorithm, and the parametric bootstrap. 
 
-	- **Focus**: Make sure you understand the plug-in logic connecting Ch 4 to the bootstrap: the bootstrap standard error is the standard error of the statistic under the empirical distribution, approximated by simulation. Also note §6.5 (parametric bootstrap) — Goal 3.2 requires implementing both parametric and nonparametric bootstrap.
+	- **Focus**: Make sure you understand the plug-in logic connecting Ch 4 to the bootstrap: *what is the bootstrap standard error?*. Also note §6.5 (parametric bootstrap) serves the implementation requirements of Goal 3.2
 
-	- **Builds toward**: The confidence interval chapters, where the bootstrap distribution is used not just to estimate standard errors but to construct interval endpoints directly.
+	**Chapter 8**\
+	This chapter extends the basic bootstrap to more complicated data structures, including serially dependent data, and is the module's source for the moving blocks bootstrap.
 
-	**Chapter 8: More complicated data structures and block bootstrap**\
-	This chapter extends the basic bootstrap to data structures where straightforward nonparametric resampling breaks down or requires modification.
-
-	- **Focus**: Read **§8.2–§8.4** to understand what complications arise with one-sample problems involving structure, two-sample problems, and more general data arrangements.\
-	**§8.5** shows the failure of naive resampling for serially correlated data in a concrete setting; you may read it alongside Davison & Hinkley §2.6.4, which diagnoses the same problem from the theoretical side.\
-	**§8.6** is the required remediation: focus on what the blocks bootstrap corrects for, how block length is chosen, and what residual limitations remain. Goal 3.5 requires you to explain what this modification preserves that naive resampling destroys.
-	
-	- **Builds toward**: Ch 11 (jackknife), where the relationship between the jackknife and bootstrap is formalized. The blocks bootstrap from §8.6 provides a concrete case where the jackknife fails but the modified bootstrap succeeds.
+	- **Focus**: Give §8.6 your closest reading, attending to the role of block length and the limitations that remain. Davison & Hinkley §2.6.4 diagnoses why naive resampling fails for dependent data; this chapter is where that failure is addressed.
 
 	**Chapter 10: Estimates of bias [Optional]**\
 	Covers bootstrap and jackknife bias estimation. Not required, but it is useful as background before Ch 11 if the jackknife's bias treatment feels unmotivated on first reading.
 
-**Stage 2: Jackknife**
+**Stage 2: Jackknife [Optional]**
 
 3. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*\
 	**Chapter 11**\
 	Ch 11 defines the jackknife, derives its standard error and bias estimates, and establishes its relationship to the bootstrap.
 
-	- **Focus**:  **§11.6** is important: it illustrates that method failure is diagnosable, not merely possible.
+	- **Focus**:  §11.6 is important: it illustrates that method failure is diagnosable, not merely possible.
 
 	- **Builds toward**: The failure modes discussion in Davison & Hinkley, where the bootstrap itself encounters analogous limits.
 
@@ -77,46 +68,40 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 
 4. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*\
 	**Chapter 12**\
-	Ch 12 introduces the bootstrap-t interval — the generalization of the Student's t approach using bootstrap replicates to estimate the t-distribution empirically. Read **§12.1–§12.5** as required;
-	**§12.6** (transformations and the bootstrap-t) is depth.
-
-	- **Focus**:   The bootstrap-t is second-order accurate but not transformation-respecting — hold that characterization for Ch 14, where it becomes the explicit foil.
+	Ch 12 introduces the bootstrap-t interval. Read **§12.1–§12.5** as required;
+	**§12.6** (transformations and the bootstrap-t) is depth. 
 
 	- **Builds toward**: Ch 13, where the percentile method is introduced as an alternative with different properties.
 
 	**Chapter 13**\
-	Ch 13 introduces the percentile interval. Read in full. 
+	Ch 13 introduces the percentile interval.
 
-	- **Focus**: Focus on what the percentile interval assumes (transformation-respecting but only first-order accurate) and where it fails relative to bootstrap-t. The coverage performance discussion (§13.5) and the transformation-respecting property (§13.6) are directly relevant to understanding why BCa was developed.
+	- **Focus**: Focus on what the percentile interval assumes and where it fails relative to bootstrap-t. The coverage performance discussion (§13.5) and the transformation-respecting property (§13.6) are directly relevant to understanding why BCa was developed.
 
-	- **Builds toward**: Ch 14, where BCa corrects both the coverage limitations of the percentile interval and the transformation problems of bootstrap-t simultaneously.
+	- **Builds toward**: Ch 14, where BCa corrects the problems and limitations of both the percentile interval and bootstrap-t.
 
 	**Chapter 14, Sections 14.1–14.3**\
-	This is the core of the BCa method: the motivation (neither bootstrap-t nor percentile passes the criteria for a good confidence interval), the worked example establishing the need for improvement, and the BCa construction including the bias-correction and acceleration constants. 
+	This is the core of the BCa method: the motivation, the worked example, and the BCa construction including the bias-correction and acceleration constants. 
 	
-	- **Focus**: Focus on what BCa achieves that neither Ch 12 nor Ch 13 achieves alone: it is both second-order accurate and transformation-respecting. The accuracy hierarchy — standard normal < percentile < BCa, in terms of coverage error rate — is the conceptual payoff of the entire confidence interval sequence.
-
-	- **Builds toward**: Module 10, where bootstrap inference is deployed within an applied workflow and the choice of confidence interval method requires judgment about which assumptions are being stressed.
+	- **Focus**: Focus on what BCa achieves that neither Ch 12 nor Ch 13 achieves alone. The accuracy hierarchy is the conceptual payoff of the entire confidence interval sequence.
 
 	> §14.4 (ABC method) is secondary depth — read if you want to understand how BCa endpoints can be approximated analytically without Monte Carlo. §14.5 (tooth data example) is optional depth; the authors flag it as more advanced and skippable on first reading.
 
 5. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*\
 	**Section 2.6 (selected subsections)**\
-	**§2.6.1** (consistency and asymptotic accuracy) carries the formal theoretical content for Goal 3.3 — read it as the primary source for the conditions under which bootstrap confidence intervals are valid and for the pivotal/non-pivotal accuracy comparison.\
+	**§2.6.1** is the primary source for the conditions under which bootstrap confidence intervals are valid and for the pivotal/non-pivotal accuracy comparison.\
 	**§2.6.2** and **§2.6.4** are the failure-mode content for Goal 3.4.
 
-	- **Focus**: Note that **§2.6.1** is the theoretical backstop that distinguishes what the bootstrap guarantees from what it merely approximates; is not failure-mode material.\
-	In **§2.6.2** and **§2.6.4**, for each failure case, ask: *what assumption does it violate, and what symptom would alert you in practice?*
-		
-	- **Builds toward**: The failure modes identified here reappear in Module 10, where the bootstrap is deployed as a subsidiary inference tool and its assumptions need to be evaluated in context.
+	- **Focus**: Note that §2.6.1 is the theoretical backstop that distinguishes what the bootstrap guarantees from what it merely approximates.\
+	In §2.6.2 and §2.6.4, for each failure case, ask: *what assumption does it violate, and what symptom would alert you in practice?*
 
 	> §2.6.3 (conditional properties) is outside the module's scope; skip it. For the remediation methods that address the dependence failure mode identified in §2.6.4, see Efron & Tibshirani Ch 8.
 
 6. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*\
 **Section 3.8: Hierarchical Data**\
-Read §3.8 as the module's source for clustered data as a bootstrap failure mode (Goal 3.4). The cluster-aware resampling schemes it describes are not assigned; Goal 3.5's implementation requirement remains scoped to the moving blocks bootstrap.
+Read §3.8 as a source for clustered data as a bootstrap failure mode. The cluster-aware resampling schemes it describes are not assigned.
 	- **Focus**: Keep this failure distinct from the serial dependence covered in §2.6.4 above and in Efron & Tibshirani Ch 8. Serial dependence is a temporal-correlation failure; clustering is a grouping/exchangeability failure (within-cluster correlation). Both break the i.i.d. assumption naive resampling needs, but they are different mechanisms and should not be conflated. As you read, ask what symptom in a dataset would tell you clustering applies.
-	- **Builds toward**: Module 10, where you must judge whether the structure of your data stresses the bootstrap's assumptions.
+
 
 ### Self-Assessment
 #### Quick Checklist
