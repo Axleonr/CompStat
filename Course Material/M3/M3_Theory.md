@@ -58,8 +58,8 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 
 **Stage 2: Jackknife**
 
-3. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*
-	**Chapter 11**
+3. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*\
+	**Chapter 11**\
 	Ch 11 defines the jackknife, derives its standard error and bias estimates, and establishes its relationship to the bootstrap.
 
 	- **Focus**:  **§11.6** is important: it illustrates that method failure is diagnosable, not merely possible.
@@ -106,7 +106,7 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	> §2.6.3 (conditional properties) is outside the module's scope; skip it. For the remediation methods that address the dependence failure mode identified in §2.6.4, see Efron & Tibshirani Ch 8.
 
 6. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*\
-**Section 3.8 (Hierarchical Data)**\
+**Section 3.8: Hierarchical Data**\
 Read §3.8 as the module's source for clustered data as a bootstrap failure mode (Goal 3.4). The cluster-aware resampling schemes it describes are not assigned; Goal 3.5's implementation requirement remains scoped to the moving blocks bootstrap.
 	- **Focus**: Keep this failure distinct from the serial dependence covered in §2.6.4 above and in Efron & Tibshirani Ch 8. Serial dependence is a temporal-correlation failure; clustering is a grouping/exchangeability failure (within-cluster correlation). Both break the i.i.d. assumption naive resampling needs, but they are different mechanisms and should not be conflated. As you read, ask what symptom in a dataset would tell you clustering applies.
 	- **Builds toward**: Module 10, where you must judge whether the structure of your data stresses the bootstrap's assumptions.
