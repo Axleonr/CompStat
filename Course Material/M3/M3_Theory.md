@@ -1,21 +1,28 @@
 # Module 3
 ## Bootstrap & Resampling
 
-*\<Introduction block\>*
+The bootstrap is one of the most conceptually elegant ideas in statistics: use the data itself as a model of the population, and simulate the sampling process by drawing from that model repeatedly. This module develops both parametric and nonparametric bootstrap from first principles, derives confidence intervals through multiple approaches, and examines the theoretical conditions under which the bootstrap provides valid inference.
+
+Equally important is understanding when the bootstrap fails. Heavy-tailed distributions, extreme statistics, small samples, and dependent data all create situations where naive resampling breaks down. A practitioner who knows only that the bootstrap works is less useful than one who also knows where it stops working.
 
 #### Module Goal
 
-*\<Module Goal block\>*
+Perform inference through data-driven simulation, understand the theoretical basis for its validity, and recognize the conditions under which it breaks down.
 
 #### Specific Goals[^1]
 [^1]:Specific goals will be cited as `Goal M.g` throughout the program. See `ProgramGoalsReference.md`
 
-*\<Specific Goals block\>*
+1. Derive the nonparametric bootstrap from first principles — articulating what the empirical distribution is, why sampling from it simulates the sampling process, and what assumptions that substitution requires
+2. Implement parametric and nonparametric bootstrap and construct confidence intervals through multiple methods, including bootstrap-t, percentile, and BCa approaches; explain the accuracy hierarchy among these methods — distinguishing first-order from second-order accuracy — and identify which methods are transformation-respecting and why that property matters.
+3. Explain the theoretical conditions under which bootstrap confidence intervals are valid, and distinguish between the bootstrap's consistency and its accuracy in finite samples
+4. Identify and diagnose the conditions under which naive bootstrap fails: heavy-tailed distributions, extreme statistics, small samples, and dependent or clustered data
+5. Apply modified resampling strategies — including the moving blocks bootstrap — for dependent and structured data, and explain what each modification corrects for and what residual limitations remain
+6. Relate the bootstrap to the simulation primitives from Module 1 — the bootstrap is a resampling algorithm, and its behavior is as amenable to computational analysis as any other
 
 ---
 
 ### Reading Guide
-Read Efron (1979) first — it is short and establishes the founding argument. Efron & Tibshirani then develops the method systematically across several stages; the readings are given in the order they should be read, not by chapter sequence alone. Davison & Hinkley is secondary but not supplemental — the failure modes material is part of what it means to understand the bootstrap.
+Read Efron (1979) first — it is short and establishes the founding argument. Efron & Tibshirani then develops the method systematically across several stages. Davison & Hinkley is secondary but not supplemental — the failure modes material is part of what it means to understand the bootstrap.
 
 **Foundations**
 
