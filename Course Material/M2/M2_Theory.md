@@ -33,8 +33,7 @@ This module has a deliberate two-stage structure: Owen's variance reduction chap
 Both Stage 1 readings cover the same material: R&C Ch 3 is required, Glasserman is an optional entry point for students with a more applied mindset.
 
 1. *Glasserman (2003), Monte Carlo Methods in Financial Engineering*; **[Optional]**\
-**Ch 1 (scoped): Foundations, §1.1.1–§1.1.3**\
-**Appendix A**\
+**Ch 1 (scoped): Foundations, §1.1.1–§1.1.3** & **Appendix A**\
 Glasserman is a less theoretical treatment to the material covered by R&C; if you prefer a more applied entry point, read it first as a full alternative introduction to the Stage 1 material, then proceed to R&C.
 
 2. *Robert & Casella (2004) — Monte Carlo Statistical Methods, 2nd ed.*\
@@ -48,8 +47,7 @@ Glasserman is a less theoretical treatment to the material covered by R&C; if yo
 #### Stage 2 — Variance Reduction
 
 3. *Owen (2013) — Monte Carlo Theory, Methods and Examples*\
-**Ch 8: Variance reduction**\
-**Ch 9: Importance sampling**
+**Ch 8: Variance reduction** & **Ch 9: Importance sampling**
 	- **Focus**: For each technique, focus on three things: the mechanism (how does it reduce variance?), the structural condition that makes it effective (what property of the problem does it exploit?), and its limitation (when does it not help, or hurt?). Keep the Stage 1 framing explicit: each technique is a reduction in the $n^{-1/2}$ error's leading constant, not a change in the fundamental convergence rate.
 	- **Builds toward**: The importance sampling idea is extended in Module 7 into SIR, going from computing a single estimate to producing an approximate sample from a target distribution.
 

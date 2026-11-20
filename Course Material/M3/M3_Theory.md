@@ -25,8 +25,8 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 
 **Stage 1: Bootstrap foundations and standard errors**
 
-2. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*
-	**Chapters 1, 2 & 4**
+2. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*\
+	**Chapters 1, 2 & 4**\
 	**Ch 1** establishes the bootstrap as a computer-based simulation method for inference.\
 	**Ch 2** demonstrates bootstrap standard error estimation on the simplest possible estimator; it previews the resampling algorithm before the formal definition.\
 	**Ch 4** defines the empirical distribution and the plug-in principle.
@@ -37,14 +37,14 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 
 	> *Ch 3* is background probability review; treat it as optional reference material if the notation in later chapters needs grounding.
 
-	**Chapter 6**
+	**Chapter 6**\
 	This is the formal definition of the bootstrap standard error estimate, the resampling algorithm, and the parametric bootstrap. 
 
 	- **Focus**: Make sure you understand the plug-in logic connecting Ch 4 to the bootstrap: the bootstrap standard error is the standard error of the statistic under the empirical distribution, approximated by simulation. Also note §6.5 (parametric bootstrap) — Goal 3.2 requires implementing both parametric and nonparametric bootstrap.
 
 	- **Builds toward**: The confidence interval chapters, where the bootstrap distribution is used not just to estimate standard errors but to construct interval endpoints directly.
 
-	**Chapter 8: More complicated data structures and block bootstrap**
+	**Chapter 8: More complicated data structures and block bootstrap**\
 	This chapter extends the basic bootstrap to data structures where straightforward nonparametric resampling breaks down or requires modification.
 
 	- **Focus**: Read **§8.2–§8.4** to understand what complications arise with one-sample problems involving structure, two-sample problems, and more general data arrangements.\
@@ -53,7 +53,7 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	
 	- **Builds toward**: Ch 11 (jackknife), where the relationship between the jackknife and bootstrap is formalized. The blocks bootstrap from §8.6 provides a concrete case where the jackknife fails but the modified bootstrap succeeds.
 
-	**Chapter 10 (Estimates of bias) [Optional]** 
+	**Chapter 10: Estimates of bias [Optional]**\
 	Covers bootstrap and jackknife bias estimation. Not required, but it is useful as background before Ch 11 if the jackknife's bias treatment feels unmotivated on first reading.
 
 **Stage 2: Jackknife**
@@ -68,8 +68,8 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 
 **Stage 3: Confidence intervals**
 
-4. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*
-	**Chapter 12**
+4. *Efron & Tibshirani (1993) — An Introduction to the Bootstrap*\
+	**Chapter 12**\
 	Ch 12 introduces the bootstrap-t interval — the generalization of the Student's t approach using bootstrap replicates to estimate the t-distribution empirically. Read **§12.1–§12.5** as required;
 	**§12.6** (transformations and the bootstrap-t) is depth.
 
@@ -77,14 +77,14 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 
 	- **Builds toward**: Ch 13, where the percentile method is introduced as an alternative with different properties.
 
-	**Chapter 13**
+	**Chapter 13**\
 	Ch 13 introduces the percentile interval. Read in full. 
 
 	- **Focus**: Focus on what the percentile interval assumes (transformation-respecting but only first-order accurate) and where it fails relative to bootstrap-t. The coverage performance discussion (§13.5) and the transformation-respecting property (§13.6) are directly relevant to understanding why BCa was developed.
 
 	- **Builds toward**: Ch 14, where BCa corrects both the coverage limitations of the percentile interval and the transformation problems of bootstrap-t simultaneously.
 
-	**Chapter 14, Sections 14.1–14.3**
+	**Chapter 14, Sections 14.1–14.3**\
 	This is the core of the BCa method: the motivation (neither bootstrap-t nor percentile passes the criteria for a good confidence interval), the worked example establishing the need for improvement, and the BCa construction including the bias-correction and acceleration constants. 
 	
 	- **Focus**: Focus on what BCa achieves that neither Ch 12 nor Ch 13 achieves alone: it is both second-order accurate and transformation-respecting. The accuracy hierarchy — standard normal < percentile < BCa, in terms of coverage error rate — is the conceptual payoff of the entire confidence interval sequence.
@@ -94,7 +94,7 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	> §14.4 (ABC method) is secondary depth — read if you want to understand how BCa endpoints can be approximated analytically without Monte Carlo. §14.5 (tooth data example) is optional depth; the authors flag it as more advanced and skippable on first reading.
 
 5. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*\
-	**Section 2.6 (selected subsections)**
+	**Section 2.6 (selected subsections)**\
 	**§2.6.1** (consistency and asymptotic accuracy) carries the formal theoretical content for Goal 3.3 — read it as the primary source for the conditions under which bootstrap confidence intervals are valid and for the pivotal/non-pivotal accuracy comparison.\
 	**§2.6.2** and **§2.6.4** are the failure-mode content for Goal 3.4.
 
@@ -106,9 +106,10 @@ Read Efron (1979) first — it is short and establishes the founding argument. E
 	> §2.6.3 (conditional properties) is outside the module's scope; skip it. For the remediation methods that address the dependence failure mode identified in §2.6.4, see Efron & Tibshirani Ch 8.
 
 6. *Davison & Hinkley (1997) — Bootstrap Methods and Their Application*\
-**§3.8 (Hierarchical Data)**
-	- **Focus**: Diagnostic/conceptual only — there is no implementation requirement attached to this reading. §3.8 identifies why within-cluster correlation violates the i.i.d. resampling assumption behind the ordinary nonparametric bootstrap: observations drawn from the same cluster are not exchangeable with observations from a different cluster, so resampling individual observations as if they were i.i.d. misrepresents the data-generating process. **Keep this mechanism distinct from the serial-dependence failure mechanism** covered via §2.6.4 above and Efron & Tibshirani Ch 8 (Stage 1b) — serial dependence is a temporal-correlation failure; clustering is a grouping/exchangeability failure. The two failure modes share a family resemblance (both violate the i.i.d. assumption naive resampling requires) but are not the same mechanism and should not be conflated. This section's remediation content (cluster-aware resampling schemes) is **not assigned** and is out of scope for this module, consistent with the standing Goal 3.5 boundary — Goal 3.5's implementation requirement remains scoped to the moving blocks bootstrap only.
-	- **Builds toward**: Nothing further in this module; the clustering failure mode is exercised at the conceptual/diagnostic level only (see the Self-Assessment checklist below).
+**Section 3.8 (Hierarchical Data)**\
+Read §3.8 as the module's source for clustered data as a bootstrap failure mode (Goal 3.4). The cluster-aware resampling schemes it describes are not assigned; Goal 3.5's implementation requirement remains scoped to the moving blocks bootstrap.
+	- **Focus**: Keep this failure distinct from the serial dependence covered in §2.6.4 above and in Efron & Tibshirani Ch 8. Serial dependence is a temporal-correlation failure; clustering is a grouping/exchangeability failure (within-cluster correlation). Both break the i.i.d. assumption naive resampling needs, but they are different mechanisms and should not be conflated. As you read, ask what symptom in a dataset would tell you clustering applies.
+	- **Builds toward**: Module 10, where you must judge whether the structure of your data stresses the bootstrap's assumptions.
 
 ### Self-Assessment
 #### Quick Checklist
